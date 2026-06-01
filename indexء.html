@@ -1,0 +1,2027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ayoub — Thumbnail Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #000000;
+  --blue-1: #60a5fa;
+  --blue-2: #3b82f6;
+  --blue-3: #38bdf8;
+  --purple: #a78bfa;
+  --gold: #f59e0b;
+  --text-primary: #eef2ff;
+  --text-muted: rgba(180,196,230,0.55);
+  --card-border: rgba(96,165,250,0.11);
+  --card-border-hover: rgba(96,165,250,0.4);
+  --glass: rgba(0,0,0,0.6);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* ════════════════════════════════════════
+   CUSTOM CURSOR
+════════════════════════════════════════ */
+#cursor-dot {
+  position: fixed;
+  width: 6px; height: 6px;
+  background: var(--blue-1);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%,-50%);
+  transition: width 0.2s, height 0.2s, background 0.2s;
+  box-shadow: 0 0 10px var(--blue-2);
+}
+#cursor-ring {
+  position: fixed;
+  width: 36px; height: 36px;
+  border: 1px solid rgba(96,165,250,0.4);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%,-50%);
+  transition: width 0.35s cubic-bezier(0.16,1,0.3,1),
+              height 0.35s cubic-bezier(0.16,1,0.3,1),
+              border-color 0.3s,
+              background 0.3s;
+  backdrop-filter: blur(1px);
+}
+body:has(a:hover) #cursor-ring,
+body:has(button:hover) #cursor-ring {
+  width: 56px; height: 56px;
+  border-color: rgba(96,165,250,0.7);
+  background: rgba(96,165,250,0.06);
+}
+@media (hover: none) { #cursor-dot, #cursor-ring { display: none; } body { cursor: auto; } }
+
+/* ════════════════════════════════════════
+   SCROLL PROGRESS BAR
+════════════════════════════════════════ */
+#progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--blue-2), var(--blue-3), var(--purple));
+  z-index: 200;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 10px rgba(96,165,250,0.6);
+}
+
+/* ════════════════════════════════════════
+   GLOBAL GRID LINES (hero bg)
+════════════════════════════════════════ */
+.grid-lines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+  opacity: 0.028;
+  background-image:
+    linear-gradient(rgba(96,165,250,1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(96,165,250,1) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 40%, black 0%, transparent 100%);
+}
+
+/* ════════════════════════════════════════
+   NAV
+════════════════════════════════════════ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 0 48px;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-bottom: 1px solid rgba(96,165,250,0.07);
+  transition: background 0.3s;
+}
+.nav-logo {
+  font-family: 'DM Mono', monospace;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #fff;
+  position: relative;
+  padding: 8px 16px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  cursor: default;
+  transition: border-color 0.3s, background 0.3s;
+}
+.nav-logo:hover {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(96,165,250,0.3);
+}
+
+.nav-links { display:flex; gap:32px; list-style:none; }
+.nav-links a {
+  font-size: 13px; font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  position: relative;
+  transition: color 0.2s;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 0;
+  width: 0; height: 1px;
+  background: var(--blue-1);
+  transition: width 0.25s cubic-bezier(0.16,1,0.3,1);
+}
+.nav-links a:hover { color: var(--text-primary); }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-cta {
+  position: relative;
+  padding: 9px 22px;
+  border: 1px solid rgba(96,165,250,0.3);
+  border-radius: 100px;
+  font-size: 13px; font-weight: 600;
+  color: var(--blue-1);
+  text-decoration: none;
+  overflow: hidden;
+  transition: color 0.3s, border-color 0.3s;
+}
+.nav-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(37,99,235,0.2), rgba(96,165,250,0.1));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.nav-cta:hover::before { opacity: 1; }
+.nav-cta:hover { border-color: rgba(96,165,250,0.55); }
+
+/* ════════════════════════════════════════
+   HERO
+════════════════════════════════════════ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 140px 24px 120px;
+  overflow: hidden;
+  isolation: isolate;
+}
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(130px);
+  pointer-events: none;
+  will-change: transform;
+}
+.hero-orb-1 {
+  width: 800px; height: 800px;
+  background: radial-gradient(circle, rgba(37,99,235,0.2) 0%, transparent 70%);
+  top: -250px; left: 50%; transform: translateX(-50%);
+}
+.hero-orb-2 {
+  width: 450px; height: 450px;
+  background: radial-gradient(circle, rgba(167,139,250,0.13) 0%, transparent 70%);
+  bottom: -50px; left: 3%;
+}
+.hero-orb-3 {
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(56,189,248,0.1) 0%, transparent 70%);
+  top: 20%; right: 5%;
+}
+
+/* floating particles */
+.particles { position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1; }
+.particle {
+  position: absolute;
+  width: 2px; height: 2px;
+  border-radius: 50%;
+  background: rgba(96,165,250,0.6);
+  animation: floatParticle linear infinite;
+}
+
+@keyframes floatParticle {
+  0%   { transform: translateY(100vh) scale(0); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 0.6; }
+  100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 18px 6px 10px;
+  border: 1px solid rgba(96,165,250,0.22);
+  border-radius: 100px;
+  background: rgba(96,165,250,0.05);
+  margin-bottom: 40px;
+  animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) both;
+  position: relative;
+  overflow: hidden;
+}
+.hero-badge::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(96,165,250,0.08), transparent);
+  transform: translateX(-100%);
+  animation: shimmer 3s ease-in-out 1.5s infinite;
+}
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+.hero-badge-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #22d3ee;
+  box-shadow: 0 0 8px #22d3ee, 0 0 20px rgba(34,211,238,0.4);
+  animation: pulse 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+@keyframes pulse {
+  0%,100% { opacity:1; transform:scale(1); }
+  50% { opacity:0.65; transform:scale(1.4); }
+}
+.hero-badge span {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: rgba(96,165,250,0.85);
+  text-transform: uppercase;
+}
+
+.hero-title {
+  font-size: clamp(46px, 7.5vw, 96px);
+  font-weight: 800;
+  line-height: 1.0;
+  letter-spacing: -0.045em;
+  margin-bottom: 30px;
+  animation: fadeUp 0.9s 0.1s cubic-bezier(0.16,1,0.3,1) both;
+}
+.hero-title .line2 {
+  background: linear-gradient(135deg, var(--blue-1) 0%, var(--purple) 50%, var(--blue-3) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% 200%;
+  animation: gradientShift 6s ease infinite;
+}
+@keyframes gradientShift {
+  0%,100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.hero-sub {
+  font-size: clamp(15px, 2vw, 20px);
+  font-weight: 400;
+  color: var(--text-muted);
+  line-height: 1.72;
+  max-width: 540px;
+  margin: 0 auto 52px;
+  animation: fadeUp 0.9s 0.2s cubic-bezier(0.16,1,0.3,1) both;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: fadeUp 0.9s 0.3s cubic-bezier(0.16,1,0.3,1) both;
+}
+
+/* Shimmer primary button */
+.btn-primary {
+  position: relative;
+  padding: 15px 36px;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  border-radius: 100px;
+  font-size: 15px; font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 8px 32px rgba(37,99,235,0.35), inset 0 1px 0 rgba(255,255,255,0.15);
+  transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), box-shadow 0.25s;
+  overflow: hidden;
+}
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+  transform: skewX(-20deg);
+  animation: btnShimmer 3.5s ease-in-out 2s infinite;
+}
+@keyframes btnShimmer {
+  0% { left: -100%; }
+  100% { left: 160%; }
+}
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 16px 48px rgba(37,99,235,0.55), inset 0 1px 0 rgba(255,255,255,0.2); }
+
+.btn-secondary {
+  position: relative;
+  padding: 15px 36px;
+  border: 1px solid rgba(96,165,250,0.3);
+  border-radius: 100px;
+  font-size: 15px; font-weight: 600;
+  color: var(--text-primary);
+  text-decoration: none;
+  overflow: hidden;
+  transition: border-color 0.3s, transform 0.25s cubic-bezier(0.16,1,0.3,1);
+  backdrop-filter: blur(8px);
+}
+.btn-secondary::before {
+  content:'';position:absolute;inset:0;
+  background:rgba(96,165,250,0.05);
+  opacity:0;transition:opacity 0.3s;
+}
+.btn-secondary:hover::before { opacity:1; }
+.btn-secondary:hover { border-color: rgba(96,165,250,0.55); transform: translateY(-3px); }
+
+/* Scroll indicator */
+.hero-scroll {
+  position: absolute;
+  bottom: 40px; left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  animation: fadeUp 1s 0.6s both;
+}
+.hero-scroll span {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: rgba(96,165,250,0.3);
+  text-transform: uppercase;
+}
+.scroll-line {
+  width: 1px; height: 44px;
+  background: linear-gradient(to bottom, rgba(96,165,250,0.5), transparent);
+  animation: scrollLine 2s ease-in-out infinite;
+}
+@keyframes scrollLine {
+  0% { opacity:1; transform:translateY(0); }
+  100% { opacity:0; transform:translateY(22px); }
+}
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(30px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* ════════════════════════════════════════
+   SHOWCASE
+════════════════════════════════════════ */
+.showcase {
+  position: relative;
+  width: 100%;
+  padding: 130px 0 150px;
+  overflow: hidden;
+  isolation: isolate;
+}
+.showcase-orb { position:absolute;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0; }
+.s-orb1 { width:600px;height:600px;background:radial-gradient(circle,rgba(37,99,235,0.15) 0%,transparent 70%);top:-100px;left:50%;transform:translateX(-50%); }
+.s-orb2 { width:380px;height:380px;background:radial-gradient(circle,rgba(59,130,246,0.1) 0%,transparent 70%);bottom:80px;left:8%; }
+.s-orb3 { width:340px;height:340px;background:radial-gradient(circle,rgba(96,165,250,0.08) 0%,transparent 70%);bottom:60px;right:6%; }
+
+.grain {
+  position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0.022;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat:repeat;
+}
+
+.showcase-header {
+  position:relative;z-index:10;
+  text-align:center;max-width:700px;
+  padding:0 24px;margin:0 auto 80px;
+}
+.eyebrow {
+  font-family:'DM Mono',monospace;
+  font-size:11px;font-weight:500;
+  letter-spacing:0.24em;text-transform:uppercase;
+  color:rgba(96,165,250,0.65);margin-bottom:20px;
+}
+.showcase-title {
+  font-size:clamp(34px,5vw,64px);
+  font-weight:700;line-height:1.07;
+  letter-spacing:-0.035em;color:var(--text-primary);
+  margin:0 0 22px;
+}
+.showcase-title .gradient, .gradient {
+  background:linear-gradient(135deg,var(--blue-1) 0%,var(--purple) 50%,var(--blue-3) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  background-size:200%;
+  animation: gradientShift 6s ease infinite;
+}
+.showcase-sub {
+  font-size:clamp(14px,1.8vw,17px);
+  line-height:1.7;color:var(--text-muted);
+}
+
+/* Divider line */
+.section-divider {
+  width:100%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(96,165,250,0.12),transparent);
+  margin:0;
+}
+
+/* ── SCROLL ROWS ── */
+.grid { position:relative;z-index:5;width:100%;display:flex;flex-direction:column;gap:20px; }
+.row-wrapper { width:100%;overflow:hidden; }
+.row { display:flex;gap:20px;width:max-content;will-change:transform; }
+.row-left  { animation: scrollLeft  36s linear infinite; }
+.row-right { animation: scrollRight 42s linear infinite; }
+.row-left-2{ animation: scrollLeft  39s linear infinite; }
+.row-wrapper:hover .row { animation-play-state:paused; }
+
+@keyframes scrollLeft  { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+@keyframes scrollRight { 0%{transform:translateX(-50%)} 100%{transform:translateX(0)} }
+
+/* ── CARDS ── */
+.card {
+  flex-shrink:0;
+  width:clamp(230px,22vw,350px);
+  aspect-ratio:16/9;
+  border-radius:20px;
+  position:relative;
+  cursor:pointer;
+  transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+}
+.card:hover { transform:scale(1.0); z-index:10; }
+.card-inner {
+  width:100%;height:100%;border-radius:20px;overflow:hidden;
+  border:1px solid var(--card-border);
+  background:#000000;position:relative;
+  transition:border-color 0.35s,box-shadow 0.35s,filter 0.35s;
+}
+.card:hover .card-inner {
+  border-color:rgba(96,165,250,0.15);
+}
+.card-thumb {
+  width:100%;height:100%;display:flex;
+  align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.card-thumb::before {
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 30% 50%,rgba(37,99,235,0.1) 0%,transparent 60%),
+             radial-gradient(ellipse at 70% 30%,rgba(96,165,250,0.06) 0%,transparent 50%);
+}
+.card-label {
+  position:relative;z-index:1;
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+}
+.card-icon { width:32px;height:32px; }
+.card-label span {
+  font-family:'DM Mono',monospace;font-size:11px;
+  letter-spacing:0.06em;color:rgba(96,165,250,0.3);
+}
+.card-glow {
+  position:absolute;inset:0;border-radius:20px;
+  background:linear-gradient(135deg,rgba(96,165,250,0.08) 0%,transparent 60%);
+  opacity:0;transition:opacity 0.35s;pointer-events:none;
+}
+.card:hover .card-glow { opacity:0; }
+
+/* Edge fades */
+.fade-left,.fade-right {
+  position:absolute;top:0;bottom:0;width:200px;z-index:20;pointer-events:none;
+}
+.fade-left  { left:0; background:linear-gradient(to right,#000000 0%,transparent 100%); }
+.fade-right { right:0;background:linear-gradient(to left,#000000 0%,transparent 100%); }
+
+/* ── STATS BAR ── */
+.stats {
+  position:relative;z-index:10;
+  display:flex;
+  max-width:760px;margin:88px auto 0;
+  border:1px solid rgba(96,165,250,0.1);
+  border-radius:22px;
+  background:rgba(10,18,40,0.55);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  overflow:hidden;
+  padding:0 32px;
+  box-shadow:0 24px 80px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.04);
+}
+.stat { flex:1;padding:34px 24px;text-align:center;border-right:1px solid rgba(96,165,250,0.08); }
+.stat:last-child { border-right:none; }
+.stat-num {
+  font-size:clamp(26px,4vw,42px);font-weight:700;
+  letter-spacing:-0.03em;
+  background:linear-gradient(135deg,var(--blue-1),var(--blue-3));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  display:block;margin-bottom:7px;
+}
+.stat-label { font-size:12px;color:var(--text-muted);font-weight:500;letter-spacing:0.04em; }
+
+/* ════════════════════════════════════════
+   ABOUT ME
+════════════════════════════════════════ */
+.about {
+  position: relative;
+  width: 100%;
+  padding: 150px 80px;
+  overflow: hidden;
+  isolation: isolate;
+}
+.about-orb { position:absolute;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0; }
+.a-orb1 { width:580px;height:580px;background:radial-gradient(circle,rgba(37,99,235,0.14) 0%,transparent 70%);top:-80px;right:-100px; }
+.a-orb2 { width:360px;height:360px;background:radial-gradient(circle,rgba(167,139,250,0.1) 0%,transparent 70%);bottom:60px;left:5%; }
+.a-orb3 { width:260px;height:260px;background:radial-gradient(circle,rgba(96,165,250,0.07) 0%,transparent 70%);top:40%;left:38%; }
+
+.about-inner {
+  position: relative;
+  z-index: 5;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 88px;
+  align-items: center;
+}
+
+.about-eyebrow {
+  font-family:'DM Mono',monospace;
+  font-size:11px;font-weight:500;
+  letter-spacing:0.22em;text-transform:uppercase;
+  color:rgba(96,165,250,0.65);
+  margin-bottom:20px;display:block;
+}
+.about-title {
+  font-size:clamp(30px,4vw,54px);
+  font-weight:700;line-height:1.07;
+  letter-spacing:-0.033em;
+  color:var(--text-primary);
+  margin-bottom:10px;
+}
+.about-role {
+  font-family:'DM Mono',monospace;
+  font-size:13px;letter-spacing:0.12em;
+  color:rgba(96,165,250,0.5);
+  margin-bottom:38px;
+  display:flex;align-items:center;gap:12px;
+}
+.about-role::before {
+  content:'';display:inline-block;
+  width:28px;height:1px;
+  background:rgba(96,165,250,0.3);flex-shrink:0;
+}
+.about-body {
+  font-size:clamp(14px,1.5vw,16px);
+  font-weight:400;color:var(--text-muted);
+  line-height:1.85;
+}
+.about-body p { margin-bottom:18px; }
+.about-body p:last-child { margin-bottom:0; }
+
+.about-quote {
+  margin:34px 0 0;
+  padding:22px 24px;
+  border-left:2px solid rgba(96,165,250,0.32);
+  background:rgba(96,165,250,0.04);
+  border-radius:0 14px 14px 0;
+  position:relative;overflow:hidden;
+}
+.about-quote::before {
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent,rgba(96,165,250,0.04),transparent);
+  transform:translateX(-100%);
+  animation:shimmer 4s ease-in-out 3s infinite;
+}
+.about-quote p {
+  font-size:15px;font-style:italic;
+  color:rgba(200,215,245,0.7);line-height:1.65;margin:0;
+}
+.about-quote p strong { color:var(--blue-1);font-style:normal;font-weight:600; }
+
+/* Stat cards 2×2 */
+.about-stats { display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:44px; }
+.about-stat-card {
+  padding:22px 20px;
+  border:1px solid var(--card-border);
+  border-radius:18px;
+  background:var(--glass);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  transition:border-color 0.35s,box-shadow 0.35s,transform 0.35s;
+  cursor:default;
+  position:relative;overflow:hidden;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.04);
+}
+.about-stat-card::after {
+  content:'';position:absolute;
+  top:0;left:-80%;width:60%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(96,165,250,0.06),transparent);
+  transform:skewX(-15deg);opacity:0;transition:opacity 0.3s;
+}
+.about-stat-card:hover::after { opacity:1;animation:cardShimmer 0.6s ease forwards; }
+@keyframes cardShimmer { 0%{left:-80%} 100%{left:140%} }
+.about-stat-card:hover {
+  border-color:rgba(96,165,250,0.3);
+  box-shadow:0 12px 40px rgba(37,99,235,0.18),inset 0 1px 0 rgba(255,255,255,0.06);
+  transform:translateY(-4px);
+}
+.about-stat-num {
+  font-size:clamp(22px,2.5vw,32px);font-weight:700;
+  letter-spacing:-0.03em;
+  background:linear-gradient(135deg,var(--blue-1),var(--blue-3));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  display:block;margin-bottom:5px;line-height:1;
+}
+.about-stat-label { font-size:11.5px;font-weight:500;color:var(--text-muted);letter-spacing:0.02em;line-height:1.4; }
+
+/* Portrait */
+.about-portrait-wrap { position:relative;display:flex;justify-content:center;align-items:flex-start; }
+.about-portrait-frame { position:relative;width:100%;max-width:400px;aspect-ratio:10/15; }
+.portrait{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    border-radius:24px;
+}
+.about-portrait-frame::before {
+  content:'';position:absolute;inset:-28px;border-radius:36px;
+  background:radial-gradient(ellipse at 50% 60%,rgba(37,99,235,0.22) 0%,transparent 70%);
+  filter:blur(32px);z-index:0;
+}
+.about-portrait-frame::after {
+  content:'';position:absolute;top:-8px;left:-8px;
+  width:52px;height:52px;
+  border-top:1.5px solid rgba(96,165,250,0.5);
+  border-left:1.5px solid rgba(96,165,250,0.5);
+  border-radius:4px 0 0 0;z-index:10;
+}
+.corner-br {
+  position:absolute;bottom:-8px;right:-8px;
+  width:52px;height:52px;
+  border-bottom:1.5px solid rgba(96,165,250,0.5);
+  border-right:1.5px solid rgba(96,165,250,0.5);
+  border-radius:0 0 4px 0;z-index:10;pointer-events:none;
+}
+.portrait-placeholder {
+  width:100%;height:100%;border-radius:24px;
+  background:linear-gradient(160deg,#050505 0%,#080808 50%,#000000 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+  border:1px solid rgba(96,165,250,0.11);
+  position:relative;overflow:hidden;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.04);
+}
+.portrait-placeholder::before {
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 20%,rgba(37,99,235,0.13) 0%,transparent 60%),
+             radial-gradient(ellipse at 30% 80%,rgba(96,165,250,0.07) 0%,transparent 50%);
+}
+.portrait-placeholder svg { position:relative;z-index:1;opacity:0.18; }
+.portrait-placeholder span {
+  position:relative;z-index:1;font-family:'DM Mono',monospace;
+  font-size:11px;letter-spacing:0.15em;color:rgba(96,165,250,0.38);text-transform:uppercase;
+}
+.about-name-badge {
+  position:absolute;bottom:24px;left:-20px;z-index:20;
+  padding:14px 22px;
+  background:rgba(0,0,0,0.92);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border:1px solid rgba(96,165,250,0.2);
+  border-radius:16px;
+  box-shadow:0 8px 40px rgba(0,0,0,0.45),inset 0 1px 0 rgba(255,255,255,0.06);
+}
+.about-name-badge .name {
+  font-size:18px;font-weight:700;letter-spacing:0.06em;
+  color:var(--text-primary);display:block;line-height:1;margin-bottom:4px;
+}
+.about-name-badge .badge-role {
+  font-family:'DM Mono',monospace;font-size:10px;
+  letter-spacing:0.14em;color:rgba(96,165,250,0.55);text-transform:uppercase;
+}
+.portrait-dot {
+  position:absolute;top:20px;right:-14px;
+  width:10px;height:10px;border-radius:50%;
+  background:#22d3ee;
+  box-shadow:0 0 16px #22d3ee,0 0 40px rgba(34,211,238,0.4);
+  animation:pulse 2s ease-in-out infinite;z-index:20;
+}
+
+/* ════════════════════════════════════════
+   CONTACT
+════════════════════════════════════════ */
+.contact {
+  position: relative;
+  width: 100%;
+  padding: 150px 80px;
+  overflow: hidden;
+  isolation: isolate;
+}
+.contact-orb { position:absolute;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0; }
+.c-orb1 { width:640px;height:640px;background:radial-gradient(circle,rgba(37,99,235,0.15) 0%,transparent 70%);top:-100px;left:50%;transform:translateX(-50%); }
+.c-orb2 { width:380px;height:380px;background:radial-gradient(circle,rgba(167,139,250,0.1) 0%,transparent 70%);bottom:80px;left:5%; }
+.c-orb3 { width:300px;height:300px;background:radial-gradient(circle,rgba(56,189,248,0.08) 0%,transparent 70%);bottom:60px;right:6%; }
+
+.contact-header {
+  position:relative;z-index:10;
+  text-align:center;max-width:680px;
+  margin:0 auto 80px;padding:0 24px;
+}
+.contact-title {
+  font-size:clamp(34px,5vw,64px);
+  font-weight:700;line-height:1.07;
+  letter-spacing:-0.035em;color:var(--text-primary);
+  margin:0 0 22px;
+}
+.contact-sub {
+  font-size:clamp(14px,1.8vw,17px);
+  line-height:1.7;color:var(--text-muted);
+}
+
+.contact-grid {
+  position:relative;z-index:10;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+  max-width:860px;
+  margin:0 auto 80px;
+  padding:0 24px;
+}
+
+.contact-card {
+  padding:42px 38px;
+  border:1px solid var(--card-border);
+  border-radius:28px;
+  background:var(--glass);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.04);
+  transition:border-color 0.35s,box-shadow 0.35s,transform 0.35s;
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;align-items:flex-start;gap:10px;
+}
+.contact-card::before {
+  content:'';position:absolute;
+  top:0;left:-80%;width:55%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(96,165,250,0.05),transparent);
+  transform:skewX(-15deg);opacity:0;transition:opacity 0.3s;
+}
+.contact-card:hover::before { opacity:1;animation:cardShimmer 0.6s ease forwards; }
+.contact-card:hover {
+  border-color:rgba(96,165,250,0.3);
+  box-shadow:0 16px 56px rgba(37,99,235,0.2),inset 0 1px 0 rgba(255,255,255,0.06);
+  transform:translateY(-5px);
+}
+.contact-icon {
+  font-size:28px;
+  margin-bottom:6px;
+  display:flex;align-items:center;justify-content:center;
+  width:54px;height:54px;
+  border-radius:16px;
+  border:1px solid rgba(96,165,250,0.15);
+  background:rgba(96,165,250,0.06);
+}
+.contact-card h3 {
+  font-size:18px;font-weight:700;
+  letter-spacing:-0.015em;
+  color:var(--text-primary);margin:0;
+}
+.contact-value {
+  font-family:'DM Mono',monospace;
+  font-size:13px;letter-spacing:0.06em;
+  color:var(--blue-1);margin:2px 0 6px;
+}
+.contact-description {
+  font-size:14px;line-height:1.65;
+  color:var(--text-muted);margin:0 0 24px;
+  flex:1;
+}
+.contact-card .btn-primary,
+.contact-card .btn-secondary {
+  padding:12px 28px;font-size:14px;
+  align-self:flex-start;
+}
+
+.contact-cta {
+  position:relative;z-index:10;
+  max-width:760px;margin:0 auto;
+  padding:64px 48px;
+  border:1px solid rgba(96,165,250,0.12);
+  border-radius:32px;
+  background:rgba(10,18,40,0.55);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  text-align:center;
+  box-shadow:0 32px 100px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.05);
+  overflow:hidden;
+}
+.contact-cta::before {
+  content:'';position:absolute;
+  top:-60px;left:50%;transform:translateX(-50%);
+  width:500px;height:260px;
+  background:radial-gradient(ellipse,rgba(37,99,235,0.13) 0%,transparent 70%);
+  filter:blur(30px);pointer-events:none;z-index:0;
+}
+.contact-cta > * { position:relative;z-index:1; }
+.contact-cta h2 {
+  font-size:clamp(26px,3.5vw,44px);
+  font-weight:700;line-height:1.1;
+  letter-spacing:-0.03em;
+  color:var(--text-primary);
+  margin-bottom:18px;
+}
+.contact-cta p {
+  font-size:clamp(14px,1.6vw,16px);
+  color:var(--text-muted);
+  line-height:1.7;
+  max-width:480px;
+  margin:0 auto 40px;
+}
+
+@media (max-width:760px) {
+  .contact { padding:100px 24px; }
+  .contact-grid { grid-template-columns:1fr; }
+  .contact-cta { padding:48px 28px; }
+}
+@media (max-width:640px) {
+  .contact { padding:80px 24px; }
+}
+
+/* ════════════════════════════════════════
+   PROCESS SECTION
+════════════════════════════════════════ */
+.process {
+  position: relative;
+  width: 100%;
+  padding: 160px 0 180px;
+  overflow: hidden;
+  isolation: isolate;
+}
+.process-orb { position:absolute;border-radius:50%;filter:blur(130px);pointer-events:none;z-index:0; }
+.p-orb1 { width:700px;height:700px;background:radial-gradient(circle,rgba(37,99,235,0.12) 0%,transparent 70%);top:-120px;left:50%;transform:translateX(-50%); }
+.p-orb2 { width:400px;height:400px;background:radial-gradient(circle,rgba(167,139,250,0.09) 0%,transparent 70%);bottom:200px;left:3%; }
+.p-orb3 { width:350px;height:350px;background:radial-gradient(circle,rgba(56,189,248,0.07) 0%,transparent 70%);bottom:100px;right:4%; }
+
+.process-header {
+  position:relative;z-index:10;
+  text-align:center;max-width:700px;
+  margin:0 auto 120px;padding:0 24px;
+}
+.process-title {
+  font-size:clamp(34px,5vw,64px);
+  font-weight:700;line-height:1.07;
+  letter-spacing:-0.035em;color:var(--text-primary);
+  margin:0 0 22px;
+}
+.process-sub {
+  font-size:clamp(14px,1.8vw,17px);
+  line-height:1.7;color:var(--text-muted);
+}
+
+/* Step layout */
+.process-steps { position:relative;z-index:5;max-width:1200px;margin:0 auto;padding:0 48px; }
+
+/* Vertical spine line */
+.process-spine {
+  position:absolute;
+  left:50%;top:0;bottom:0;
+  width:1px;
+  background:linear-gradient(to bottom,transparent,rgba(96,165,250,0.15) 10%,rgba(96,165,250,0.15) 90%,transparent);
+  transform:translateX(-50%);
+  pointer-events:none;
+}
+.process-spine-fill {
+  position:absolute;left:0;top:0;width:100%;
+  background:linear-gradient(to bottom,var(--blue-1),var(--blue-3));
+  height:0%;
+  transition:height 0.1s linear;
+  box-shadow:0 0 12px rgba(96,165,250,0.6);
+}
+
+.process-step {
+  display:grid;
+  grid-template-columns:1fr 80px 1fr;
+  gap:0 0;
+  align-items:center;
+  margin-bottom:140px;
+  position:relative;
+}
+.process-step:last-child { margin-bottom:0; }
+
+/* Center node */
+.step-node {
+  grid-column:2;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;z-index:10;
+}
+.step-node-inner {
+  width:56px;height:56px;border-radius:50%;
+  background:#000;
+  border:1px solid rgba(96,165,250,0.2);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+  transition:border-color 0.4s,box-shadow 0.4s;
+}
+.step-node-inner::before {
+  content:'';position:absolute;inset:-8px;border-radius:50%;
+  border:1px solid rgba(96,165,250,0.06);
+  transition:border-color 0.4s;
+}
+.process-step.step-active .step-node-inner {
+  border-color:rgba(96,165,250,0.6);
+  box-shadow:0 0 0 6px rgba(96,165,250,0.06),0 0 30px rgba(37,99,235,0.4);
+}
+.step-num {
+  font-family:'DM Mono',monospace;
+  font-size:13px;font-weight:500;
+  color:rgba(96,165,250,0.4);
+  letter-spacing:0.05em;
+  transition:color 0.4s;
+}
+.process-step.step-active .step-num { color:var(--blue-1); }
+
+/* Visual side */
+.step-visual {
+  position:relative;
+  padding:0 48px;
+}
+.step-visual-frame {
+  position:relative;
+  width:100%;aspect-ratio:4/3;
+  border-radius:28px;
+  border:1px solid var(--card-border);
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(16px);
+  overflow:hidden;
+  transition:border-color 0.5s,box-shadow 0.5s;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.04);
+}
+.process-step.step-active .step-visual-frame {
+  border-color:rgba(96,165,250,0.28);
+  box-shadow:0 20px 80px rgba(37,99,235,0.2),inset 0 1px 0 rgba(255,255,255,0.06);
+}
+.step-visual-frame svg { position:absolute;inset:0;width:100%;height:100%; }
+
+/* Text side */
+.step-text { padding:0 48px; }
+.step-label {
+  font-family:'DM Mono',monospace;
+  font-size:10px;letter-spacing:0.28em;text-transform:uppercase;
+  color:rgba(96,165,250,0.5);margin-bottom:18px;display:block;
+}
+.step-title {
+  font-size:clamp(26px,3vw,40px);font-weight:700;
+  letter-spacing:-0.03em;line-height:1.1;
+  color:var(--text-primary);margin-bottom:18px;
+}
+.step-desc {
+  font-size:15px;line-height:1.8;color:var(--text-muted);
+  margin-bottom:28px;
+}
+.step-tags { display:flex;flex-wrap:wrap;gap:8px; }
+.step-tag {
+  padding:5px 14px;border-radius:100px;
+  border:1px solid rgba(96,165,250,0.15);
+  background:rgba(96,165,250,0.04);
+  font-family:'DM Mono',monospace;
+  font-size:10px;letter-spacing:0.1em;text-transform:uppercase;
+  color:rgba(96,165,250,0.5);
+}
+
+/* Even steps: visual right, text left */
+.process-step.step-even .step-visual { grid-column:3;grid-row:1; }
+.process-step.step-even .step-node   { grid-column:2;grid-row:1; }
+.process-step.step-even .step-text   { grid-column:1;grid-row:1; }
+/* Odd steps: visual left, text right */
+.process-step.step-odd .step-visual  { grid-column:1;grid-row:1; }
+.process-step.step-odd .step-node    { grid-column:2;grid-row:1; }
+.process-step.step-odd .step-text    { grid-column:3;grid-row:1; }
+
+/* Reveal for process steps */
+.step-reveal-left  { opacity:0;transform:translateX(-40px);transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1),transform 0.9s cubic-bezier(0.16,1,0.3,1); }
+.step-reveal-right { opacity:0;transform:translateX(40px); transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1),transform 0.9s cubic-bezier(0.16,1,0.3,1); }
+.step-reveal-left.visible,.step-reveal-right.visible { opacity:1;transform:translateX(0); }
+
+/* SVG animation classes */
+.svg-path-draw { stroke-dasharray:1000;stroke-dashoffset:1000;transition:stroke-dashoffset 1.8s cubic-bezier(0.16,1,0.3,1); }
+.step-active .svg-path-draw { stroke-dashoffset:0; }
+.svg-float { animation:svgFloat 4s ease-in-out infinite; }
+.svg-float-slow { animation:svgFloat 6s ease-in-out infinite; }
+.svg-float-rev { animation:svgFloatRev 5s ease-in-out infinite; }
+@keyframes svgFloat    { 0%,100%{transform:translateY(0)}  50%{transform:translateY(-10px)} }
+@keyframes svgFloatRev { 0%,100%{transform:translateY(0)}  50%{transform:translateY(8px)}  }
+
+.svg-pulse-ring { animation:svgPulseRing 2.4s ease-out infinite; }
+@keyframes svgPulseRing {
+  0%  { r:20;opacity:0.7; }
+  100%{ r:48;opacity:0; }
+}
+.svg-spin { animation:svgSpin 12s linear infinite; transform-origin:center; }
+.svg-spin-slow { animation:svgSpin 20s linear infinite; transform-origin:center; }
+@keyframes svgSpin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+
+.svg-blink { animation:svgBlink 1.8s ease-in-out infinite; }
+@keyframes svgBlink { 0%,100%{opacity:1} 50%{opacity:0.25} }
+
+.svg-assemble { transition:transform 1s cubic-bezier(0.16,1,0.3,1), opacity 1s; }
+.svg-checkmark { stroke-dasharray:60;stroke-dashoffset:60;transition:stroke-dashoffset 0.8s cubic-bezier(0.16,1,0.3,1) 0.4s; }
+.step-active .svg-checkmark { stroke-dashoffset:0; }
+
+@media(max-width:960px){
+  .process-steps { padding:0 24px; }
+  .process-spine { display:none; }
+  .process-step {
+    grid-template-columns:1fr;
+    grid-template-rows:auto auto auto;
+    gap:32px;
+    margin-bottom:80px;
+  }
+  .process-step.step-even .step-visual,
+  .process-step.step-odd .step-visual  { grid-column:1;grid-row:1; }
+  .process-step.step-even .step-node,
+  .process-step.step-odd .step-node    { grid-column:1;grid-row:2;justify-content:flex-start;padding-left:8px; }
+  .process-step.step-even .step-text,
+  .process-step.step-odd .step-text    { grid-column:1;grid-row:3; }
+  .step-visual,.step-text { padding:0; }
+}
+@media(max-width:640px){
+  .process { padding:100px 24px 120px; }
+  .process-header { margin-bottom:80px; }
+}
+
+/* ════════════════════════════════════════
+   FOOTER
+════════════════════════════════════════ */
+footer {
+  position:relative;
+  text-align:center;
+  padding:72px 24px 52px;
+  border-top:1px solid rgba(96,165,250,0.06);
+  overflow:hidden;
+}
+footer::before {
+  content:'';position:absolute;
+  bottom:-40px;left:50%;transform:translateX(-50%);
+  width:500px;height:200px;
+  background:radial-gradient(ellipse,rgba(37,99,235,0.08) 0%,transparent 70%);
+  filter:blur(40px);pointer-events:none;
+}
+.footer-logo {
+  font-family:'DM Mono',monospace;
+  font-size:20px;letter-spacing:0.25em;
+  color:rgba(96,165,250,0.28);
+  text-transform:uppercase;
+  margin-bottom:10px;display:block;
+}
+.footer-tagline {
+  font-family:'DM Mono',monospace;
+  font-size:11px;letter-spacing:0.16em;
+  color:rgba(96,165,250,0.18);
+  text-transform:uppercase;
+  margin-bottom:6px;display:block;
+}
+.footer-desc {
+  font-size:13px;
+  color:rgba(96,165,250,0.18);
+  letter-spacing:0.03em;
+  margin-bottom:28px;
+}
+.footer-links {
+  display:flex;gap:32px;align-items:center;justify-content:center;
+  margin-bottom:28px;
+}
+.footer-links a {
+  font-family:'DM Mono',monospace;font-size:11px;
+  letter-spacing:0.14em;text-transform:uppercase;
+  color:rgba(96,165,250,0.28);text-decoration:none;
+  transition:color 0.2s;
+}
+.footer-links a:hover { color:rgba(96,165,250,0.65); }
+.footer-divider {
+  width:1px;height:14px;
+  background:rgba(96,165,250,0.1);
+}
+footer .footer-copy {
+  font-family:'DM Mono',monospace;font-size:11px;
+  color:rgba(96,165,250,0.18);letter-spacing:0.1em;
+}
+
+/* ════════════════════════════════════════
+   SCROLL REVEAL
+════════════════════════════════════════ */
+.reveal,.reveal-right,.reveal-left {
+  opacity:0;
+  transition:opacity 0.9s cubic-bezier(0.16,1,0.3,1),transform 0.9s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal        { transform:translateY(38px); }
+.reveal-right  { transform:translateX(38px); }
+.reveal-left   { transform:translateX(-38px); }
+.reveal.visible,.reveal-right.visible,.reveal-left.visible { opacity:1;transform:translate(0); }
+
+.stagger > * {
+  opacity:0;transform:translateY(24px);
+  transition:opacity 0.7s cubic-bezier(0.16,1,0.3,1),transform 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+.stagger.visible > *:nth-child(1){opacity:1;transform:none;transition-delay:0s}
+.stagger.visible > *:nth-child(2){opacity:1;transform:none;transition-delay:0.1s}
+.stagger.visible > *:nth-child(3){opacity:1;transform:none;transition-delay:0.2s}
+.stagger.visible > *:nth-child(4){opacity:1;transform:none;transition-delay:0.3s}
+
+/* ════════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════════ */
+@media (max-width:960px) {
+  .about { padding:100px 40px; }
+  .about-inner { grid-template-columns:1fr;gap:60px; }
+  .about-portrait-wrap { order:-1; }
+  .about-portrait-frame { max-width:320px;margin:0 auto; }
+  .about-name-badge { left:-10px; }
+}
+@media (max-width:640px) {
+  nav { padding:0 20px; }
+  .nav-links { display:none; }
+  .about { padding:80px 24px; }
+  .about-stats { grid-template-columns:1fr 1fr;gap:10px; }
+  .about-portrait-frame { max-width:260px; }
+  .about-name-badge { left:0;bottom:16px; }
+  .stats { flex-direction:column;padding:0; }
+  .stat { border-right:none;border-bottom:1px solid rgba(96,165,250,0.08);padding:26px; }
+  .stat:last-child { border-bottom:none; }
+  .fade-left,.fade-right { width:70px; }
+  .card { width:200px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Custom cursor -->
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
+<!-- Scroll progress bar -->
+<div id="progress-bar"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">DSSNX</div>
+  <ul class="nav-links">
+    <li><a href="#showcase">Work</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get in Touch →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="grid-lines"></div>
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-orb hero-orb-3"></div>
+  <div class="particles" id="particles"></div>
+
+  <div class="hero-badge">
+    <div class="hero-badge-dot"></div>
+    <span>Available for new projects</span>
+  </div>
+
+  <h1 class="hero-title">
+    Thumbnails That<br/>
+    <span class="line2">Stop the Scroll</span>
+  </h1>
+
+  <p class="hero-sub">
+    Strategy-driven designs that turn viewers into clicks.<br/>
+    Built for creators who take growth seriously.
+  </p>
+
+  <div class="hero-actions">
+    <a href="#showcase" class="btn-primary">View My Work</a>
+    <a href="#about" class="btn-secondary">About Me</a>
+  </div>
+
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SHOWCASE SECTION -->
+<section class="showcase" id="showcase">
+  <div class="showcase-orb s-orb1"></div>
+  <div class="showcase-orb s-orb2"></div>
+  <div class="showcase-orb s-orb3"></div>
+  <div class="grain"></div>
+
+  <div class="showcase-header">
+    <p class="eyebrow reveal">Portfolio</p>
+    <h2 class="showcase-title reveal" style="transition-delay:0.08s">
+      Trusted By <span class="gradient">Top Creators</span>
+    </h2>
+    <p class="showcase-sub reveal" style="transition-delay:0.16s">
+      High-converting thumbnails built with strategy, clarity,<br/>
+      and strong visual hooks.
+    </p>
+  </div>
+
+  <div class="grid" id="grid"></div>
+
+  <div class="fade-left"></div>
+  <div class="fade-right"></div>
+
+  <!-- Stats -->
+  <div class="stats reveal" style="transition-delay:0.1s">
+    <div class="stat">
+      <span class="stat-num" data-count="300" data-suffix="+">300+</span>
+      <span class="stat-label">Thumbnails Delivered</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">4.8×</span>
+      <span class="stat-label">Avg. CTR Increase</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num" data-count="98" data-suffix="%">98%</span>
+      <span class="stat-label">Client Satisfaction</span>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ABOUT ME -->
+<section class="about" id="about">
+  <div class="about-orb a-orb1"></div>
+  <div class="about-orb a-orb2"></div>
+  <div class="about-orb a-orb3"></div>
+  <div class="grain"></div>
+
+  <div class="about-inner">
+    <!-- LEFT -->
+    <div class="about-content">
+      <span class="about-eyebrow reveal">About Me</span>
+      <h2 class="about-title reveal" style="transition-delay:0.08s">
+        Meet The Designer<br/>
+        <span class="gradient">Behind The Clicks</span>
+      </h2>
+      <p class="about-role reveal" style="transition-delay:0.14s">Strategic Thumbnail Designer</p>
+      <div class="about-body reveal" style="transition-delay:0.2s">
+        <p>I'm a thumbnail designer specialized in helping creators package their ideas into visuals that earn attention.</p>
+        <p>Over the past 6+ years, I've worked across multiple niches, collaborated with creator teams, and designed thumbnails for channels focused on growth, storytelling, self-improvement, business and education.</p>
+        <p>My approach combines strategy, visual hierarchy and audience psychology to create thumbnails that communicate faster and stand out in competitive feeds.</p>
+      </div>
+      <div class="about-quote reveal" style="transition-delay:0.28s">
+        <p>Every project starts with one question:<br/>
+        <strong>"What will make someone stop scrolling?"</strong></p>
+      </div>
+      <div class="about-stats stagger">
+        <div class="about-stat-card">
+          <span class="about-stat-num">6+</span>
+          <span class="about-stat-label">Years Experience</span>
+        </div>
+        <div class="about-stat-card">
+          <span class="about-stat-num">100+</span>
+          <span class="about-stat-label">Creators Helped</span>
+        </div>
+        <div class="about-stat-card">
+          <span class="about-stat-num">1000+</span>
+          <span class="about-stat-label">Thumbnails Designed</span>
+        </div>
+        <div class="about-stat-card">
+          <span class="about-stat-num">∞</span>
+          <span class="about-stat-label">Creator Teams Worked With</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Portrait -->
+    <div class="about-portrait-wrap reveal-right" style="transition-delay:0.12s">
+      <div class="about-portrait-frame">
+        <!-- Replace with <img src="./images/portrait.jpg" alt="ayoub" class="portrait-placeholder" style="object-fit:cover"> -->
+        <img
+    src="./images/portrait.jpg"
+    alt="Ayoub"
+    class="portrait"
+/>
+        <div class="corner-br"></div>
+        <div class="portrait-dot"></div>
+        <div class="about-name-badge">
+          <span class="name">ayoub</span>
+          <span class="badge-role">Thumbnail Designer</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<div class="section-divider"></div>
+<section class="process" id="process">
+  <div class="process-orb p-orb1"></div>
+  <div class="process-orb p-orb2"></div>
+  <div class="process-orb p-orb3"></div>
+  <div class="grain"></div>
+
+  <div class="process-header">
+    <span class="about-eyebrow reveal">Process</span>
+    <h2 class="process-title reveal" style="transition-delay:0.08s">
+      From Idea To<br/><span class="gradient">Scroll-Stopping</span>
+    </h2>
+    <p class="process-sub reveal" style="transition-delay:0.16s">
+      Every thumbnail I design goes through a deliberate five-step process —<br/>
+      strategy first, aesthetics second.
+    </p>
+  </div>
+
+  <div class="process-steps" id="processSteps">
+    <div class="process-spine"><div class="process-spine-fill" id="spineFill"></div></div>
+
+    <!-- STEP 01 — Discovery -->
+    <div class="process-step step-odd" data-step="0">
+      <div class="step-visual step-reveal-left">
+        <div class="step-visual-frame">
+          <svg viewBox="0 0 480 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+            <defs>
+              <radialGradient id="discGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="rgba(96,165,250,0.18)"/>
+                <stop offset="100%" stop-color="rgba(96,165,250,0)"/>
+              </radialGradient>
+              <filter id="glow1"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            </defs>
+            <!-- Background grid -->
+            <g opacity="0.07" stroke="rgba(96,165,250,1)" stroke-width="0.5">
+              <line x1="0" y1="60"  x2="480" y2="60"/><line x1="0" y1="120" x2="480" y2="120"/>
+              <line x1="0" y1="180" x2="480" y2="180"/><line x1="0" y1="240" x2="480" y2="240"/>
+              <line x1="0" y1="300" x2="480" y2="300"/>
+              <line x1="80"  y1="0" x2="80"  y2="360"/><line x1="160" y1="0" x2="160" y2="360"/>
+              <line x1="240" y1="0" x2="240" y2="360"/><line x1="320" y1="0" x2="320" y2="360"/>
+              <line x1="400" y1="0" x2="400" y2="360"/>
+            </g>
+            <!-- Thumbnail mockup -->
+            <rect x="100" y="80" width="280" height="157" rx="10" fill="rgba(96,165,250,0.04)" stroke="rgba(96,165,250,0.18)" stroke-width="1"/>
+            <!-- Face silhouette -->
+            <circle cx="185" cy="138" r="28" fill="rgba(96,165,250,0.07)" stroke="rgba(96,165,250,0.2)" stroke-width="1"/>
+            <rect x="162" y="166" width="46" height="30" rx="6" fill="rgba(96,165,250,0.07)" stroke="rgba(96,165,250,0.2)" stroke-width="1"/>
+            <!-- Title lines -->
+            <rect x="230" y="120" width="120" height="10" rx="4" fill="rgba(96,165,250,0.15)"/>
+            <rect x="230" y="138" width="90" height="8" rx="4" fill="rgba(96,165,250,0.09)"/>
+            <rect x="230" y="154" width="105" height="8" rx="4" fill="rgba(96,165,250,0.07)"/>
+            <!-- Scanning line -->
+            <rect x="100" y="0" width="280" height="2" fill="url(#discGlow)" opacity="0.8">
+              <animateTransform attributeName="transform" type="translate" values="0,80;0,237;0,80" dur="2.8s" repeatCount="indefinite"/>
+            </rect>
+            <!-- Magnifying glass body -->
+            <g class="svg-float" style="transform-origin:240px 155px">
+              <circle cx="240" cy="155" r="52" fill="none" stroke="rgba(96,165,250,0.5)" stroke-width="2" filter="url(#glow1)"/>
+              <circle cx="240" cy="155" r="52" fill="rgba(96,165,250,0.03)"/>
+              <!-- crosshairs -->
+              <line x1="240" y1="103" x2="240" y2="207" stroke="rgba(96,165,250,0.2)" stroke-width="1" stroke-dasharray="4 4"/>
+              <line x1="188" y1="155" x2="292" y2="155" stroke="rgba(96,165,250,0.2)" stroke-width="1" stroke-dasharray="4 4"/>
+              <!-- handle -->
+              <line x1="280" y1="193" x2="318" y2="232" stroke="rgba(96,165,250,0.6)" stroke-width="5" stroke-linecap="round"/>
+              <line x1="281" y1="194" x2="316" y2="229" stroke="rgba(37,99,235,0.4)" stroke-width="8" stroke-linecap="round"/>
+            </g>
+            <!-- Pulse rings -->
+            <circle cx="240" cy="155" r="20" fill="none" stroke="rgba(96,165,250,0.3)" stroke-width="1">
+              <animate attributeName="r" values="52;90" dur="2s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.5;0" dur="2s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="240" cy="155" r="20" fill="none" stroke="rgba(96,165,250,0.2)" stroke-width="1">
+              <animate attributeName="r" values="52;90" dur="2s" begin="0.7s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.4;0" dur="2s" begin="0.7s" repeatCount="indefinite"/>
+            </circle>
+            <!-- Data tags floating -->
+            <g class="svg-float-rev" style="transform-origin:120px 290px">
+              <rect x="90" y="278" width="100" height="26" rx="6" fill="rgba(0,0,0,0.7)" stroke="rgba(96,165,250,0.25)" stroke-width="1"/>
+              <text x="140" y="295" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="rgba(96,165,250,0.6)" letter-spacing="1">NICHE SCAN</text>
+            </g>
+            <g class="svg-float" style="transform-origin:330px 50px">
+              <rect x="300" y="40" width="110" height="26" rx="6" fill="rgba(0,0,0,0.7)" stroke="rgba(96,165,250,0.25)" stroke-width="1"/>
+              <text x="355" y="57" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="rgba(96,165,250,0.6)" letter-spacing="1">CTR ANALYSIS</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+      <div class="step-node">
+        <div class="step-node-inner"><span class="step-num">01</span></div>
+      </div>
+      <div class="step-text step-reveal-right">
+        <span class="step-label">Step 01</span>
+        <h3 class="step-title">Discovery</h3>
+        <p class="step-desc">I study your channel, your niche, and your top competitors. Understanding what's already working in the feed — and where the gaps are — defines every creative decision that follows.</p>
+        <div class="step-tags">
+          <span class="step-tag">Channel Audit</span>
+          <span class="step-tag">Competitor Research</span>
+          <span class="step-tag">Niche Mapping</span>
+          <span class="step-tag">CTR Benchmarks</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 02 — Hook Extraction -->
+    <div class="process-step step-even" data-step="1">
+      <div class="step-visual step-reveal-right">
+        <div class="step-visual-frame">
+          <svg viewBox="0 0 480 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+            <defs>
+              <radialGradient id="hookGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="rgba(96,165,250,0.3)"/>
+                <stop offset="100%" stop-color="transparent"/>
+              </radialGradient>
+              <filter id="glow2"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            </defs>
+            <!-- Elements scattered -->
+            <!-- Element 1 - dimmed face -->
+            <rect x="40" y="60" width="90" height="70" rx="8" fill="rgba(96,165,250,0.03)" stroke="rgba(96,165,250,0.1)" stroke-width="1"/>
+            <circle cx="85" cy="85" r="18" fill="rgba(96,165,250,0.06)" stroke="rgba(96,165,250,0.12)" stroke-width="1"/>
+            <rect x="62" y="108" width="46" height="12" rx="3" fill="rgba(96,165,250,0.06)"/>
+            <!-- Element 2 - dimmed text block -->
+            <rect x="160" y="40" width="110" height="70" rx="8" fill="rgba(96,165,250,0.03)" stroke="rgba(96,165,250,0.1)" stroke-width="1"/>
+            <rect x="172" y="56" width="86" height="8" rx="3" fill="rgba(96,165,250,0.1)"/>
+            <rect x="172" y="70" width="64" height="8" rx="3" fill="rgba(96,165,250,0.07)"/>
+            <rect x="172" y="84" width="76" height="8" rx="3" fill="rgba(96,165,250,0.06)"/>
+            <rect x="172" y="98" width="50" height="8" rx="3" fill="rgba(96,165,250,0.05)"/>
+            <!-- Element 3 - TARGET (bright) -->
+            <g filter="url(#glow2)">
+              <rect x="315" y="110" width="130" height="90" rx="10" fill="rgba(96,165,250,0.06)" stroke="rgba(96,165,250,0.5)" stroke-width="1.5"/>
+              <!-- Bold headline in frame -->
+              <rect x="326" y="122" width="108" height="14" rx="4" fill="rgba(96,165,250,0.35)"/>
+              <rect x="326" y="142" width="80" height="10" rx="3" fill="rgba(96,165,250,0.2)"/>
+              <rect x="326" y="158" width="95" height="10" rx="3" fill="rgba(96,165,250,0.15)"/>
+              <rect x="326" y="176" width="60" height="8" rx="3" fill="rgba(96,165,250,0.1)"/>
+            </g>
+            <!-- Element 4 - dimmed background -->
+            <rect x="40" y="230" width="140" height="80" rx="8" fill="rgba(96,165,250,0.02)" stroke="rgba(96,165,250,0.07)" stroke-width="1"/>
+            <!-- Target reticle -->
+            <g class="svg-float" style="transform-origin:380px 155px">
+              <circle cx="380" cy="155" r="70" fill="none" stroke="rgba(96,165,250,0.12)" stroke-width="1"/>
+              <circle cx="380" cy="155" r="50" fill="none" stroke="rgba(96,165,250,0.2)" stroke-width="1.5"/>
+              <circle cx="380" cy="155" r="30" fill="none" stroke="rgba(96,165,250,0.35)" stroke-width="1.5"/>
+              <circle cx="380" cy="155" r="10" fill="rgba(96,165,250,0.25)" stroke="rgba(96,165,250,0.8)" stroke-width="1.5" filter="url(#glow2)"/>
+              <!-- Crosshairs -->
+              <line x1="380" y1="80"  x2="380" y2="120" stroke="rgba(96,165,250,0.5)" stroke-width="1.5"/>
+              <line x1="380" y1="190" x2="380" y2="230" stroke="rgba(96,165,250,0.5)" stroke-width="1.5"/>
+              <line x1="305" y1="155" x2="345" y2="155" stroke="rgba(96,165,250,0.5)" stroke-width="1.5"/>
+              <line x1="415" y1="155" x2="455" y2="155" stroke="rgba(96,165,250,0.5)" stroke-width="1.5"/>
+              <!-- Rotating outer ring -->
+              <circle cx="380" cy="155" r="68" fill="none" stroke="rgba(96,165,250,0.15)" stroke-width="1" stroke-dasharray="8 6" class="svg-spin"/>
+            </g>
+            <!-- Lock lines from reticle to element -->
+            <line x1="315" y1="130" x2="430" y2="130" stroke="rgba(96,165,250,0.15)" stroke-width="1" stroke-dasharray="4 4" class="svg-path-draw"/>
+            <line x1="315" y1="200" x2="430" y2="200" stroke="rgba(96,165,250,0.15)" stroke-width="1" stroke-dasharray="4 4" class="svg-path-draw"/>
+            <!-- Lock badge -->
+            <g class="svg-float-rev" style="transform-origin:200px 155px">
+              <rect x="140" y="142" width="90" height="26" rx="6" fill="rgba(0,0,0,0.8)" stroke="rgba(96,165,250,0.35)" stroke-width="1"/>
+              <circle cx="158" cy="155" r="5" fill="rgba(96,165,250,0.6)">
+                <animate attributeName="opacity" values="1;0.3;1" dur="1.4s" repeatCount="indefinite"/>
+              </circle>
+              <text x="196" y="159" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="rgba(96,165,250,0.7)" letter-spacing="1">HOOK LOCKED</text>
+            </g>
+            <!-- Pulse from target -->
+            <circle cx="380" cy="155" r="10" fill="none" stroke="rgba(96,165,250,0.4)" stroke-width="1">
+              <animate attributeName="r" values="30;80" dur="1.8s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.6;0" dur="1.8s" repeatCount="indefinite"/>
+            </circle>
+          </svg>
+        </div>
+      </div>
+      <div class="step-node">
+        <div class="step-node-inner"><span class="step-num">02</span></div>
+      </div>
+      <div class="step-text step-reveal-left">
+        <span class="step-label">Step 02</span>
+        <h3 class="step-title">Hook Extraction</h3>
+        <p class="step-desc">From your video content, I isolate the single most powerful visual hook — the emotion, the tension, or the curiosity gap that will make viewers click. One clear message. Zero noise.</p>
+        <div class="step-tags">
+          <span class="step-tag">Visual Hook</span>
+          <span class="step-tag">Emotion Mapping</span>
+          <span class="step-tag">Curiosity Gaps</span>
+          <span class="step-tag">Message Clarity</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 03 — Concept Creation -->
+    <div class="process-step step-odd" data-step="2">
+      <div class="step-visual step-reveal-left">
+        <div class="step-visual-frame">
+          <svg viewBox="0 0 480 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+            <defs>
+              <filter id="glow3"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            </defs>
+            <!-- Central idea node -->
+            <circle cx="240" cy="180" r="38" fill="rgba(96,165,250,0.08)" stroke="rgba(96,165,250,0.5)" stroke-width="1.5" filter="url(#glow3)" class="svg-float"/>
+            <circle cx="240" cy="180" r="38" fill="none" stroke="rgba(96,165,250,0.2)" stroke-width="1" stroke-dasharray="5 4" class="svg-spin-slow"/>
+            <text x="240" y="176" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="rgba(96,165,250,0.8)" letter-spacing="1">CORE</text>
+            <text x="240" y="190" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="rgba(96,165,250,0.8)" letter-spacing="1">IDEA</text>
+            <!-- Branch lines (animated draw) -->
+            <line x1="240" y1="142" x2="240" y2="68"  stroke="rgba(96,165,250,0.3)" stroke-width="1.5" class="svg-path-draw" stroke-dasharray="80" stroke-dashoffset="80"/>
+            <line x1="205" y1="156" x2="120" y2="96"  stroke="rgba(96,165,250,0.3)" stroke-width="1.5" class="svg-path-draw" stroke-dasharray="100" stroke-dashoffset="100"/>
+            <line x1="275" y1="156" x2="355" y2="96"  stroke="rgba(96,165,250,0.3)" stroke-width="1.5" class="svg-path-draw" stroke-dasharray="100" stroke-dashoffset="100"/>
+            <line x1="202" y1="180" x2="95"  y2="200" stroke="rgba(96,165,250,0.25)" stroke-width="1.5" class="svg-path-draw" stroke-dasharray="115" stroke-dashoffset="115"/>
+            <line x1="278" y1="180" x2="385" y2="200" stroke="rgba(96,165,250,0.25)" stroke-width="1.5" class="svg-path-draw" stroke-dasharray="115" stroke-dashoffset="115"/>
+            <line x1="215" y1="215" x2="155" y2="290" stroke="rgba(96,165,250,0.2)" stroke-width="1.5" class="svg-path-draw" stroke-dasharray="90"  stroke-dashoffset="90"/>
+            <line x1="265" y1="215" x2="330" y2="290" stroke="rgba(96,165,250,0.2)" stroke-width="1.5" class="svg-path-draw" stroke-dasharray="90"  stroke-dashoffset="90"/>
+            <!-- Concept nodes -->
+            <!-- Top -->
+            <g class="svg-float-rev" style="transform-origin:240px 55px">
+              <rect x="192" y="38" width="96" height="30" rx="8" fill="rgba(0,0,0,0.75)" stroke="rgba(96,165,250,0.4)" stroke-width="1"/>
+              <text x="240" y="55" text-anchor="middle" font-family="DM Mono,monospace" font-size="8.5" fill="rgba(96,165,250,0.75)" letter-spacing="0.8">Concept A</text>
+            </g>
+            <!-- Top-left -->
+            <g class="svg-float" style="transform-origin:120px 83px">
+              <rect x="72" y="68" width="96" height="30" rx="8" fill="rgba(0,0,0,0.75)" stroke="rgba(96,165,250,0.3)" stroke-width="1"/>
+              <text x="120" y="85" text-anchor="middle" font-family="DM Mono,monospace" font-size="8.5" fill="rgba(96,165,250,0.65)" letter-spacing="0.8">Concept B</text>
+            </g>
+            <!-- Top-right -->
+            <g class="svg-float-rev" style="transform-origin:355px 83px">
+              <rect x="307" y="68" width="96" height="30" rx="8" fill="rgba(0,0,0,0.75)" stroke="rgba(96,165,250,0.3)" stroke-width="1"/>
+              <text x="355" y="85" text-anchor="middle" font-family="DM Mono,monospace" font-size="8.5" fill="rgba(96,165,250,0.65)" letter-spacing="0.8">Concept C</text>
+            </g>
+            <!-- Left -->
+            <g class="svg-float-rev" style="transform-origin:62px 200px">
+              <rect x="20" y="185" width="84" height="30" rx="8" fill="rgba(0,0,0,0.75)" stroke="rgba(96,165,250,0.22)" stroke-width="1"/>
+              <text x="62" y="202" text-anchor="middle" font-family="DM Mono,monospace" font-size="8.5" fill="rgba(96,165,250,0.5)" letter-spacing="0.8">Angle D</text>
+            </g>
+            <!-- Right -->
+            <g class="svg-float" style="transform-origin:418px 200px">
+              <rect x="376" y="185" width="84" height="30" rx="8" fill="rgba(0,0,0,0.75)" stroke="rgba(96,165,250,0.22)" stroke-width="1"/>
+              <text x="418" y="202" text-anchor="middle" font-family="DM Mono,monospace" font-size="8.5" fill="rgba(96,165,250,0.5)" letter-spacing="0.8">Angle E</text>
+            </g>
+            <!-- Bottom-left -->
+            <g class="svg-float" style="transform-origin:155px 295px">
+              <rect x="110" y="280" width="90" height="28" rx="8" fill="rgba(0,0,0,0.75)" stroke="rgba(96,165,250,0.18)" stroke-width="1"/>
+              <text x="155" y="297" text-anchor="middle" font-family="DM Mono,monospace" font-size="8.5" fill="rgba(96,165,250,0.4)" letter-spacing="0.8">Draft F</text>
+            </g>
+            <!-- Bottom-right -->
+            <g class="svg-float-rev" style="transform-origin:330px 295px">
+              <rect x="285" y="280" width="90" height="28" rx="8" fill="rgba(0,0,0,0.75)" stroke="rgba(96,165,250,0.18)" stroke-width="1"/>
+              <text x="330" y="297" text-anchor="middle" font-family="DM Mono,monospace" font-size="8.5" fill="rgba(96,165,250,0.4)" letter-spacing="0.8">Draft G</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+      <div class="step-node">
+        <div class="step-node-inner"><span class="step-num">03</span></div>
+      </div>
+      <div class="step-text step-reveal-right">
+        <span class="step-label">Step 03</span>
+        <h3 class="step-title">Concept Creation</h3>
+        <p class="step-desc">I sketch multiple directions — different compositions, color stories, and emotional tones. You see options, not just one guess. The best concept moves forward; the rest sharpen the brief.</p>
+        <div class="step-tags">
+          <span class="step-tag">Multiple Concepts</span>
+          <span class="step-tag">Composition</span>
+          <span class="step-tag">Color Theory</span>
+          <span class="step-tag">Visual Hierarchy</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 04 — Design & Refinement -->
+    <div class="process-step step-even" data-step="3">
+      <div class="step-visual step-reveal-right">
+        <div class="step-visual-frame">
+          <svg viewBox="0 0 480 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+            <defs>
+              <filter id="glow4"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+              <clipPath id="frameClip"><rect x="100" y="70" width="280" height="157" rx="10"/></clipPath>
+            </defs>
+            <!-- Final thumbnail frame -->
+            <rect x="100" y="70" width="280" height="157" rx="10" fill="rgba(96,165,250,0.03)" stroke="rgba(96,165,250,0.35)" stroke-width="1.5" filter="url(#glow4)"/>
+            <!-- Assembled layers (appear one by one) -->
+            <!-- Layer: BG color wash -->
+            <rect x="100" y="70" width="280" height="157" rx="10" fill="rgba(37,99,235,0.08)" clip-path="url(#frameClip)">
+              <animate attributeName="opacity" values="0;1" dur="0.5s" begin="0.2s" fill="freeze"/>
+            </rect>
+            <!-- Layer: Subject silhouette -->
+            <g clip-path="url(#frameClip)">
+              <ellipse cx="195" cy="185" rx="45" ry="65" fill="rgba(96,165,250,0.1)">
+                <animate attributeName="opacity" values="0;1" dur="0.5s" begin="0.7s" fill="freeze"/>
+              </ellipse>
+              <circle cx="195" cy="120" r="28" fill="rgba(96,165,250,0.13)">
+                <animate attributeName="opacity" values="0;1" dur="0.5s" begin="0.7s" fill="freeze"/>
+              </circle>
+            </g>
+            <!-- Layer: Bold headline text bar -->
+            <g clip-path="url(#frameClip)">
+              <rect x="240" y="100" width="120" height="16" rx="4" fill="rgba(96,165,250,0.45)">
+                <animate attributeName="opacity" values="0;1" dur="0.5s" begin="1.1s" fill="freeze"/>
+                <animate attributeName="width" values="0;120" dur="0.5s" begin="1.1s" fill="freeze"/>
+              </rect>
+              <rect x="240" y="122" width="88" height="11" rx="3" fill="rgba(96,165,250,0.3)">
+                <animate attributeName="opacity" values="0;1" dur="0.5s" begin="1.3s" fill="freeze"/>
+                <animate attributeName="width" values="0;88" dur="0.5s" begin="1.3s" fill="freeze"/>
+              </rect>
+              <rect x="240" y="140" width="100" height="11" rx="3" fill="rgba(96,165,250,0.2)">
+                <animate attributeName="opacity" values="0;1" dur="0.5s" begin="1.5s" fill="freeze"/>
+                <animate attributeName="width" values="0;100" dur="0.5s" begin="1.5s" fill="freeze"/>
+              </rect>
+            </g>
+            <!-- Layer: Glow accent -->
+            <g clip-path="url(#frameClip)">
+              <ellipse cx="180" cy="148" rx="60" ry="40" fill="rgba(37,99,235,0.15)">
+                <animate attributeName="opacity" values="0;1" dur="0.6s" begin="1.8s" fill="freeze"/>
+              </ellipse>
+            </g>
+            <!-- Assembly tool indicators -->
+            <g class="svg-float-rev" style="transform-origin:80px 98px">
+              <rect x="28" y="86" width="60" height="24" rx="5" fill="rgba(0,0,0,0.8)" stroke="rgba(96,165,250,0.3)" stroke-width="1"/>
+              <text x="58" y="101" text-anchor="middle" font-family="DM Mono,monospace" font-size="8" fill="rgba(96,165,250,0.6)" letter-spacing="0.8">LAYER 01</text>
+            </g>
+            <g class="svg-float" style="transform-origin:80px 148px">
+              <rect x="28" y="136" width="60" height="24" rx="5" fill="rgba(0,0,0,0.8)" stroke="rgba(96,165,250,0.3)" stroke-width="1"/>
+              <text x="58" y="151" text-anchor="middle" font-family="DM Mono,monospace" font-size="8" fill="rgba(96,165,250,0.6)" letter-spacing="0.8">LAYER 02</text>
+            </g>
+            <g class="svg-float-rev" style="transform-origin:80px 198px">
+              <rect x="28" y="186" width="60" height="24" rx="5" fill="rgba(0,0,0,0.8)" stroke="rgba(96,165,250,0.3)" stroke-width="1"/>
+              <text x="58" y="201" text-anchor="middle" font-family="DM Mono,monospace" font-size="8" fill="rgba(96,165,250,0.6)" letter-spacing="0.8">LAYER 03</text>
+            </g>
+            <!-- Connect dashes from labels to frame -->
+            <line x1="88" y1="98" x2="100" y2="108" stroke="rgba(96,165,250,0.2)" stroke-width="1" stroke-dasharray="3 3"/>
+            <line x1="88" y1="148" x2="100" y2="148" stroke="rgba(96,165,250,0.2)" stroke-width="1" stroke-dasharray="3 3"/>
+            <line x1="88" y1="198" x2="100" y2="190" stroke="rgba(96,165,250,0.2)" stroke-width="1" stroke-dasharray="3 3"/>
+            <!-- Iteration counter -->
+            <g class="svg-float" style="transform-origin:340px 275px">
+              <rect x="270" y="262" width="140" height="28" rx="7" fill="rgba(0,0,0,0.8)" stroke="rgba(96,165,250,0.25)" stroke-width="1"/>
+              <text x="340" y="279" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="rgba(96,165,250,0.55)" letter-spacing="1">REV 03 — REFINING</text>
+            </g>
+            <!-- Revision arrows -->
+            <path d="M 395 240 Q 415 225 415 200 Q 415 175 395 160" fill="none" stroke="rgba(96,165,250,0.2)" stroke-width="1.5" stroke-dasharray="5 4">
+              <animate attributeName="stroke-dashoffset" values="0;-18" dur="1.2s" repeatCount="indefinite"/>
+            </path>
+            <polygon points="393,158 400,168 386,168" fill="rgba(96,165,250,0.3)" transform="rotate(-15,393,158)"/>
+          </svg>
+        </div>
+      </div>
+      <div class="step-node">
+        <div class="step-node-inner"><span class="step-num">04</span></div>
+      </div>
+      <div class="step-text step-reveal-left">
+        <span class="step-label">Step 04</span>
+        <h3 class="step-title">Design &amp; Refinement</h3>
+        <p class="step-desc">The chosen concept comes to life — layer by layer. Typography, color grading, expressions, contrast. Each revision tightens the visual logic until every pixel is doing its job.</p>
+        <div class="step-tags">
+          <span class="step-tag">Typography</span>
+          <span class="step-tag">Color Grading</span>
+          <span class="step-tag">Contrast</span>
+          <span class="step-tag">Iterations</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 05 — Delivery -->
+    <div class="process-step step-odd" data-step="4">
+      <div class="step-visual step-reveal-left">
+        <div class="step-visual-frame">
+          <svg viewBox="0 0 480 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+            <defs>
+              <filter id="glow5"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+              <radialGradient id="delivGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="rgba(96,165,250,0.2)"/>
+                <stop offset="100%" stop-color="transparent"/>
+              </radialGradient>
+            </defs>
+            <!-- Glow beneath card -->
+            <ellipse cx="240" cy="220" rx="110" ry="20" fill="url(#delivGlow)" filter="url(#glow5)"/>
+            <!-- Thumbnail card floating -->
+            <g class="svg-float" style="transform-origin:240px 155px">
+              <!-- Card shadow -->
+              <rect x="108" y="86" width="264" height="148" rx="14" fill="rgba(37,99,235,0.12)" filter="url(#glow5)"/>
+              <!-- Card body -->
+              <rect x="110" y="74" width="260" height="146" rx="12" fill="rgba(6,12,30,0.9)" stroke="rgba(96,165,250,0.45)" stroke-width="1.5"/>
+              <!-- BG gradient -->
+              <rect x="110" y="74" width="260" height="146" rx="12" fill="rgba(37,99,235,0.08)"/>
+              <!-- Subject area -->
+              <ellipse cx="210" cy="175" rx="42" ry="58" fill="rgba(96,165,250,0.09)"/>
+              <circle cx="210" cy="117" r="26" fill="rgba(96,165,250,0.12)"/>
+              <!-- Bold text -->
+              <rect x="258" y="100" width="90" height="13" rx="4" fill="rgba(96,165,250,0.5)"/>
+              <rect x="258" y="119" width="68" height="9" rx="3" fill="rgba(96,165,250,0.3)"/>
+              <rect x="258" y="134" width="80" height="9" rx="3" fill="rgba(96,165,250,0.2)"/>
+              <!-- Glow highlight on card -->
+              <ellipse cx="185" cy="140" rx="55" ry="35" fill="rgba(37,99,235,0.12)"/>
+              <!-- Corner dots -->
+              <circle cx="118" cy="82"  r="3" fill="rgba(96,165,250,0.4)"/>
+              <circle cx="362" cy="82"  r="3" fill="rgba(96,165,250,0.4)"/>
+              <circle cx="118" cy="212" r="3" fill="rgba(96,165,250,0.4)"/>
+              <circle cx="362" cy="212" r="3" fill="rgba(96,165,250,0.4)"/>
+            </g>
+            <!-- Success checkmark circle -->
+            <circle cx="370" cy="78" r="26" fill="rgba(0,0,0,0.85)" stroke="rgba(96,165,250,0.5)" stroke-width="1.5" filter="url(#glow5)"/>
+            <circle cx="370" cy="78" r="26" fill="none" stroke="rgba(96,165,250,0.3)" stroke-width="1">
+              <animate attributeName="r" values="26;42" dur="1.6s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.5;0" dur="1.6s" repeatCount="indefinite"/>
+            </circle>
+            <polyline points="358,78 366,86 382,70" fill="none" stroke="rgba(96,165,250,0.9)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="svg-checkmark"/>
+            <!-- Status badges -->
+            <g class="svg-float" style="transform-origin:110px 288px">
+              <rect x="48" y="275" width="124" height="28" rx="7" fill="rgba(0,0,0,0.85)" stroke="rgba(96,165,250,0.3)" stroke-width="1"/>
+              <circle cx="66" cy="289" r="4" fill="rgba(34,211,238,0.8)">
+                <animate attributeName="opacity" values="1;0.3;1" dur="1.2s" repeatCount="indefinite"/>
+              </circle>
+              <text x="140" y="293" text-anchor="middle" font-family="DM Mono,monospace" font-size="8.5" fill="rgba(96,165,250,0.7)" letter-spacing="1">FILE READY</text>
+            </g>
+            <g class="svg-float-rev" style="transform-origin:335px 290px">
+              <rect x="277" y="277" width="116" height="28" rx="7" fill="rgba(0,0,0,0.85)" stroke="rgba(96,165,250,0.3)" stroke-width="1"/>
+              <text x="335" y="295" text-anchor="middle" font-family="DM Mono,monospace" font-size="8.5" fill="rgba(96,165,250,0.55)" letter-spacing="1">SOURCE INC.</text>
+            </g>
+            <!-- Motion trail lines below card -->
+            <line x1="150" y1="225" x2="150" y2="250" stroke="rgba(96,165,250,0.12)" stroke-width="1">
+              <animate attributeName="opacity" values="0.3;0;0.3" dur="1.8s" repeatCount="indefinite"/>
+            </line>
+            <line x1="240" y1="225" x2="240" y2="260" stroke="rgba(96,165,250,0.18)" stroke-width="1">
+              <animate attributeName="opacity" values="0.4;0;0.4" dur="1.8s" begin="0.2s" repeatCount="indefinite"/>
+            </line>
+            <line x1="330" y1="225" x2="330" y2="250" stroke="rgba(96,165,250,0.12)" stroke-width="1">
+              <animate attributeName="opacity" values="0.3;0;0.3" dur="1.8s" begin="0.4s" repeatCount="indefinite"/>
+            </line>
+          </svg>
+        </div>
+      </div>
+      <div class="step-node">
+        <div class="step-node-inner"><span class="step-num">05</span></div>
+      </div>
+      <div class="step-text step-reveal-right">
+        <span class="step-label">Step 05</span>
+        <h3 class="step-title">Delivery</h3>
+        <p class="step-desc">You receive production-ready files — high-res PNG, source file, and all the specs needed to publish. Clean, fast, zero friction. Ready to go live the moment it lands in your inbox.</p>
+        <div class="step-tags">
+          <span class="step-tag">High-Res PNG</span>
+          <span class="step-tag">Source File</span>
+          <span class="step-tag">Same-Day Turnaround</span>
+          <span class="step-tag">Revisions Included</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div class="section-divider"></div>
+<section class="contact" id="contact">
+  <div class="contact-orb c-orb1"></div>
+  <div class="contact-orb c-orb2"></div>
+  <div class="contact-orb c-orb3"></div>
+  <div class="grain"></div>
+
+  <div class="contact-header">
+    <span class="about-eyebrow reveal">Contact</span>
+    <h2 class="contact-title reveal" style="transition-delay:0.08s">
+      Let's Build Better<br/>
+      <span class="gradient">Thumbnails</span>
+    </h2>
+    <p class="contact-sub reveal" style="transition-delay:0.16s">
+      Looking for thumbnails that communicate faster, stand out in competitive feeds,
+      and earn more clicks? Let's talk.
+    </p>
+  </div>
+
+  <div class="contact-grid stagger">
+    <div class="contact-card">
+      <div class="contact-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="4" width="20" height="16" rx="3" stroke="rgba(96,165,250,0.9)" stroke-width="1.5"/>
+          <path d="M2 7.5L10.5 13a2.5 2.5 0 0 0 3 0L22 7.5" stroke="rgba(96,165,250,0.9)" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h3>Email</h3>
+      <p class="contact-value">ayoub@dssnx.com</p>
+      <p class="contact-description">For collaborations, client work and project inquiries.</p>
+      <a href="mailto:ayoub@dssnx.com" class="btn-primary">Send Email</a>
+    </div>
+    <div class="contact-card">
+      <div class="contact-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="rgba(96,165,250,0.9)"/>
+        </svg>
+      </div>
+      <h3>X (Twitter)</h3>
+      <p class="contact-value">@ayoubdssn</p>
+      <p class="contact-description">Follow my work, design insights and latest thumbnail projects.</p>
+      <a href="https://x.com/ayoubdssn" target="_blank" class="btn-secondary">Visit Profile</a>
+    </div>
+  </div>
+
+  <div class="contact-cta reveal">
+    <h2>
+      Ready To Make Your Content<br/>
+      <span class="gradient">Impossible To Ignore?</span>
+    </h2>
+    <p>A thumbnail gets one chance to earn attention. Let's make it count.</p>
+    <div class="hero-actions">
+      <a href="mailto:ayoub@dssnx.com" class="btn-primary">Send Email</a>
+      <a href="https://x.com/ayoubdssn" target="_blank" class="btn-secondary">Visit X Profile</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">ayoub</span>
+  <span class="footer-tagline">Strategic Thumbnail Designer</span>
+  <p class="footer-desc">Helping creators turn ideas into thumbnails that earn attention.</p>
+  <div class="footer-links">
+    <a href="mailto:ayoub@dssnx.com">ayoub@dssnx.com</a>
+    <div class="footer-divider"></div>
+    <a href="https://x.com/ayoubdssn" target="_blank">@ayoubdssn</a>
+  </div>
+  <p class="footer-copy">© 2025 ayoub — All Rights Reserved</p>
+</footer>
+
+<script>
+/* ── Custom cursor ────────────────────────────────── */
+const dot  = document.getElementById('cursor-dot');
+const ring = document.getElementById('cursor-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; dot.style.left=mx+'px'; dot.style.top=my+'px'; });
+(function animCursor(){
+  rx += (mx-rx)*0.12; ry += (my-ry)*0.12;
+  ring.style.left=rx+'px'; ring.style.top=ry+'px';
+  requestAnimationFrame(animCursor);
+})();
+
+/* ── Scroll progress ─────────────────────────────── */
+const bar = document.getElementById('progress-bar');
+window.addEventListener('scroll', () => {
+  const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+  bar.style.width = pct + '%';
+});
+
+/* ── Floating particles ──────────────────────────── */
+const pContainer = document.getElementById('particles');
+for(let i=0;i<28;i++){
+  const p = document.createElement('div');
+  p.className = 'particle';
+  const size = Math.random()*2+1;
+  p.style.cssText = `
+    left:${Math.random()*100}%;
+    width:${size}px;height:${size}px;
+    animation-duration:${8+Math.random()*14}s;
+    animation-delay:${Math.random()*12}s;
+    opacity:${0.3+Math.random()*0.5};
+  `;
+  pContainer.appendChild(p);
+}
+
+/* ── Parallax orbs on scroll ─────────────────────── */
+const orb1 = document.querySelector('.hero-orb-1');
+const orb2 = document.querySelector('.hero-orb-2');
+const orb3 = document.querySelector('.hero-orb-3');
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  if(orb1) orb1.style.transform = `translateX(-50%) translateY(${y*0.15}px)`;
+  if(orb2) orb2.style.transform = `translateY(${y*0.08}px)`;
+  if(orb3) orb3.style.transform = `translateY(${-y*0.06}px)`;
+}, { passive: true });
+
+/* ── Thumbnail rows ──────────────────────────────── */
+const row1 = [
+  {src:"./images/thumb1.jpg",  label:"Thumbnail 01"},
+  {src:"./images/thumb2.jpg",  label:"Thumbnail 02"},
+  {src:"./images/thumb3.jpg",  label:"Thumbnail 03"},
+  {src:"./images/thumb4.jpg",  label:"Thumbnail 04"},
+  {src:"./images/thumb5.jpg",  label:"Thumbnail 05"},
+  {src:"./images/thumb6.jpg",  label:"Thumbnail 06"},
+];
+const row2 = [
+  {src:"./images/thumb7.jpg",  label:"Thumbnail 07"},
+  {src:"./images/thumb8.jpg",  label:"Thumbnail 08"},
+  {src:"./images/thumb9.jpg",  label:"Thumbnail 09"},
+  {src:"./images/thumb10.jpg", label:"Thumbnail 10"},
+  {src:"./images/thumb11.jpg", label:"Thumbnail 11"},
+  {src:"./images/thumb12.jpg", label:"Thumbnail 12"},
+];
+const row3 = [
+  {src:"./images/thumb13.jpg", label:"Thumbnail 13"},
+  {src:"./images/thumb14.jpg", label:"Thumbnail 14"},
+  {src:"./images/thumb15.jpg", label:"Thumbnail 15"},
+  {src:"./images/thumb16.jpg", label:"Thumbnail 16"},
+  {src:"./images/thumb17.jpg", label:"Thumbnail 17"},
+  {src:"./images/thumb18.jpg", label:"Thumbnail 18"},
+];
+
+const palettes = [
+  ["#000000","#0a0a0a"],["#050505","#0d0d0d"],["#000000","#080808"],
+  ["#060606","#0f0f0f"],["#000000","#0a0a0a"],["#050505","#080808"],
+];
+const playIcon = `<svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.2">
+  <circle cx="12" cy="12" r="10" stroke="rgba(96,165,250,0.28)"/>
+  <polygon points="10,8 16,12 10,16" fill="rgba(96,165,250,0.28)" stroke="none"/>
+</svg>`;
+
+function makeCard(item,index){
+  const p=palettes[index%palettes.length];
+  const thumbContent = item.src
+    ? `<img src="${item.src}" alt="${item.label}" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:12px;"
+         onerror="this.style.display='none';this.parentNode.querySelector('.card-label').style.display='flex';">`
+    : '';
+  const labelStyle = item.src ? 'display:none;' : '';
+  return `<div class="card" title="${item.label}">
+    <div class="card-inner">
+      <div class="card-thumb" style="background:linear-gradient(135deg,${p[0]} 0%,${p[1]} 100%);overflow:hidden;">
+        ${thumbContent}
+        <div class="card-label" style="${labelStyle}">${playIcon}<span>${item.label}</span></div>
+      </div>
+      <div class="card-glow"></div>
+    </div>
+  </div>`;
+}
+function makeRow(items,cls){
+  const doubled=[...items,...items];
+  return `<div class="row-wrapper"><div class="row ${cls}">${doubled.map((it,i)=>makeCard(it,i)).join('')}</div></div>`;
+}
+document.getElementById('grid').innerHTML =
+  makeRow(row1,'row-left') + makeRow(row2,'row-right') + makeRow(row3,'row-left-2');
+
+/* ── Scroll reveal ───────────────────────────────── */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal,.reveal-right,.reveal-left,.stagger').forEach(el=>io.observe(el));
+
+/* ── Process section — scroll-driven step activation & spine fill ── */
+(function(){
+  const steps = document.querySelectorAll('.process-step');
+  const spine  = document.getElementById('spineFill');
+  const stepsWrap = document.getElementById('processSteps');
+
+  // Reveal step text/visual on scroll
+  const stepRevealObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        // activate parent step for SVG animations
+        const parentStep = e.target.closest('.process-step');
+        if(parentStep) parentStep.classList.add('step-active');
+        stepRevealObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.25 });
+
+  document.querySelectorAll('.step-reveal-left,.step-reveal-right').forEach(el => stepRevealObs.observe(el));
+
+  // Spine fill driven by scroll position within the steps wrapper
+  if(spine && stepsWrap){
+    window.addEventListener('scroll', () => {
+      const rect  = stepsWrap.getBoundingClientRect();
+      const total = stepsWrap.offsetHeight;
+      const seen  = Math.max(0, Math.min(total, window.innerHeight * 0.6 - rect.top));
+      spine.style.height = Math.min(100, (seen / total) * 100) + '%';
+    }, { passive: true });
+  }
+
+  // Subtle parallax on visual frames
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    document.querySelectorAll('.step-visual-frame').forEach((frame, i) => {
+      const dir = i % 2 === 0 ? 1 : -1;
+      const rect = frame.getBoundingClientRect();
+      const center = rect.top + rect.height / 2 - window.innerHeight / 2;
+      frame.style.transform = `translateY(${center * 0.025 * dir}px)`;
+    });
+  }, { passive: true });
+})();
+
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth'}); }
+  });
+});
+</script>
+</body>
+</html>
