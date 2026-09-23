@@ -19,7 +19,6 @@
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -38,6 +37,12 @@
 }
 
 html { scroll-behavior: smooth; }
+
+/* Lenis */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: clip; }
 
 body {
   background: var(--bg);
@@ -134,7 +139,7 @@ nav {
   transition: background 0.3s;
 }
 .nav-logo {
-  font-family: 'DM Mono', monospace;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
   font-size: 15px;
   font-weight: 500;
   letter-spacing: 0.28em;
@@ -288,7 +293,7 @@ nav {
   50% { opacity:0.65; transform:scale(1.4); }
 }
 .hero-badge span {
-  font-family: 'DM Mono', monospace;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
   font-size: 11px;
   letter-spacing: 0.15em;
   color: rgba(96,165,250,0.85);
@@ -317,7 +322,7 @@ nav {
   }
 }
 .hero-title .line2 {
-  background: linear-gradient(135deg, var(--blue-1) 0%, var(--purple) 50%, var(--blue-3) 100%);
+  background: linear-gradient(135deg, var(--blue-1) 0%, #22D3EE 50%, var(--blue-3) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -407,7 +412,7 @@ nav {
   animation: fadeUp 1s 0.6s both;
 }
 .hero-scroll span {
-  font-family: 'DM Mono', monospace;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
   font-size: 10px;
   letter-spacing: 0.22em;
   color: rgba(96,165,250,0.3);
@@ -455,7 +460,7 @@ nav {
   padding:0 24px;margin:0 auto 80px;
 }
 .eyebrow {
-  font-family:'DM Mono',monospace;
+  font-family:-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
   font-size:11px;font-weight:500;
   letter-spacing:0.24em;text-transform:uppercase;
   color:rgba(96,165,250,0.65);margin-bottom:20px;
@@ -467,7 +472,7 @@ nav {
   margin:0 0 22px;
 }
 .showcase-title .gradient, .gradient {
-  background:linear-gradient(135deg,var(--blue-1) 0%,var(--purple) 50%,var(--blue-3) 100%);
+  background:linear-gradient(135deg,var(--blue-1) 0%,#22D3EE 50%,var(--blue-3) 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
   background-size:200%;
   animation: gradientShift 6s ease infinite;
@@ -532,7 +537,7 @@ nav {
 }
 .card-icon { width:32px;height:32px; }
 .card-label span {
-  font-family:'DM Mono',monospace;font-size:11px;
+  font-family:-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;font-size:11px;
   letter-spacing:0.06em;color:rgba(96,165,250,0.3);
 }
 .card-glow {
@@ -601,7 +606,7 @@ nav {
 }
 
 .about-eyebrow {
-  font-family:'DM Mono',monospace;
+  font-family:-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
   font-size:11px;font-weight:500;
   letter-spacing:0.22em;text-transform:uppercase;
   color:rgba(96,165,250,0.65);
@@ -615,7 +620,7 @@ nav {
   margin-bottom:10px;
 }
 .about-role {
-  font-family:'DM Mono',monospace;
+  font-family:-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
   font-size:13px;letter-spacing:0.12em;
   color:rgba(96,165,250,0.5);
   margin-bottom:38px;
@@ -739,7 +744,7 @@ nav {
 }
 .portrait-placeholder svg { position:relative;z-index:1;opacity:0.18; }
 .portrait-placeholder span {
-  position:relative;z-index:1;font-family:'DM Mono',monospace;
+  position:relative;z-index:1;font-family:-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
   font-size:11px;letter-spacing:0.15em;color:rgba(96,165,250,0.38);text-transform:uppercase;
 }
 .about-name-badge {
@@ -756,7 +761,7 @@ nav {
   color:var(--text-primary);display:block;line-height:1;margin-bottom:4px;
 }
 .about-name-badge .badge-role {
-  font-family:'DM Mono',monospace;font-size:10px;
+  font-family:-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;font-size:10px;
   letter-spacing:0.14em;color:rgba(96,165,250,0.55);text-transform:uppercase;
 }
 .portrait-dot {
@@ -847,7 +852,7 @@ nav {
   color:var(--text-primary);margin:0;
 }
 .contact-value {
-  font-family:'DM Mono',monospace;
+  font-family:-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
   font-size:13px;letter-spacing:0.06em;
   color:var(--blue-1);margin:2px 0 6px;
 }
@@ -862,46 +867,9 @@ nav {
   align-self:flex-start;
 }
 
-.contact-cta {
-  position:relative;z-index:10;
-  max-width:760px;margin:0 auto;
-  padding:64px 48px;
-  border:1px solid rgba(96,165,250,0.12);
-  border-radius:32px;
-  background:rgba(10,18,40,0.55);
-  backdrop-filter:blur(20px);
-  -webkit-backdrop-filter:blur(20px);
-  text-align:center;
-  box-shadow:0 32px 100px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.05);
-  overflow:hidden;
-}
-.contact-cta::before {
-  content:'';position:absolute;
-  top:-60px;left:50%;transform:translateX(-50%);
-  width:500px;height:260px;
-  background:radial-gradient(ellipse,rgba(37,99,235,0.13) 0%,transparent 70%);
-  filter:blur(30px);pointer-events:none;z-index:0;
-}
-.contact-cta > * { position:relative;z-index:1; }
-.contact-cta h2 {
-  font-size:clamp(26px,3.5vw,44px);
-  font-weight:700;line-height:1.1;
-  letter-spacing:-0.03em;
-  color:var(--text-primary);
-  margin-bottom:18px;
-}
-.contact-cta p {
-  font-size:clamp(14px,1.6vw,16px);
-  color:var(--text-muted);
-  line-height:1.7;
-  max-width:480px;
-  margin:0 auto 40px;
-}
-
 @media (max-width:760px) {
   .contact { padding:100px 24px; }
   .contact-grid { grid-template-columns:1fr; }
-  .contact-cta { padding:48px 28px; }
 }
 @media (max-width:640px) {
   .contact { padding:80px 24px; }
@@ -992,7 +960,7 @@ nav {
   box-shadow:0 0 0 6px rgba(96,165,250,0.06),0 0 30px rgba(37,99,235,0.4);
 }
 .step-num {
-  font-family:'DM Mono',monospace;
+  font-family:-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
   font-size:13px;font-weight:500;
   color:rgba(96,165,250,0.4);
   letter-spacing:0.05em;
@@ -1025,7 +993,7 @@ nav {
 /* Text side */
 .step-text { padding:0 48px; }
 .step-label {
-  font-family:'DM Mono',monospace;
+  font-family:-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
   font-size:10px;letter-spacing:0.28em;text-transform:uppercase;
   color:rgba(96,165,250,0.5);margin-bottom:18px;display:block;
 }
@@ -1043,7 +1011,7 @@ nav {
   padding:5px 14px;border-radius:100px;
   border:1px solid rgba(96,165,250,0.15);
   background:rgba(96,165,250,0.04);
-  font-family:'DM Mono',monospace;
+  font-family:-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
   font-size:10px;letter-spacing:0.1em;text-transform:uppercase;
   color:rgba(96,165,250,0.5);
 }
@@ -1114,56 +1082,45 @@ nav {
 ════════════════════════════════════════ */
 footer {
   position:relative;
-  text-align:center;
-  padding:72px 24px 52px;
-  border-top:1px solid rgba(96,165,250,0.06);
-  overflow:hidden;
-}
-footer::before {
-  content:'';position:absolute;
-  bottom:-40px;left:50%;transform:translateX(-50%);
-  width:500px;height:200px;
-  background:radial-gradient(ellipse,rgba(37,99,235,0.08) 0%,transparent 70%);
-  filter:blur(40px);pointer-events:none;
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  column-gap:24px;
+  padding:56px 64px;
+  background:#000000;
+  font-family:-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
 }
 .footer-logo {
-  font-family:'DM Mono',monospace;
-  font-size:20px;letter-spacing:0.25em;
-  color:rgba(96,165,250,0.28);
-  text-transform:uppercase;
-  margin-bottom:10px;display:block;
-}
-.footer-tagline {
-  font-family:'DM Mono',monospace;
-  font-size:11px;letter-spacing:0.16em;
-  color:rgba(96,165,250,0.18);
-  text-transform:uppercase;
-  margin-bottom:6px;display:block;
-}
-.footer-desc {
-  font-size:13px;
-  color:rgba(96,165,250,0.18);
-  letter-spacing:0.03em;
-  margin-bottom:28px;
-}
-.footer-links {
-  display:flex;gap:32px;align-items:center;justify-content:center;
-  margin-bottom:28px;
-}
-.footer-links a {
-  font-family:'DM Mono',monospace;font-size:11px;
-  letter-spacing:0.14em;text-transform:uppercase;
-  color:rgba(96,165,250,0.28);text-decoration:none;
-  transition:color 0.2s;
-}
-.footer-links a:hover { color:rgba(96,165,250,0.65); }
-.footer-divider {
-  width:1px;height:14px;
-  background:rgba(96,165,250,0.1);
+  justify-self:start;
+  font-size:20px;font-weight:600;line-height:1;
+  letter-spacing:0.25em;text-transform:uppercase;
+  color:#ffffff;
 }
 footer .footer-copy {
-  font-family:'DM Mono',monospace;font-size:11px;
-  color:rgba(96,165,250,0.18);letter-spacing:0.1em;
+  justify-self:center;
+  font-size:13px;line-height:1.4;
+  color:rgba(255,255,255,0.6);white-space:nowrap;
+}
+.footer-links {
+  justify-self:end;
+  display:flex;gap:32px;align-items:center;
+}
+.footer-links a {
+  font-size:13px;line-height:1.4;
+  color:#ffffff;text-decoration:none;
+  transition:opacity 0.2s;
+}
+.footer-links a:hover { opacity:0.65; }
+@media (max-width:760px) {
+  footer {
+    grid-template-columns:1fr;
+    row-gap:20px;
+    padding:44px 24px;
+    text-align:center;
+  }
+  .footer-logo, footer .footer-copy, .footer-links { justify-self:center; }
+  footer .footer-copy { white-space:normal; }
+  .footer-logo { margin-right:-0.25em; }
 }
 
 /* ════════════════════════════════════════
@@ -1453,11 +1410,11 @@ footer .footer-copy {
             <!-- Data tags floating -->
             <g class="svg-float-rev" style="transform-origin:120px 290px">
               <rect x="90" y="278" width="100" height="26" rx="6" fill="rgba(0,0,0,0.7)" stroke="rgba(96,165,250,0.25)" stroke-width="1"/>
-              <text x="140" y="295" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="rgba(96,165,250,0.6)" letter-spacing="1">NICHE SCAN</text>
+              <text x="140" y="295" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-size="9" fill="rgba(96,165,250,0.6)" letter-spacing="1">NICHE SCAN</text>
             </g>
             <g class="svg-float" style="transform-origin:330px 50px">
               <rect x="300" y="40" width="110" height="26" rx="6" fill="rgba(0,0,0,0.7)" stroke="rgba(96,165,250,0.25)" stroke-width="1"/>
-              <text x="355" y="57" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="rgba(96,165,250,0.6)" letter-spacing="1">CTR ANALYSIS</text>
+              <text x="355" y="57" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-size="9" fill="rgba(96,165,250,0.6)" letter-spacing="1">CTR ANALYSIS</text>
             </g>
           </svg>
         </div>
@@ -1535,7 +1492,7 @@ footer .footer-copy {
               <circle cx="158" cy="155" r="5" fill="rgba(96,165,250,0.6)">
                 <animate attributeName="opacity" values="1;0.3;1" dur="1.4s" repeatCount="indefinite"/>
               </circle>
-              <text x="196" y="159" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="rgba(96,165,250,0.7)" letter-spacing="1">HOOK LOCKED</text>
+              <text x="196" y="159" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-size="9" fill="rgba(96,165,250,0.7)" letter-spacing="1">HOOK LOCKED</text>
             </g>
             <!-- Pulse from target -->
             <circle cx="380" cy="155" r="10" fill="none" stroke="rgba(96,165,250,0.4)" stroke-width="1">
@@ -1572,8 +1529,8 @@ footer .footer-copy {
             <!-- Central idea node -->
             <circle cx="240" cy="180" r="38" fill="rgba(96,165,250,0.08)" stroke="rgba(96,165,250,0.5)" stroke-width="1.5" filter="url(#glow3)" class="svg-float"/>
             <circle cx="240" cy="180" r="38" fill="none" stroke="rgba(96,165,250,0.2)" stroke-width="1" stroke-dasharray="5 4" class="svg-spin-slow"/>
-            <text x="240" y="176" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="rgba(96,165,250,0.8)" letter-spacing="1">CORE</text>
-            <text x="240" y="190" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="rgba(96,165,250,0.8)" letter-spacing="1">IDEA</text>
+            <text x="240" y="176" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-size="9" fill="rgba(96,165,250,0.8)" letter-spacing="1">CORE</text>
+            <text x="240" y="190" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-size="9" fill="rgba(96,165,250,0.8)" letter-spacing="1">IDEA</text>
             <!-- Branch lines (animated draw) -->
             <line x1="240" y1="142" x2="240" y2="68"  stroke="rgba(96,165,250,0.3)" stroke-width="1.5" class="svg-path-draw" stroke-dasharray="80" stroke-dashoffset="80"/>
             <line x1="205" y1="156" x2="120" y2="96"  stroke="rgba(96,165,250,0.3)" stroke-width="1.5" class="svg-path-draw" stroke-dasharray="100" stroke-dashoffset="100"/>
@@ -1586,37 +1543,37 @@ footer .footer-copy {
             <!-- Top -->
             <g class="svg-float-rev" style="transform-origin:240px 55px">
               <rect x="192" y="38" width="96" height="30" rx="8" fill="rgba(0,0,0,0.75)" stroke="rgba(96,165,250,0.4)" stroke-width="1"/>
-              <text x="240" y="55" text-anchor="middle" font-family="DM Mono,monospace" font-size="8.5" fill="rgba(96,165,250,0.75)" letter-spacing="0.8">Concept A</text>
+              <text x="240" y="55" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="rgba(96,165,250,0.75)" letter-spacing="0.8">Concept A</text>
             </g>
             <!-- Top-left -->
             <g class="svg-float" style="transform-origin:120px 83px">
               <rect x="72" y="68" width="96" height="30" rx="8" fill="rgba(0,0,0,0.75)" stroke="rgba(96,165,250,0.3)" stroke-width="1"/>
-              <text x="120" y="85" text-anchor="middle" font-family="DM Mono,monospace" font-size="8.5" fill="rgba(96,165,250,0.65)" letter-spacing="0.8">Concept B</text>
+              <text x="120" y="85" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="rgba(96,165,250,0.65)" letter-spacing="0.8">Concept B</text>
             </g>
             <!-- Top-right -->
             <g class="svg-float-rev" style="transform-origin:355px 83px">
               <rect x="307" y="68" width="96" height="30" rx="8" fill="rgba(0,0,0,0.75)" stroke="rgba(96,165,250,0.3)" stroke-width="1"/>
-              <text x="355" y="85" text-anchor="middle" font-family="DM Mono,monospace" font-size="8.5" fill="rgba(96,165,250,0.65)" letter-spacing="0.8">Concept C</text>
+              <text x="355" y="85" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="rgba(96,165,250,0.65)" letter-spacing="0.8">Concept C</text>
             </g>
             <!-- Left -->
             <g class="svg-float-rev" style="transform-origin:62px 200px">
               <rect x="20" y="185" width="84" height="30" rx="8" fill="rgba(0,0,0,0.75)" stroke="rgba(96,165,250,0.22)" stroke-width="1"/>
-              <text x="62" y="202" text-anchor="middle" font-family="DM Mono,monospace" font-size="8.5" fill="rgba(96,165,250,0.5)" letter-spacing="0.8">Angle D</text>
+              <text x="62" y="202" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="rgba(96,165,250,0.5)" letter-spacing="0.8">Angle D</text>
             </g>
             <!-- Right -->
             <g class="svg-float" style="transform-origin:418px 200px">
               <rect x="376" y="185" width="84" height="30" rx="8" fill="rgba(0,0,0,0.75)" stroke="rgba(96,165,250,0.22)" stroke-width="1"/>
-              <text x="418" y="202" text-anchor="middle" font-family="DM Mono,monospace" font-size="8.5" fill="rgba(96,165,250,0.5)" letter-spacing="0.8">Angle E</text>
+              <text x="418" y="202" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="rgba(96,165,250,0.5)" letter-spacing="0.8">Angle E</text>
             </g>
             <!-- Bottom-left -->
             <g class="svg-float" style="transform-origin:155px 295px">
               <rect x="110" y="280" width="90" height="28" rx="8" fill="rgba(0,0,0,0.75)" stroke="rgba(96,165,250,0.18)" stroke-width="1"/>
-              <text x="155" y="297" text-anchor="middle" font-family="DM Mono,monospace" font-size="8.5" fill="rgba(96,165,250,0.4)" letter-spacing="0.8">Draft F</text>
+              <text x="155" y="297" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="rgba(96,165,250,0.4)" letter-spacing="0.8">Draft F</text>
             </g>
             <!-- Bottom-right -->
             <g class="svg-float-rev" style="transform-origin:330px 295px">
               <rect x="285" y="280" width="90" height="28" rx="8" fill="rgba(0,0,0,0.75)" stroke="rgba(96,165,250,0.18)" stroke-width="1"/>
-              <text x="330" y="297" text-anchor="middle" font-family="DM Mono,monospace" font-size="8.5" fill="rgba(96,165,250,0.4)" letter-spacing="0.8">Draft G</text>
+              <text x="330" y="297" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="rgba(96,165,250,0.4)" letter-spacing="0.8">Draft G</text>
             </g>
           </svg>
         </div>
@@ -1686,15 +1643,15 @@ footer .footer-copy {
             <!-- Assembly tool indicators -->
             <g class="svg-float-rev" style="transform-origin:80px 98px">
               <rect x="28" y="86" width="60" height="24" rx="5" fill="rgba(0,0,0,0.8)" stroke="rgba(96,165,250,0.3)" stroke-width="1"/>
-              <text x="58" y="101" text-anchor="middle" font-family="DM Mono,monospace" font-size="8" fill="rgba(96,165,250,0.6)" letter-spacing="0.8">LAYER 01</text>
+              <text x="58" y="101" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-size="8" fill="rgba(96,165,250,0.6)" letter-spacing="0.8">LAYER 01</text>
             </g>
             <g class="svg-float" style="transform-origin:80px 148px">
               <rect x="28" y="136" width="60" height="24" rx="5" fill="rgba(0,0,0,0.8)" stroke="rgba(96,165,250,0.3)" stroke-width="1"/>
-              <text x="58" y="151" text-anchor="middle" font-family="DM Mono,monospace" font-size="8" fill="rgba(96,165,250,0.6)" letter-spacing="0.8">LAYER 02</text>
+              <text x="58" y="151" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-size="8" fill="rgba(96,165,250,0.6)" letter-spacing="0.8">LAYER 02</text>
             </g>
             <g class="svg-float-rev" style="transform-origin:80px 198px">
               <rect x="28" y="186" width="60" height="24" rx="5" fill="rgba(0,0,0,0.8)" stroke="rgba(96,165,250,0.3)" stroke-width="1"/>
-              <text x="58" y="201" text-anchor="middle" font-family="DM Mono,monospace" font-size="8" fill="rgba(96,165,250,0.6)" letter-spacing="0.8">LAYER 03</text>
+              <text x="58" y="201" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-size="8" fill="rgba(96,165,250,0.6)" letter-spacing="0.8">LAYER 03</text>
             </g>
             <!-- Connect dashes from labels to frame -->
             <line x1="88" y1="98" x2="100" y2="108" stroke="rgba(96,165,250,0.2)" stroke-width="1" stroke-dasharray="3 3"/>
@@ -1703,7 +1660,7 @@ footer .footer-copy {
             <!-- Iteration counter -->
             <g class="svg-float" style="transform-origin:340px 275px">
               <rect x="270" y="262" width="140" height="28" rx="7" fill="rgba(0,0,0,0.8)" stroke="rgba(96,165,250,0.25)" stroke-width="1"/>
-              <text x="340" y="279" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="rgba(96,165,250,0.55)" letter-spacing="1">REV 03: REFINING</text>
+              <text x="340" y="279" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-size="9" fill="rgba(96,165,250,0.55)" letter-spacing="1">REV 03: REFINING</text>
             </g>
             <!-- Revision arrows -->
             <path d="M 395 240 Q 415 225 415 200 Q 415 175 395 160" fill="none" stroke="rgba(96,165,250,0.2)" stroke-width="1.5" stroke-dasharray="5 4">
@@ -1779,11 +1736,11 @@ footer .footer-copy {
               <circle cx="66" cy="289" r="4" fill="rgba(34,211,238,0.8)">
                 <animate attributeName="opacity" values="1;0.3;1" dur="1.2s" repeatCount="indefinite"/>
               </circle>
-              <text x="140" y="293" text-anchor="middle" font-family="DM Mono,monospace" font-size="8.5" fill="rgba(96,165,250,0.7)" letter-spacing="1">FILE READY</text>
+              <text x="140" y="293" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="rgba(96,165,250,0.7)" letter-spacing="1">FILE READY</text>
             </g>
             <g class="svg-float-rev" style="transform-origin:335px 290px">
               <rect x="277" y="277" width="116" height="28" rx="7" fill="rgba(0,0,0,0.85)" stroke="rgba(96,165,250,0.3)" stroke-width="1"/>
-              <text x="335" y="295" text-anchor="middle" font-family="DM Mono,monospace" font-size="8.5" fill="rgba(96,165,250,0.55)" letter-spacing="1">SOURCE INC.</text>
+              <text x="335" y="295" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="rgba(96,165,250,0.55)" letter-spacing="1">SOURCE INC.</text>
             </g>
             <!-- Motion trail lines below card -->
             <line x1="150" y1="225" x2="150" y2="250" stroke="rgba(96,165,250,0.12)" stroke-width="1">
@@ -1862,31 +1819,16 @@ footer .footer-copy {
       <a href="https://x.com/ayoubdssn" target="_blank" class="btn-secondary">Visit Profile</a>
     </div>
   </div>
-
-  <div class="contact-cta reveal">
-    <h2>
-      Ready To Make Your Content<br/>
-      <span class="gradient">Impossible To Ignore?</span>
-    </h2>
-    <p>A thumbnail gets one chance to earn attention. Let's make it count.</p>
-    <div class="hero-actions">
-      <a href="mailto:ayoub@dssnx.com" class="btn-primary">Send Email</a>
-      <a href="https://x.com/ayoubdssn" target="_blank" class="btn-secondary">Visit X Profile</a>
-    </div>
-  </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <span class="footer-logo">ayoub</span>
-  <span class="footer-tagline">Strategic Thumbnail Designer</span>
-  <p class="footer-desc">Helping creators turn ideas into thumbnails that earn attention.</p>
+  <span class="footer-logo">DSSNX</span>
+  <p class="footer-copy">© 2025 ayoub All Rights Reserved</p>
   <div class="footer-links">
-    <a href="mailto:ayoub@dssnx.com">ayoub@dssnx.com</a>
-    <div class="footer-divider"></div>
-    <a href="https://x.com/ayoubdssn" target="_blank">@ayoubdssn</a>
+    <a href="mailto:ayoub@dssnx.com">Email</a>
+    <a href="https://x.com/ayoubdssn" target="_blank" rel="noopener">Twitter / X</a>
   </div>
-  <p class="footer-copy">© 2025 ayoub | All Rights Reserved</p>
 </footer>
 
 <script>
@@ -2048,9 +1990,65 @@ document.querySelectorAll('.reveal,.reveal-right,.reveal-left,.stagger').forEach
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',e=>{
     const t=document.querySelector(a.getAttribute('href'));
-    if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth'}); }
+    if(t){
+      e.preventDefault();
+      if(window.lenis){
+        window.lenis.scrollTo(t,{
+          duration:1.8,
+          easing:x=>x<0.5?8*x*x*x*x:1-Math.pow(-2*x+2,4)/2
+        });
+      } else { t.scrollIntoView({behavior:'smooth'}); }
+    }
   });
 });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+<script>
+/* ── Lenis smooth scroll ─────────────────────────── */
+(function(){
+  if (typeof Lenis === 'undefined') return;                                   // CDN blocked → native scrolling
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;  // respect reduced motion
+
+  const LERP_MAX = 0.088;   // lightest feel (top of the page / start of a section)
+  const LERP_MIN = 0.056;   // heaviest feel (end of the page / end of a section)
+
+  // lerp-driven smoothing (no fixed duration/easing) → steady inertia and a soft settle.
+  // Touch stays native (syncTouch:false).
+  const lenis = new Lenis({
+    lerp: LERP_MAX,
+    wheelMultiplier: 0.85,
+    smoothWheel: true,
+    syncTouch: false
+  });
+  window.lenis = lenis;
+
+  (function raf(time){ lenis.raf(time); requestAnimationFrame(raf); })(performance.now());
+
+  /* Progressive weight: heavier as the page progresses and as each section nears its end.
+     Only cached numbers are used per frame — no layout reads while scrolling. */
+  const blocks = Array.from(document.querySelectorAll('section, footer'));
+  let tops = [], heights = [];
+  const measure = () => {
+    const y = window.scrollY;
+    tops    = blocks.map(b => b.getBoundingClientRect().top + y);
+    heights = blocks.map(b => b.offsetHeight);
+  };
+  measure();
+  window.addEventListener('load', measure);
+  let rz; window.addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(measure, 150); }, { passive: true });
+
+  let cur = LERP_MAX;
+  lenis.on('scroll', () => {
+    const y = lenis.scroll, limit = lenis.limit || 1;
+    const probe = y + window.innerHeight * 0.4;
+    let i = tops.length - 1;
+    while (i > 0 && tops[i] > probe) i--;
+    const p = Math.min(1, Math.max(0, (probe - tops[i]) / (heights[i] || 1)));
+    const target = Math.max(LERP_MIN, LERP_MAX - 0.020 * (y / limit) - 0.012 * p * p);
+    cur += (target - cur) * 0.08;      // ease the change so it is never felt as a step
+    lenis.options.lerp = cur;
+  });
+})();
 </script>
 </body>
 </html>
