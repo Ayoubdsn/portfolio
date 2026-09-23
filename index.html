@@ -301,7 +301,20 @@ nav {
   line-height: 1.0;
   letter-spacing: -0.045em;
   margin-bottom: 30px;
-  animation: fadeUp 0.9s 0.1s cubic-bezier(0.16,1,0.3,1) both;
+  animation: heroBlurReveal 1.35s 0.1s cubic-bezier(0.16,1,0.3,1) both;
+  will-change: filter, opacity, transform;
+}
+@keyframes heroBlurReveal {
+  from {
+    filter: blur(14px);
+    opacity: 0;
+    transform: translateY(20px) scale(1.02);
+  }
+  to {
+    filter: blur(0);
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 .hero-title .line2 {
   background: linear-gradient(135deg, var(--blue-1) 0%, var(--purple) 50%, var(--blue-3) 100%);
@@ -568,9 +581,9 @@ nav {
   position: relative;
   width: 100%;
   padding: 150px 80px;
-  overflow: hidden;
   isolation: isolate;
 }
+.about-orbs-clip { position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:0; }
 .about-orb { position:absolute;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0; }
 .a-orb1 { width:580px;height:580px;background:radial-gradient(circle,rgba(37,99,235,0.14) 0%,transparent 70%);top:-80px;right:-100px; }
 .a-orb2 { width:360px;height:360px;background:radial-gradient(circle,rgba(167,139,250,0.1) 0%,transparent 70%);bottom:60px;left:5%; }
@@ -678,7 +691,12 @@ nav {
 .about-stat-label { font-size:11.5px;font-weight:500;color:var(--text-muted);letter-spacing:0.02em;line-height:1.4; }
 
 /* Portrait */
-.about-portrait-wrap { position:relative;display:flex;justify-content:center;align-items:flex-start; }
+.about-portrait-wrap {
+  position: sticky;
+  top: 110px;
+  align-self: start;
+  display:flex;justify-content:center;align-items:flex-start;
+}
 .about-portrait-frame { position:relative;width:100%;max-width:400px;aspect-ratio:10/15; }
 .portrait{
     width:100%;
@@ -1175,7 +1193,7 @@ footer .footer-copy {
 @media (max-width:960px) {
   .about { padding:100px 40px; }
   .about-inner { grid-template-columns:1fr;gap:60px; }
-  .about-portrait-wrap { order:-1; }
+  .about-portrait-wrap { order:-1;position:static;top:auto;align-self:auto; }
   .about-portrait-frame { max-width:320px;margin:0 auto; }
   .about-name-badge { left:-10px; }
 }
@@ -1243,10 +1261,6 @@ footer .footer-copy {
     <a href="#about" class="btn-secondary">About Me</a>
   </div>
 
-  <div class="hero-scroll">
-    <span>Scroll</span>
-    <div class="scroll-line"></div>
-  </div>
 </section>
 
 <div class="section-divider"></div>
@@ -1295,9 +1309,11 @@ footer .footer-copy {
 
 <!-- ABOUT ME -->
 <section class="about" id="about">
-  <div class="about-orb a-orb1"></div>
-  <div class="about-orb a-orb2"></div>
-  <div class="about-orb a-orb3"></div>
+  <div class="about-orbs-clip">
+    <div class="about-orb a-orb1"></div>
+    <div class="about-orb a-orb2"></div>
+    <div class="about-orb a-orb3"></div>
+  </div>
   <div class="grain"></div>
 
   <div class="about-inner">
@@ -1372,7 +1388,7 @@ footer .footer-copy {
       From Idea To<br/><span class="gradient">Scroll-Stopping</span>
     </h2>
     <p class="process-sub reveal" style="transition-delay:0.16s">
-      Every thumbnail I design goes through a deliberate five-step process —<br/>
+      Every thumbnail I design goes through a deliberate five-step process,<br/>
       strategy first, aesthetics second.
     </p>
   </div>
@@ -1380,7 +1396,7 @@ footer .footer-copy {
   <div class="process-steps" id="processSteps">
     <div class="process-spine"><div class="process-spine-fill" id="spineFill"></div></div>
 
-    <!-- STEP 01 — Discovery -->
+    <!-- STEP 01: Discovery -->
     <div class="process-step step-odd" data-step="0">
       <div class="step-visual step-reveal-left">
         <div class="step-visual-frame">
@@ -1452,7 +1468,7 @@ footer .footer-copy {
       <div class="step-text step-reveal-right">
         <span class="step-label">Step 01</span>
         <h3 class="step-title">Discovery</h3>
-        <p class="step-desc">I study your channel, your niche, and your top competitors. Understanding what's already working in the feed — and where the gaps are — defines every creative decision that follows.</p>
+        <p class="step-desc">I study your channel, your niche, and your top competitors. Understanding what's already working in the feed, and where the gaps are, defines every creative decision that follows.</p>
         <div class="step-tags">
           <span class="step-tag">Channel Audit</span>
           <span class="step-tag">Competitor Research</span>
@@ -1462,7 +1478,7 @@ footer .footer-copy {
       </div>
     </div>
 
-    <!-- STEP 02 — Hook Extraction -->
+    <!-- STEP 02: Hook Extraction -->
     <div class="process-step step-even" data-step="1">
       <div class="step-visual step-reveal-right">
         <div class="step-visual-frame">
@@ -1535,7 +1551,7 @@ footer .footer-copy {
       <div class="step-text step-reveal-left">
         <span class="step-label">Step 02</span>
         <h3 class="step-title">Hook Extraction</h3>
-        <p class="step-desc">From your video content, I isolate the single most powerful visual hook — the emotion, the tension, or the curiosity gap that will make viewers click. One clear message. Zero noise.</p>
+        <p class="step-desc">From your video content, I isolate the single most powerful visual hook: the emotion, the tension, or the curiosity gap that will make viewers click. One clear message. Zero noise.</p>
         <div class="step-tags">
           <span class="step-tag">Visual Hook</span>
           <span class="step-tag">Emotion Mapping</span>
@@ -1545,7 +1561,7 @@ footer .footer-copy {
       </div>
     </div>
 
-    <!-- STEP 03 — Concept Creation -->
+    <!-- STEP 03: Concept Creation -->
     <div class="process-step step-odd" data-step="2">
       <div class="step-visual step-reveal-left">
         <div class="step-visual-frame">
@@ -1611,7 +1627,7 @@ footer .footer-copy {
       <div class="step-text step-reveal-right">
         <span class="step-label">Step 03</span>
         <h3 class="step-title">Concept Creation</h3>
-        <p class="step-desc">I sketch multiple directions — different compositions, color stories, and emotional tones. You see options, not just one guess. The best concept moves forward; the rest sharpen the brief.</p>
+        <p class="step-desc">I sketch multiple directions, different compositions, color stories, and emotional tones. You see options, not just one guess. The best concept moves forward; the rest sharpen the brief.</p>
         <div class="step-tags">
           <span class="step-tag">Multiple Concepts</span>
           <span class="step-tag">Composition</span>
@@ -1621,7 +1637,7 @@ footer .footer-copy {
       </div>
     </div>
 
-    <!-- STEP 04 — Design & Refinement -->
+    <!-- STEP 04: Design & Refinement -->
     <div class="process-step step-even" data-step="3">
       <div class="step-visual step-reveal-right">
         <div class="step-visual-frame">
@@ -1687,7 +1703,7 @@ footer .footer-copy {
             <!-- Iteration counter -->
             <g class="svg-float" style="transform-origin:340px 275px">
               <rect x="270" y="262" width="140" height="28" rx="7" fill="rgba(0,0,0,0.8)" stroke="rgba(96,165,250,0.25)" stroke-width="1"/>
-              <text x="340" y="279" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="rgba(96,165,250,0.55)" letter-spacing="1">REV 03 — REFINING</text>
+              <text x="340" y="279" text-anchor="middle" font-family="DM Mono,monospace" font-size="9" fill="rgba(96,165,250,0.55)" letter-spacing="1">REV 03: REFINING</text>
             </g>
             <!-- Revision arrows -->
             <path d="M 395 240 Q 415 225 415 200 Q 415 175 395 160" fill="none" stroke="rgba(96,165,250,0.2)" stroke-width="1.5" stroke-dasharray="5 4">
@@ -1703,7 +1719,7 @@ footer .footer-copy {
       <div class="step-text step-reveal-left">
         <span class="step-label">Step 04</span>
         <h3 class="step-title">Design &amp; Refinement</h3>
-        <p class="step-desc">The chosen concept comes to life — layer by layer. Typography, color grading, expressions, contrast. Each revision tightens the visual logic until every pixel is doing its job.</p>
+        <p class="step-desc">The chosen concept comes to life, layer by layer. Typography, color grading, expressions, contrast. Each revision tightens the visual logic until every pixel is doing its job.</p>
         <div class="step-tags">
           <span class="step-tag">Typography</span>
           <span class="step-tag">Color Grading</span>
@@ -1713,7 +1729,7 @@ footer .footer-copy {
       </div>
     </div>
 
-    <!-- STEP 05 — Delivery -->
+    <!-- STEP 05: Delivery -->
     <div class="process-step step-odd" data-step="4">
       <div class="step-visual step-reveal-left">
         <div class="step-visual-frame">
@@ -1788,7 +1804,7 @@ footer .footer-copy {
       <div class="step-text step-reveal-right">
         <span class="step-label">Step 05</span>
         <h3 class="step-title">Delivery</h3>
-        <p class="step-desc">You receive production-ready files — high-res PNG, source file, and all the specs needed to publish. Clean, fast, zero friction. Ready to go live the moment it lands in your inbox.</p>
+        <p class="step-desc">You receive production-ready files: high-res PNG, source file, and all the specs needed to publish. Clean, fast, zero friction. Ready to go live the moment it lands in your inbox.</p>
         <div class="step-tags">
           <span class="step-tag">High-Res PNG</span>
           <span class="step-tag">Source File</span>
@@ -1870,7 +1886,7 @@ footer .footer-copy {
     <div class="footer-divider"></div>
     <a href="https://x.com/ayoubdssn" target="_blank">@ayoubdssn</a>
   </div>
-  <p class="footer-copy">© 2025 ayoub — All Rights Reserved</p>
+  <p class="footer-copy">© 2025 ayoub | All Rights Reserved</p>
 </footer>
 
 <script>
@@ -1986,7 +2002,7 @@ const io = new IntersectionObserver(entries => {
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal,.reveal-right,.reveal-left,.stagger').forEach(el=>io.observe(el));
 
-/* ── Process section — scroll-driven step activation & spine fill ── */
+/* -- Process section: scroll-driven step activation & spine fill -- */
 (function(){
   const steps = document.querySelectorAll('.process-step');
   const spine  = document.getElementById('spineFill');
