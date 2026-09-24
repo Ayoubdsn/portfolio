@@ -1062,34 +1062,25 @@ nav {
 
 
 @media(max-width:960px){
-  .process-steps { padding:0 16px; }
+  .process-steps { padding:0 24px; }
+  .process-spine { display:none; }
   .process-step {
-    grid-template-columns:1fr 44px 1fr;
-    margin-bottom:56px;
+    grid-template-columns:1fr;
+    grid-template-rows:auto auto auto;
+    gap:26px;
+    margin-bottom:64px;
   }
-  .step-node-inner { width:36px;height:36px; }
-  .step-node-inner::before { inset:-5px; }
-  .step-num { font-size:10px; }
-  .step-visual { padding:0 8px; }
-  .step-visual-frame { border-radius:14px; }
-  .step-text { padding:0 8px; }
-  .step-title { font-size:clamp(14px,4.6vw,19px);margin-bottom:6px; }
-  .step-desc { font-size:10.5px;line-height:1.45;margin-bottom:10px; }
-  .step-tags { gap:4px; }
-  .step-tag { padding:3px 8px;font-size:8px; }
+  .process-step.step-even .step-visual,
+  .process-step.step-odd .step-visual  { grid-column:1;grid-row:1; }
+  .process-step.step-even .step-node,
+  .process-step.step-odd .step-node    { grid-column:1;grid-row:2;justify-content:flex-start;padding-left:8px; }
+  .process-step.step-even .step-text,
+  .process-step.step-odd .step-text    { grid-column:1;grid-row:3; }
+  .step-visual,.step-text { padding:0; }
 }
 @media(max-width:640px){
-  .process { padding:64px 12px 80px; }
-  .process-header { margin-bottom:48px; }
-  .process-steps { padding:0 8px; }
-  .process-step { grid-template-columns:1fr 32px 1fr;margin-bottom:40px; }
-  .step-node-inner { width:28px;height:28px; }
-  .step-num { font-size:8.5px; }
-  .step-visual { padding:0 5px; }
-  .step-text { padding:0 5px; }
-  .step-title { font-size:clamp(12px,4.8vw,15px);margin-bottom:4px; }
-  .step-desc { font-size:9px;line-height:1.4;margin-bottom:8px; }
-  .step-tag { padding:2px 6px;font-size:6.5px; }
+  .process { padding:84px 22px 100px; }
+  .process-header { margin-bottom:64px; }
 }
 
 /* ════════════════════════════════════════
@@ -1266,45 +1257,20 @@ footer .footer-copy {
    RESPONSIVE
 ════════════════════════════════════════ */
 @media (max-width:960px) {
-  .about { padding:70px 20px; }
-  .about-inner { grid-template-columns:1.6fr 1fr;gap:16px;align-items:start; }
-  .about-portrait-frame { max-width:100%;margin:0; }
-  .about-eyebrow { font-size:10px;margin-bottom:10px; }
-  .about-title { font-size:clamp(19px,5.4vw,28px);margin-bottom:6px; }
-  .about-role { font-size:10.5px;margin-bottom:14px;gap:7px; }
-  .about-role::before { width:16px; }
-  .about-body { font-size:12px;line-height:1.55; }
-  .about-body p { margin-bottom:9px; }
-  .about-quote { margin-top:14px;padding:11px 13px;border-radius:0 10px 10px 0; }
-  .about-quote p { font-size:10.5px;line-height:1.5; }
-  .about-stats { grid-template-columns:1fr;gap:7px;margin-top:16px; }
-  .about-stat-card { padding:11px 12px;border-radius:12px; }
-  .about-stat-num { font-size:18px;margin-bottom:2px; }
-  .about-stat-label { font-size:9px; }
-  .about-name-badge { left:0;bottom:10px;padding:7px 10px;border-radius:9px;max-width:92%; }
-  .about-name-badge .name { font-size:11px;margin-bottom:1px; }
-  .about-name-badge .badge-role { font-size:7px; }
-  .about-portrait-frame::before { inset:-12px; }
-  .about-portrait-frame::after,.corner-br { width:26px;height:26px; }
+  .about { padding:84px 36px; }
+  .about-inner { grid-template-columns:1fr;gap:48px; }
+  .about-portrait-wrap { order:-1;position:static;top:auto;align-self:auto; }
+  .about-portrait-frame { max-width:350px;margin:0 auto; }
+  .about-name-badge { left:-10px; }
 }
 @media (max-width:640px) {
   nav { padding:0 20px; }
   .nav-links { display:none; }
-  .about { padding:56px 16px; }
-  .about-inner { grid-template-columns:1.55fr 1fr;gap:12px; }
-  .about-eyebrow { font-size:9px;margin-bottom:8px; }
-  .about-title { font-size:clamp(17px,6vw,24px); }
-  .about-role { font-size:9.5px;margin-bottom:12px; }
-  .about-body { font-size:11px;line-height:1.5; }
-  .about-quote { padding:9px 11px; }
-  .about-quote p { font-size:9.5px; }
-  .about-stats { gap:6px;margin-top:14px; }
-  .about-stat-card { padding:9px 10px; }
-  .about-stat-num { font-size:16px; }
-  .about-stat-label { font-size:8px; }
-  .about-name-badge { padding:6px 8px;bottom:8px;max-width:92%; }
-  .about-name-badge .name { font-size:9.5px; }
-  .about-name-badge .badge-role { font-size:6px; }
+  .about { padding:68px 22px; }
+  .about-inner { gap:40px; }
+  .about-stats { grid-template-columns:1fr 1fr;gap:9px; }
+  .about-portrait-frame { max-width:285px; }
+  .about-name-badge { left:0;bottom:16px; }
   .stats { flex-direction:column;padding:0; }
   .stat { border-right:none;border-bottom:1px solid rgba(96,165,250,0.08);padding:24px; }
   .stat:last-child { border-bottom:none; }
