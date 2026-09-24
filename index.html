@@ -19,6 +19,7 @@
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap" rel="stylesheet" />
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -140,13 +141,13 @@ nav {
 }
 .nav-logo {
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
-  font-size: 15px;
+  font-size: 16.5px;
   font-weight: 500;
   letter-spacing: 0.28em;
   text-transform: uppercase;
   color: #fff;
   position: relative;
-  padding: 8px 16px;
+  padding: 9px 18px;
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: 10px;
@@ -158,9 +159,9 @@ nav {
   border-color: rgba(96,165,250,0.3);
 }
 
-.nav-links { display:flex; gap:32px; list-style:none; }
+.nav-links { display:flex; gap:30px; list-style:none; }
 .nav-links a {
-  font-size: 13px; font-weight: 500;
+  font-size: 14.5px; font-weight: 500;
   color: var(--text-muted);
   text-decoration: none;
   letter-spacing: 0.04em;
@@ -180,10 +181,10 @@ nav {
 
 .nav-cta {
   position: relative;
-  padding: 9px 22px;
+  padding: 11px 25px;
   border: 1px solid rgba(96,165,250,0.3);
   border-radius: 100px;
-  font-size: 13px; font-weight: 600;
+  font-size: 14.5px; font-weight: 600;
   color: var(--blue-1);
   text-decoration: none;
   overflow: hidden;
@@ -211,7 +212,7 @@ nav {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 140px 24px 120px;
+  padding: 124px 24px 100px;
   overflow: hidden;
   isolation: isolate;
 }
@@ -258,12 +259,12 @@ nav {
 .hero-badge {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 6px 18px 6px 10px;
+  gap: 9px;
+  padding: 8px 20px 8px 12px;
   border: 1px solid rgba(96,165,250,0.22);
   border-radius: 100px;
   background: rgba(96,165,250,0.05);
-  margin-bottom: 40px;
+  margin-bottom: 32px;
   animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) both;
   position: relative;
   overflow: hidden;
@@ -281,7 +282,7 @@ nav {
   100% { transform: translateX(100%); }
 }
 .hero-badge-dot {
-  width: 6px; height: 6px;
+  width: 7px; height: 7px;
   border-radius: 50%;
   background: #22d3ee;
   box-shadow: 0 0 8px #22d3ee, 0 0 20px rgba(34,211,238,0.4);
@@ -294,7 +295,7 @@ nav {
 }
 .hero-badge span {
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
-  font-size: 11px;
+  font-size: 12.5px;
   letter-spacing: 0.15em;
   color: rgba(96,165,250,0.85);
   text-transform: uppercase;
@@ -305,7 +306,7 @@ nav {
   font-weight: 800;
   line-height: 1.0;
   letter-spacing: -0.045em;
-  margin-bottom: 30px;
+  margin-bottom: 24px;
   animation: heroBlurReveal 1.35s 0.1s cubic-bezier(0.16,1,0.3,1) both;
   will-change: filter, opacity, transform;
 }
@@ -335,18 +336,18 @@ nav {
 }
 
 .hero-sub {
-  font-size: clamp(15px, 2vw, 20px);
+  font-size: clamp(15px, 2.15vw, 21.5px);
   font-weight: 400;
   color: var(--text-muted);
-  line-height: 1.72;
-  max-width: 540px;
-  margin: 0 auto 52px;
+  line-height: 1.66;
+  max-width: 580px;
+  margin: 0 auto 40px;
   animation: fadeUp 0.9s 0.2s cubic-bezier(0.16,1,0.3,1) both;
 }
 
 .hero-actions {
   display: flex;
-  gap: 16px;
+  gap: 14px;
   flex-wrap: wrap;
   justify-content: center;
   animation: fadeUp 0.9s 0.3s cubic-bezier(0.16,1,0.3,1) both;
@@ -355,10 +356,10 @@ nav {
 /* Shimmer primary button */
 .btn-primary {
   position: relative;
-  padding: 15px 36px;
+  padding: 17px 40px;
   background: linear-gradient(135deg, #2563eb, #1d4ed8);
   border-radius: 100px;
-  font-size: 15px; font-weight: 600;
+  font-size: 16.5px; font-weight: 600;
   color: #fff;
   text-decoration: none;
   box-shadow: 0 8px 32px rgba(37,99,235,0.35), inset 0 1px 0 rgba(255,255,255,0.15);
@@ -382,10 +383,10 @@ nav {
 
 .btn-secondary {
   position: relative;
-  padding: 15px 36px;
+  padding: 17px 40px;
   border: 1px solid rgba(96,165,250,0.3);
   border-radius: 100px;
-  font-size: 15px; font-weight: 600;
+  font-size: 16.5px; font-weight: 600;
   color: var(--text-primary);
   text-decoration: none;
   overflow: hidden;
@@ -403,23 +404,23 @@ nav {
 /* Scroll indicator */
 .hero-scroll {
   position: absolute;
-  bottom: 40px; left: 50%;
+  bottom: 34px; left: 50%;
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
   animation: fadeUp 1s 0.6s both;
 }
 .hero-scroll span {
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
-  font-size: 10px;
+  font-size: 11.5px;
   letter-spacing: 0.22em;
   color: rgba(96,165,250,0.3);
   text-transform: uppercase;
 }
 .scroll-line {
-  width: 1px; height: 44px;
+  width: 1px; height: 48px;
   background: linear-gradient(to bottom, rgba(96,165,250,0.5), transparent);
   animation: scrollLine 2s ease-in-out infinite;
 }
@@ -439,7 +440,7 @@ nav {
 .showcase {
   position: relative;
   width: 100%;
-  padding: 130px 0 150px;
+  padding: 112px 0 128px;
   overflow: hidden;
   isolation: isolate;
 }
@@ -456,20 +457,20 @@ nav {
 
 .showcase-header {
   position:relative;z-index:10;
-  text-align:center;max-width:700px;
-  padding:0 24px;margin:0 auto 80px;
+  text-align:center;max-width:720px;
+  padding:0 24px;margin:0 auto 64px;
 }
 .eyebrow {
   font-family:-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
-  font-size:11px;font-weight:500;
+  font-size:12.5px;font-weight:500;
   letter-spacing:0.24em;text-transform:uppercase;
-  color:rgba(96,165,250,0.65);margin-bottom:20px;
+  color:rgba(96,165,250,0.65);margin-bottom:16px;
 }
 .showcase-title {
   font-size:clamp(34px,5vw,64px);
   font-weight:700;line-height:1.07;
   letter-spacing:-0.035em;color:var(--text-primary);
-  margin:0 0 22px;
+  margin:0 0 18px;
 }
 .showcase-title .gradient, .gradient {
   background:linear-gradient(135deg,var(--blue-1) 0%,#22D3EE 50%,var(--blue-3) 100%);
@@ -478,7 +479,7 @@ nav {
   animation: gradientShift 6s ease infinite;
 }
 .showcase-sub {
-  font-size:clamp(14px,1.8vw,17px);
+  font-size:clamp(15px,1.95vw,18.5px);
   line-height:1.7;color:var(--text-muted);
 }
 
@@ -490,9 +491,9 @@ nav {
 }
 
 /* ── SCROLL ROWS ── */
-.grid { position:relative;z-index:5;width:100%;display:flex;flex-direction:column;gap:20px; }
+.grid { position:relative;z-index:5;width:100%;display:flex;flex-direction:column;gap:16px; }
 .row-wrapper { width:100%;overflow:hidden; }
-.row { display:flex;gap:20px;width:max-content;will-change:transform; }
+.row { display:flex;gap:16px;width:max-content;will-change:transform; }
 .row-left  { animation: scrollLeft  36s linear infinite; }
 .row-right { animation: scrollRight 42s linear infinite; }
 .row-left-2{ animation: scrollLeft  39s linear infinite; }
@@ -504,7 +505,7 @@ nav {
 /* ── CARDS ── */
 .card {
   flex-shrink:0;
-  width:clamp(230px,22vw,350px);
+  width:clamp(252px,24vw,384px);
   aspect-ratio:16/9;
   border-radius:20px;
   position:relative;
@@ -533,11 +534,11 @@ nav {
 }
 .card-label {
   position:relative;z-index:1;
-  display:flex;flex-direction:column;align-items:center;gap:10px;
+  display:flex;flex-direction:column;align-items:center;gap:9px;
 }
-.card-icon { width:32px;height:32px; }
+.card-icon { width:36px;height:36px; }
 .card-label span {
-  font-family:-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;font-size:11px;
+  font-family:-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;font-size:12.5px;
   letter-spacing:0.06em;color:rgba(96,165,250,0.3);
 }
 .card-glow {
@@ -558,26 +559,26 @@ nav {
 .stats {
   position:relative;z-index:10;
   display:flex;
-  max-width:760px;margin:88px auto 0;
+  max-width:820px;margin:68px auto 0;
   border:1px solid rgba(96,165,250,0.1);
   border-radius:22px;
   background:rgba(10,18,40,0.55);
   backdrop-filter:blur(16px);
   -webkit-backdrop-filter:blur(16px);
   overflow:hidden;
-  padding:0 32px;
+  padding:0 28px;
   box-shadow:0 24px 80px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.04);
 }
-.stat { flex:1;padding:34px 24px;text-align:center;border-right:1px solid rgba(96,165,250,0.08); }
+.stat { flex:1;padding:30px 24px;text-align:center;border-right:1px solid rgba(96,165,250,0.08); }
 .stat:last-child { border-right:none; }
 .stat-num {
-  font-size:clamp(26px,4vw,42px);font-weight:700;
+  font-size:clamp(28px,4.2vw,45px);font-weight:700;
   letter-spacing:-0.03em;
   background:linear-gradient(135deg,var(--blue-1),var(--blue-3));
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  display:block;margin-bottom:7px;
+  display:block;margin-bottom:6px;
 }
-.stat-label { font-size:12px;color:var(--text-muted);font-weight:500;letter-spacing:0.04em; }
+.stat-label { font-size:13.5px;color:var(--text-muted);font-weight:500;letter-spacing:0.04em; }
 
 /* ════════════════════════════════════════
    ABOUT ME
@@ -585,7 +586,7 @@ nav {
 .about {
   position: relative;
   width: 100%;
-  padding: 150px 80px;
+  padding: 128px 72px;
   isolation: isolate;
 }
 .about-orbs-clip { position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:0; }
@@ -600,48 +601,48 @@ nav {
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 420px;
-  gap: 88px;
+  grid-template-columns: 1fr 450px;
+  gap: 72px;
   align-items: center;
 }
 
 .about-eyebrow {
   font-family:-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
-  font-size:11px;font-weight:500;
+  font-size:12.5px;font-weight:500;
   letter-spacing:0.22em;text-transform:uppercase;
   color:rgba(96,165,250,0.65);
-  margin-bottom:20px;display:block;
+  margin-bottom:16px;display:block;
 }
 .about-title {
   font-size:clamp(30px,4vw,54px);
   font-weight:700;line-height:1.07;
   letter-spacing:-0.033em;
   color:var(--text-primary);
-  margin-bottom:10px;
+  margin-bottom:8px;
 }
 .about-role {
   font-family:-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
-  font-size:13px;letter-spacing:0.12em;
+  font-size:14.5px;letter-spacing:0.12em;
   color:rgba(96,165,250,0.5);
-  margin-bottom:38px;
-  display:flex;align-items:center;gap:12px;
+  margin-bottom:30px;
+  display:flex;align-items:center;gap:10px;
 }
 .about-role::before {
   content:'';display:inline-block;
-  width:28px;height:1px;
+  width:30px;height:1px;
   background:rgba(96,165,250,0.3);flex-shrink:0;
 }
 .about-body {
-  font-size:clamp(14px,1.5vw,16px);
+  font-size:clamp(15px,1.6vw,17.5px);
   font-weight:400;color:var(--text-muted);
-  line-height:1.85;
+  line-height:1.75;
 }
-.about-body p { margin-bottom:18px; }
+.about-body p { margin-bottom:15px; }
 .about-body p:last-child { margin-bottom:0; }
 
 .about-quote {
-  margin:34px 0 0;
-  padding:22px 24px;
+  margin:28px 0 0;
+  padding:20px 24px;
   border-left:2px solid rgba(96,165,250,0.32);
   background:rgba(96,165,250,0.04);
   border-radius:0 14px 14px 0;
@@ -654,15 +655,15 @@ nav {
   animation:shimmer 4s ease-in-out 3s infinite;
 }
 .about-quote p {
-  font-size:15px;font-style:italic;
-  color:rgba(200,215,245,0.7);line-height:1.65;margin:0;
+  font-size:16.5px;font-style:italic;
+  color:rgba(200,215,245,0.7);line-height:1.6;margin:0;
 }
 .about-quote p strong { color:var(--blue-1);font-style:normal;font-weight:600; }
 
 /* Stat cards 2×2 */
-.about-stats { display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:44px; }
+.about-stats { display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:36px; }
 .about-stat-card {
-  padding:22px 20px;
+  padding:25px 22px;
   border:1px solid var(--card-border);
   border-radius:18px;
   background:var(--glass);
@@ -687,13 +688,13 @@ nav {
   transform:translateY(-4px);
 }
 .about-stat-num {
-  font-size:clamp(22px,2.5vw,32px);font-weight:700;
+  font-size:clamp(24px,2.7vw,35px);font-weight:700;
   letter-spacing:-0.03em;
   background:linear-gradient(135deg,var(--blue-1),var(--blue-3));
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
   display:block;margin-bottom:5px;line-height:1;
 }
-.about-stat-label { font-size:11.5px;font-weight:500;color:var(--text-muted);letter-spacing:0.02em;line-height:1.4; }
+.about-stat-label { font-size:13px;font-weight:500;color:var(--text-muted);letter-spacing:0.02em;line-height:1.4; }
 
 /* Portrait */
 .about-portrait-wrap {
@@ -702,7 +703,7 @@ nav {
   align-self: start;
   display:flex;justify-content:center;align-items:flex-start;
 }
-.about-portrait-frame { position:relative;width:100%;max-width:400px;aspect-ratio:10/15; }
+.about-portrait-frame { position:relative;width:100%;max-width:430px;aspect-ratio:10/15; }
 .portrait{
     width:100%;
     height:100%;
@@ -717,14 +718,14 @@ nav {
 }
 .about-portrait-frame::after {
   content:'';position:absolute;top:-8px;left:-8px;
-  width:52px;height:52px;
+  width:56px;height:56px;
   border-top:1.5px solid rgba(96,165,250,0.5);
   border-left:1.5px solid rgba(96,165,250,0.5);
   border-radius:4px 0 0 0;z-index:10;
 }
 .corner-br {
   position:absolute;bottom:-8px;right:-8px;
-  width:52px;height:52px;
+  width:56px;height:56px;
   border-bottom:1.5px solid rgba(96,165,250,0.5);
   border-right:1.5px solid rgba(96,165,250,0.5);
   border-radius:0 0 4px 0;z-index:10;pointer-events:none;
@@ -745,11 +746,11 @@ nav {
 .portrait-placeholder svg { position:relative;z-index:1;opacity:0.18; }
 .portrait-placeholder span {
   position:relative;z-index:1;font-family:-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
-  font-size:11px;letter-spacing:0.15em;color:rgba(96,165,250,0.38);text-transform:uppercase;
+  font-size:12.5px;letter-spacing:0.15em;color:rgba(96,165,250,0.38);text-transform:uppercase;
 }
 .about-name-badge {
   position:absolute;bottom:24px;left:-20px;z-index:20;
-  padding:14px 22px;
+  padding:15px 24px;
   background:rgba(0,0,0,0.92);
   backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
   border:1px solid rgba(96,165,250,0.2);
@@ -757,16 +758,16 @@ nav {
   box-shadow:0 8px 40px rgba(0,0,0,0.45),inset 0 1px 0 rgba(255,255,255,0.06);
 }
 .about-name-badge .name {
-  font-size:18px;font-weight:700;letter-spacing:0.06em;
+  font-size:20px;font-weight:700;letter-spacing:0.06em;
   color:var(--text-primary);display:block;line-height:1;margin-bottom:4px;
 }
 .about-name-badge .badge-role {
-  font-family:-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;font-size:10px;
+  font-family:-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;font-size:11.5px;
   letter-spacing:0.14em;color:rgba(96,165,250,0.55);text-transform:uppercase;
 }
 .portrait-dot {
   position:absolute;top:20px;right:-14px;
-  width:10px;height:10px;border-radius:50%;
+  width:11px;height:11px;border-radius:50%;
   background:#22d3ee;
   box-shadow:0 0 16px #22d3ee,0 0 40px rgba(34,211,238,0.4);
   animation:pulse 2s ease-in-out infinite;z-index:20;
@@ -778,7 +779,7 @@ nav {
 .contact {
   position: relative;
   width: 100%;
-  padding: 150px 80px;
+  padding: 128px 72px;
   overflow: hidden;
   isolation: isolate;
 }
@@ -789,17 +790,17 @@ nav {
 
 .contact-header {
   position:relative;z-index:10;
-  text-align:center;max-width:680px;
-  margin:0 auto 80px;padding:0 24px;
+  text-align:center;max-width:700px;
+  margin:0 auto 64px;padding:0 24px;
 }
 .contact-title {
   font-size:clamp(34px,5vw,64px);
   font-weight:700;line-height:1.07;
   letter-spacing:-0.035em;color:var(--text-primary);
-  margin:0 0 22px;
+  margin:0 0 18px;
 }
 .contact-sub {
-  font-size:clamp(14px,1.8vw,17px);
+  font-size:clamp(15px,1.95vw,18.5px);
   line-height:1.7;color:var(--text-muted);
 }
 
@@ -807,14 +808,14 @@ nav {
   position:relative;z-index:10;
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:24px;
-  max-width:860px;
-  margin:0 auto 80px;
+  gap:20px;
+  max-width:920px;
+  margin:0 auto 64px;
   padding:0 24px;
 }
 
 .contact-card {
-  padding:42px 38px;
+  padding:38px 36px;
   border:1px solid var(--card-border);
   border-radius:28px;
   background:var(--glass);
@@ -823,7 +824,7 @@ nav {
   box-shadow:inset 0 1px 0 rgba(255,255,255,0.04);
   transition:border-color 0.35s,box-shadow 0.35s,transform 0.35s;
   position:relative;overflow:hidden;
-  display:flex;flex-direction:column;align-items:flex-start;gap:10px;
+  display:flex;flex-direction:column;align-items:flex-start;gap:9px;
 }
 .contact-card::before {
   content:'';position:absolute;
@@ -839,40 +840,40 @@ nav {
 }
 .contact-icon {
   font-size:28px;
-  margin-bottom:6px;
+  margin-bottom:4px;
   display:flex;align-items:center;justify-content:center;
-  width:54px;height:54px;
-  border-radius:16px;
+  width:62px;height:62px;
+  border-radius:18px;
   border:1px solid rgba(96,165,250,0.15);
   background:rgba(96,165,250,0.06);
 }
 .contact-card h3 {
-  font-size:18px;font-weight:700;
+  font-size:20px;font-weight:700;
   letter-spacing:-0.015em;
   color:var(--text-primary);margin:0;
 }
 .contact-value {
   font-family:-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
-  font-size:13px;letter-spacing:0.06em;
-  color:var(--blue-1);margin:2px 0 6px;
+  font-size:14.5px;letter-spacing:0.06em;
+  color:var(--blue-1);margin:2px 0 4px;
 }
 .contact-description {
-  font-size:14px;line-height:1.65;
-  color:var(--text-muted);margin:0 0 24px;
+  font-size:15.5px;line-height:1.6;
+  color:var(--text-muted);margin:0 0 20px;
   flex:1;
 }
 .contact-card .btn-primary,
 .contact-card .btn-secondary {
-  padding:12px 28px;font-size:14px;
+  padding:14px 32px;font-size:15.5px;
   align-self:flex-start;
 }
 
 @media (max-width:760px) {
-  .contact { padding:100px 24px; }
+  .contact { padding:84px 22px; }
   .contact-grid { grid-template-columns:1fr; }
 }
 @media (max-width:640px) {
-  .contact { padding:80px 24px; }
+  .contact { padding:68px 22px; }
 }
 
 /* ════════════════════════════════════════
@@ -881,7 +882,7 @@ nav {
 .process {
   position: relative;
   width: 100%;
-  padding: 160px 0 180px;
+  padding: 136px 0 152px;
   overflow: hidden;
   isolation: isolate;
 }
@@ -892,22 +893,22 @@ nav {
 
 .process-header {
   position:relative;z-index:10;
-  text-align:center;max-width:700px;
-  margin:0 auto 120px;padding:0 24px;
+  text-align:center;max-width:720px;
+  margin:0 auto 96px;padding:0 24px;
 }
 .process-title {
   font-size:clamp(34px,5vw,64px);
   font-weight:700;line-height:1.07;
   letter-spacing:-0.035em;color:var(--text-primary);
-  margin:0 0 22px;
+  margin:0 0 18px;
 }
 .process-sub {
-  font-size:clamp(14px,1.8vw,17px);
+  font-size:clamp(15px,1.95vw,18.5px);
   line-height:1.7;color:var(--text-muted);
 }
 
 /* Step layout */
-.process-steps { position:relative;z-index:5;max-width:1200px;margin:0 auto;padding:0 48px; }
+.process-steps { position:relative;z-index:5;max-width:1240px;margin:0 auto;padding:0 48px; }
 
 /* Vertical spine line */
 .process-spine {
@@ -928,10 +929,10 @@ nav {
 
 .process-step {
   display:grid;
-  grid-template-columns:1fr 80px 1fr;
+  grid-template-columns:1fr 88px 1fr;
   gap:0 0;
   align-items:center;
-  margin-bottom:140px;
+  margin-bottom:116px;
   position:relative;
 }
 .process-step:last-child { margin-bottom:0; }
@@ -943,7 +944,7 @@ nav {
   position:relative;z-index:10;
 }
 .step-node-inner {
-  width:56px;height:56px;border-radius:50%;
+  width:62px;height:62px;border-radius:50%;
   background:#000;
   border:1px solid rgba(96,165,250,0.2);
   display:flex;align-items:center;justify-content:center;
@@ -961,7 +962,7 @@ nav {
 }
 .step-num {
   font-family:-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
-  font-size:13px;font-weight:500;
+  font-size:14.5px;font-weight:500;
   color:rgba(96,165,250,0.4);
   letter-spacing:0.05em;
   transition:color 0.4s;
@@ -971,7 +972,7 @@ nav {
 /* Visual side */
 .step-visual {
   position:relative;
-  padding:0 48px;
+  padding:0 36px;
 }
 .step-visual-frame {
   position:relative;
@@ -991,28 +992,23 @@ nav {
 .step-visual-frame svg { position:absolute;inset:0;width:100%;height:100%; }
 
 /* Text side */
-.step-text { padding:0 48px; }
-.step-label {
-  font-family:-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
-  font-size:10px;letter-spacing:0.28em;text-transform:uppercase;
-  color:rgba(96,165,250,0.5);margin-bottom:18px;display:block;
-}
+.step-text { padding:0 40px; }
 .step-title {
-  font-size:clamp(26px,3vw,40px);font-weight:700;
+  font-size:clamp(28px,3.2vw,43px);font-weight:700;
   letter-spacing:-0.03em;line-height:1.1;
-  color:var(--text-primary);margin-bottom:18px;
+  color:var(--text-primary);margin-bottom:14px;
 }
 .step-desc {
-  font-size:15px;line-height:1.8;color:var(--text-muted);
-  margin-bottom:28px;
+  font-size:16.5px;line-height:1.72;color:var(--text-muted);
+  margin-bottom:22px;
 }
-.step-tags { display:flex;flex-wrap:wrap;gap:8px; }
+.step-tags { display:flex;flex-wrap:wrap;gap:7px; }
 .step-tag {
-  padding:5px 14px;border-radius:100px;
+  padding:6px 15px;border-radius:100px;
   border:1px solid rgba(96,165,250,0.15);
   background:rgba(96,165,250,0.04);
   font-family:-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
-  font-size:10px;letter-spacing:0.1em;text-transform:uppercase;
+  font-size:11.5px;letter-spacing:0.1em;text-transform:uppercase;
   color:rgba(96,165,250,0.5);
 }
 
@@ -1055,26 +1051,148 @@ nav {
 .svg-checkmark { stroke-dasharray:60;stroke-dashoffset:60;transition:stroke-dashoffset 0.8s cubic-bezier(0.16,1,0.3,1) 0.4s; }
 .step-active .svg-checkmark { stroke-dashoffset:0; }
 
+/* -- Hand-drawn process illustrations -- (speed: durations x.78 sk / x.65 hw, stagger delays x.25) -- */
+.sk{fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1 2;stroke-dashoffset:1.02;transition:stroke-dashoffset calc(var(--t,.62s)*.78) cubic-bezier(.45,.05,.35,1) calc(var(--d,0s)*.25)}
+.step-active .sk{stroke-dashoffset:0}
+.sk.w{stroke:rgba(238,240,246,.88)}.sk.g{stroke:rgba(150,156,170,.7)}.sk.b{stroke:#60a5fa}.sk.c{stroke:#22d3ee}
+.hw{font-family:'Caveat','Segoe Print','Bradley Hand','Marker Felt','Comic Sans MS',cursive;font-weight:600;fill:rgba(238,240,246,.88);opacity:0;clip-path:inset(0 100% 0 0);transition:clip-path calc(var(--t,.68s)*.65) cubic-bezier(.4,0,.3,1) calc(var(--d,0s)*.25),opacity .01s linear calc(var(--d,0s)*.25)}
+.step-active .hw{opacity:1;clip-path:inset(0 -2% 0 0)}
+.hw.g{fill:rgba(150,156,170,.85)}.hw.b{fill:#60a5fa}.hw.c{fill:#22d3ee}
+@media(prefers-reduced-motion:reduce){.sk{transition:none;stroke-dashoffset:0}.hw{transition:none;opacity:1;clip-path:none}}
+
+
 @media(max-width:960px){
-  .process-steps { padding:0 24px; }
-  .process-spine { display:none; }
+  .process-steps { padding:0 16px; }
   .process-step {
-    grid-template-columns:1fr;
-    grid-template-rows:auto auto auto;
-    gap:32px;
-    margin-bottom:80px;
+    grid-template-columns:1fr 44px 1fr;
+    margin-bottom:56px;
   }
-  .process-step.step-even .step-visual,
-  .process-step.step-odd .step-visual  { grid-column:1;grid-row:1; }
-  .process-step.step-even .step-node,
-  .process-step.step-odd .step-node    { grid-column:1;grid-row:2;justify-content:flex-start;padding-left:8px; }
-  .process-step.step-even .step-text,
-  .process-step.step-odd .step-text    { grid-column:1;grid-row:3; }
-  .step-visual,.step-text { padding:0; }
+  .step-node-inner { width:36px;height:36px; }
+  .step-node-inner::before { inset:-5px; }
+  .step-num { font-size:10px; }
+  .step-visual { padding:0 8px; }
+  .step-visual-frame { border-radius:14px; }
+  .step-text { padding:0 8px; }
+  .step-title { font-size:clamp(14px,4.6vw,19px);margin-bottom:6px; }
+  .step-desc { font-size:10.5px;line-height:1.45;margin-bottom:10px; }
+  .step-tags { gap:4px; }
+  .step-tag { padding:3px 8px;font-size:8px; }
 }
 @media(max-width:640px){
-  .process { padding:100px 24px 120px; }
-  .process-header { margin-bottom:80px; }
+  .process { padding:64px 12px 80px; }
+  .process-header { margin-bottom:48px; }
+  .process-steps { padding:0 8px; }
+  .process-step { grid-template-columns:1fr 32px 1fr;margin-bottom:40px; }
+  .step-node-inner { width:28px;height:28px; }
+  .step-num { font-size:8.5px; }
+  .step-visual { padding:0 5px; }
+  .step-text { padding:0 5px; }
+  .step-title { font-size:clamp(12px,4.8vw,15px);margin-bottom:4px; }
+  .step-desc { font-size:9px;line-height:1.4;margin-bottom:8px; }
+  .step-tag { padding:2px 6px;font-size:6.5px; }
+}
+
+/* ════════════════════════════════════════
+   PROCESS — STACKED CARD DECK (desktop)
+   Only active while JS has put .is-deck on #process.
+   Below 961px (or reduced motion) the original vertical layout is untouched.
+════════════════════════════════════════ */
+@media (min-width:961px){
+  /* overflow:clip keeps the orb clipping but, unlike hidden, doesn't break position:sticky */
+  .process.is-deck { overflow:clip; }
+
+  /* Scroll track: one pinned viewport + one --deck-step of scroll per card change (set by JS) */
+  .process.is-deck .process-steps {
+    height:calc(100vh + (var(--deck-n,5) - 1) * var(--deck-step,86vh) + var(--deck-tail,26vh));
+  }
+  /* Pinned stage: visual | node | text share one row */
+  .process.is-deck .process-stage {
+    position:sticky;top:0;height:100vh;
+    display:grid;
+    grid-template-columns:1fr 88px 1fr;
+    grid-template-rows:minmax(0,1fr);
+    align-items:center;
+  }
+  /* same ambient glow the two lower orbs gave the section, but pinned with the stage */
+  .process.is-deck .p-orb2,
+  .process.is-deck .p-orb3 { display:none; }
+  .process.is-deck .process-stage::before,
+  .process.is-deck .process-stage::after {
+    content:'';position:absolute;border-radius:50%;pointer-events:none;z-index:-1;
+  }
+  .process.is-deck .process-stage::before {
+    width:400px;height:400px;left:-110px;bottom:6%;
+    background:radial-gradient(circle,rgba(167,139,250,0.09) 0%,transparent 70%);
+  }
+  .process.is-deck .process-stage::after {
+    width:350px;height:350px;right:-110px;bottom:2%;
+    background:radial-gradient(circle,rgba(56,189,248,0.07) 0%,transparent 70%);
+  }
+
+  /* Steps dissolve into the stage grid: every visual lands in the SAME cell */
+  .process.is-deck .process-step { display:contents; }
+  .process.is-deck .process-step .step-visual,
+  .process.is-deck .process-step .step-node,
+  .process.is-deck .process-step .step-text { grid-row:1; }
+  .process.is-deck .process-step .step-visual { grid-column:1;opacity:1;transform:none;transition:none; }
+  .process.is-deck .process-step .step-node   { grid-column:2; }
+  .process.is-deck .process-step .step-text   { grid-column:3; }
+
+  /* Newer card always above the previous one */
+  .process.is-deck .process-step[data-step="0"] .step-visual { z-index:1; }
+  .process.is-deck .process-step[data-step="1"] .step-visual { z-index:2; }
+  .process.is-deck .process-step[data-step="2"] .step-visual { z-index:3; }
+  .process.is-deck .process-step[data-step="3"] .step-visual { z-index:4; }
+  .process.is-deck .process-step[data-step="4"] .step-visual { z-index:5; }
+
+  /* The card: position is written by JS from scroll progress (transform only, no transition on it).
+     Opaque so buried cards never show through; the blur is pointless once opaque and costly x5. */
+  .process.is-deck .process-step .step-visual-frame {
+    background:#030407;
+    -webkit-backdrop-filter:none;backdrop-filter:none;
+    will-change:transform;
+    box-shadow:0 -8px 26px rgba(0,0,0,0.55),inset 0 1px 0 rgba(255,255,255,0.04);
+  }
+  /* depth cue: cards sink into shadow as later cards land on them (--dim set by JS) */
+  .process.is-deck .process-step .step-visual-frame::after {
+    content:'';position:absolute;inset:0;background:#000;
+    opacity:var(--dim,0);pointer-events:none;z-index:2;
+  }
+  .process.is-deck .process-step.step-current .step-visual-frame {
+    border-color:rgba(96,165,250,0.28);
+    box-shadow:0 20px 80px rgba(37,99,235,0.2),0 -8px 26px rgba(0,0,0,0.55),inset 0 1px 0 rgba(255,255,255,0.06);
+  }
+  .process.is-deck .process-step.step-active:not(.step-current) .step-visual-frame {
+    border-color:var(--card-border);
+  }
+
+  /* Text + node belong to the current step only */
+  .process.is-deck .process-step .step-text {
+    z-index:6;
+    opacity:0;transform:translateY(16px);visibility:hidden;pointer-events:none;
+    transition:opacity .28s ease,transform .28s ease,visibility 0s linear .28s;
+  }
+  .process.is-deck .process-step.step-current .step-text {
+    opacity:1;transform:none;visibility:visible;pointer-events:auto;
+    transition:opacity .4s ease .08s,transform .5s cubic-bezier(0.16,1,0.3,1) .08s,visibility 0s;
+  }
+  .process.is-deck .process-step .step-node {
+    z-index:7;
+    opacity:0;transform:scale(.85);
+    transition:opacity .25s ease,transform .25s ease;
+  }
+  .process.is-deck .process-step.step-current .step-node {
+    opacity:1;transform:none;
+    transition:opacity .35s ease .06s,transform .35s cubic-bezier(0.16,1,0.3,1) .06s;
+  }
+
+  /* Sketch resets instantly once a card has left the deck; it only animates on the way in */
+  .process.is-deck .process-step:not(.step-active) :is(.sk,.hw,.svg-path-draw,.svg-checkmark) { transition:none; }
+
+  /* Spine fill follows deck progress via transform (no layout) */
+  .process.is-deck .process-spine-fill {
+    height:100%;transform:scaleY(0);transform-origin:50% 0;transition:none;will-change:transform;
+  }
 }
 
 /* ════════════════════════════════════════
@@ -1085,28 +1203,28 @@ footer {
   display:grid;
   grid-template-columns:1fr auto 1fr;
   align-items:center;
-  column-gap:24px;
-  padding:56px 64px;
+  column-gap:22px;
+  padding:48px 56px;
   background:#000000;
   font-family:-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
 }
 .footer-logo {
   justify-self:start;
-  font-size:20px;font-weight:600;line-height:1;
+  font-size:22px;font-weight:600;line-height:1;
   letter-spacing:0.25em;text-transform:uppercase;
   color:#ffffff;
 }
 footer .footer-copy {
   justify-self:center;
-  font-size:13px;line-height:1.4;
+  font-size:14.5px;line-height:1.4;
   color:rgba(255,255,255,0.6);white-space:nowrap;
 }
 .footer-links {
   justify-self:end;
-  display:flex;gap:32px;align-items:center;
+  display:flex;gap:28px;align-items:center;
 }
 .footer-links a {
-  font-size:13px;line-height:1.4;
+  font-size:14.5px;line-height:1.4;
   color:#ffffff;text-decoration:none;
   transition:opacity 0.2s;
 }
@@ -1114,8 +1232,8 @@ footer .footer-copy {
 @media (max-width:760px) {
   footer {
     grid-template-columns:1fr;
-    row-gap:20px;
-    padding:44px 24px;
+    row-gap:16px;
+    padding:38px 22px;
     text-align:center;
   }
   .footer-logo, footer .footer-copy, .footer-links { justify-self:center; }
@@ -1148,24 +1266,50 @@ footer .footer-copy {
    RESPONSIVE
 ════════════════════════════════════════ */
 @media (max-width:960px) {
-  .about { padding:100px 40px; }
-  .about-inner { grid-template-columns:1fr;gap:60px; }
-  .about-portrait-wrap { order:-1;position:static;top:auto;align-self:auto; }
-  .about-portrait-frame { max-width:320px;margin:0 auto; }
-  .about-name-badge { left:-10px; }
+  .about { padding:70px 20px; }
+  .about-inner { grid-template-columns:1.6fr 1fr;gap:16px;align-items:start; }
+  .about-portrait-frame { max-width:100%;margin:0; }
+  .about-eyebrow { font-size:10px;margin-bottom:10px; }
+  .about-title { font-size:clamp(19px,5.4vw,28px);margin-bottom:6px; }
+  .about-role { font-size:10.5px;margin-bottom:14px;gap:7px; }
+  .about-role::before { width:16px; }
+  .about-body { font-size:12px;line-height:1.55; }
+  .about-body p { margin-bottom:9px; }
+  .about-quote { margin-top:14px;padding:11px 13px;border-radius:0 10px 10px 0; }
+  .about-quote p { font-size:10.5px;line-height:1.5; }
+  .about-stats { grid-template-columns:1fr;gap:7px;margin-top:16px; }
+  .about-stat-card { padding:11px 12px;border-radius:12px; }
+  .about-stat-num { font-size:18px;margin-bottom:2px; }
+  .about-stat-label { font-size:9px; }
+  .about-name-badge { left:0;bottom:10px;padding:7px 10px;border-radius:9px;max-width:92%; }
+  .about-name-badge .name { font-size:11px;margin-bottom:1px; }
+  .about-name-badge .badge-role { font-size:7px; }
+  .about-portrait-frame::before { inset:-12px; }
+  .about-portrait-frame::after,.corner-br { width:26px;height:26px; }
 }
 @media (max-width:640px) {
   nav { padding:0 20px; }
   .nav-links { display:none; }
-  .about { padding:80px 24px; }
-  .about-stats { grid-template-columns:1fr 1fr;gap:10px; }
-  .about-portrait-frame { max-width:260px; }
-  .about-name-badge { left:0;bottom:16px; }
+  .about { padding:56px 16px; }
+  .about-inner { grid-template-columns:1.55fr 1fr;gap:12px; }
+  .about-eyebrow { font-size:9px;margin-bottom:8px; }
+  .about-title { font-size:clamp(17px,6vw,24px); }
+  .about-role { font-size:9.5px;margin-bottom:12px; }
+  .about-body { font-size:11px;line-height:1.5; }
+  .about-quote { padding:9px 11px; }
+  .about-quote p { font-size:9.5px; }
+  .about-stats { gap:6px;margin-top:14px; }
+  .about-stat-card { padding:9px 10px; }
+  .about-stat-num { font-size:16px; }
+  .about-stat-label { font-size:8px; }
+  .about-name-badge { padding:6px 8px;bottom:8px;max-width:92%; }
+  .about-name-badge .name { font-size:9.5px; }
+  .about-name-badge .badge-role { font-size:6px; }
   .stats { flex-direction:column;padding:0; }
-  .stat { border-right:none;border-bottom:1px solid rgba(96,165,250,0.08);padding:26px; }
+  .stat { border-right:none;border-bottom:1px solid rgba(96,165,250,0.08);padding:24px; }
   .stat:last-child { border-bottom:none; }
   .fade-left,.fade-right { width:70px; }
-  .card { width:200px; }
+  .card { width:220px; }
 }
 </style>
 </head>
@@ -1351,79 +1495,56 @@ footer .footer-copy {
   </div>
 
   <div class="process-steps" id="processSteps">
+   <div class="process-stage" id="processStage">
     <div class="process-spine"><div class="process-spine-fill" id="spineFill"></div></div>
 
     <!-- STEP 01: Discovery -->
     <div class="process-step step-odd" data-step="0">
       <div class="step-visual step-reveal-left">
         <div class="step-visual-frame">
-          <svg viewBox="0 0 480 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
-            <defs>
-              <radialGradient id="discGlow" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stop-color="rgba(96,165,250,0.18)"/>
-                <stop offset="100%" stop-color="rgba(96,165,250,0)"/>
-              </radialGradient>
-              <filter id="glow1"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-            </defs>
-            <!-- Background grid -->
-            <g opacity="0.07" stroke="rgba(96,165,250,1)" stroke-width="0.5">
-              <line x1="0" y1="60"  x2="480" y2="60"/><line x1="0" y1="120" x2="480" y2="120"/>
-              <line x1="0" y1="180" x2="480" y2="180"/><line x1="0" y1="240" x2="480" y2="240"/>
-              <line x1="0" y1="300" x2="480" y2="300"/>
-              <line x1="80"  y1="0" x2="80"  y2="360"/><line x1="160" y1="0" x2="160" y2="360"/>
-              <line x1="240" y1="0" x2="240" y2="360"/><line x1="320" y1="0" x2="320" y2="360"/>
-              <line x1="400" y1="0" x2="400" y2="360"/>
-            </g>
-            <!-- Thumbnail mockup -->
-            <rect x="100" y="80" width="280" height="157" rx="10" fill="rgba(96,165,250,0.04)" stroke="rgba(96,165,250,0.18)" stroke-width="1"/>
-            <!-- Face silhouette -->
-            <circle cx="185" cy="138" r="28" fill="rgba(96,165,250,0.07)" stroke="rgba(96,165,250,0.2)" stroke-width="1"/>
-            <rect x="162" y="166" width="46" height="30" rx="6" fill="rgba(96,165,250,0.07)" stroke="rgba(96,165,250,0.2)" stroke-width="1"/>
-            <!-- Title lines -->
-            <rect x="230" y="120" width="120" height="10" rx="4" fill="rgba(96,165,250,0.15)"/>
-            <rect x="230" y="138" width="90" height="8" rx="4" fill="rgba(96,165,250,0.09)"/>
-            <rect x="230" y="154" width="105" height="8" rx="4" fill="rgba(96,165,250,0.07)"/>
-            <!-- Scanning line -->
-            <rect x="100" y="0" width="280" height="2" fill="url(#discGlow)" opacity="0.8">
-              <animateTransform attributeName="transform" type="translate" values="0,80;0,237;0,80" dur="2.8s" repeatCount="indefinite"/>
-            </rect>
-            <!-- Magnifying glass body -->
-            <g class="svg-float" style="transform-origin:240px 155px">
-              <circle cx="240" cy="155" r="52" fill="none" stroke="rgba(96,165,250,0.5)" stroke-width="2" filter="url(#glow1)"/>
-              <circle cx="240" cy="155" r="52" fill="rgba(96,165,250,0.03)"/>
-              <!-- crosshairs -->
-              <line x1="240" y1="103" x2="240" y2="207" stroke="rgba(96,165,250,0.2)" stroke-width="1" stroke-dasharray="4 4"/>
-              <line x1="188" y1="155" x2="292" y2="155" stroke="rgba(96,165,250,0.2)" stroke-width="1" stroke-dasharray="4 4"/>
-              <!-- handle -->
-              <line x1="280" y1="193" x2="318" y2="232" stroke="rgba(96,165,250,0.6)" stroke-width="5" stroke-linecap="round"/>
-              <line x1="281" y1="194" x2="316" y2="229" stroke="rgba(37,99,235,0.4)" stroke-width="8" stroke-linecap="round"/>
-            </g>
-            <!-- Pulse rings -->
-            <circle cx="240" cy="155" r="20" fill="none" stroke="rgba(96,165,250,0.3)" stroke-width="1">
-              <animate attributeName="r" values="52;90" dur="2s" repeatCount="indefinite"/>
-              <animate attributeName="opacity" values="0.5;0" dur="2s" repeatCount="indefinite"/>
-            </circle>
-            <circle cx="240" cy="155" r="20" fill="none" stroke="rgba(96,165,250,0.2)" stroke-width="1">
-              <animate attributeName="r" values="52;90" dur="2s" begin="0.7s" repeatCount="indefinite"/>
-              <animate attributeName="opacity" values="0.4;0" dur="2s" begin="0.7s" repeatCount="indefinite"/>
-            </circle>
-            <!-- Data tags floating -->
-            <g class="svg-float-rev" style="transform-origin:120px 290px">
-              <rect x="90" y="278" width="100" height="26" rx="6" fill="rgba(0,0,0,0.7)" stroke="rgba(96,165,250,0.25)" stroke-width="1"/>
-              <text x="140" y="295" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-size="9" fill="rgba(96,165,250,0.6)" letter-spacing="1">NICHE SCAN</text>
-            </g>
-            <g class="svg-float" style="transform-origin:330px 50px">
-              <rect x="300" y="40" width="110" height="26" rx="6" fill="rgba(0,0,0,0.7)" stroke="rgba(96,165,250,0.25)" stroke-width="1"/>
-              <text x="355" y="57" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-size="9" fill="rgba(96,165,250,0.6)" letter-spacing="1">CTR ANALYSIS</text>
-            </g>
-          </svg>
+          <svg viewBox="0 0 480 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Sketch board analysing a thumbnail with circled face and title, and a competitor feed"><defs><filter id="rough1" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="3"><animate attributeName="seed" values="3;7;12;5" dur="1.2s" calcMode="discrete" repeatCount="indefinite"/></feTurbulence><feDisplacementMap in="SourceGraphic" scale="2.6"/></filter></defs><g filter="url(#rough1)"><text class="hw w" x="62" y="52" font-size="22" style="--d:0.35s;--t:1.07s">what's working?</text>
+<path class="sk b" d="M62.0 59.9 C70.2 60.3 94.7 62.1 111.0 62.1 C127.3 62.1 144.8 60.0 160.0 59.8 C175.2 59.7 195.0 60.8 202.0 61.0" pathLength="1" stroke-width="2.4" style="--d:1.57s;--t:0.82s"/>
+<path class="sk w" d="M60.7 92.0 C66.4 92.3 83.7 93.2 95.3 93.4 C106.8 93.6 118.3 92.9 129.8 93.2 C141.4 93.5 152.9 94.8 164.4 95.1 C175.9 95.4 187.5 95.2 199.0 94.9 C210.5 94.7 222.0 94.1 233.6 93.7 C245.1 93.3 256.6 93.0 268.1 92.6 C279.7 92.1 297.0 91.2 302.7 91.0 M302.3 90.4 C302.4 95.9 302.7 112.4 302.7 123.4 C302.8 134.4 302.5 145.4 302.4 156.4 C302.3 167.4 302.4 178.4 302.3 189.5 C302.3 200.5 302.1 217.0 302.0 222.5 M302.2 222.4 C296.4 222.3 279.2 221.9 267.7 221.9 C256.2 221.8 244.7 222.3 233.2 222.3 C221.7 222.3 210.2 222.0 198.7 222.0 C187.2 221.9 175.7 222.1 164.2 222.0 C152.7 221.9 141.2 221.5 129.7 221.3 C118.2 221.2 106.7 221.3 95.2 221.2 C83.7 221.1 66.5 220.8 60.7 220.7 M62.9 221.8 C63.5 216.2 65.7 199.4 66.4 188.1 C67.1 176.9 67.5 165.7 67.3 154.5 C67.0 143.3 65.9 132.1 65.0 120.9 C64.1 109.6 62.4 92.8 61.9 87.2 " pathLength="1" stroke-width="2.4" style="--d:2.50s;--t:1.50s"/>
+<path class="sk w" d="M120.4 167.6 C119.2 167.5 115.5 167.5 113.2 166.8 C110.9 166.2 108.3 165.4 106.4 163.8 C104.4 162.1 103.0 159.5 101.7 157.0 C100.5 154.5 99.2 151.7 98.9 148.9 C98.6 146.1 99.2 143.0 99.8 140.2 C100.4 137.4 101.1 134.3 102.6 132.0 C104.0 129.7 106.2 127.5 108.3 126.2 C110.5 124.9 113.2 124.5 115.6 124.2 C118.0 123.9 120.5 123.9 122.9 124.5 C125.3 125.1 128.0 126.0 130.0 127.7 C132.0 129.4 133.5 132.1 134.7 134.7 C136.0 137.2 137.4 140.1 137.7 143.0 C138.0 145.9 137.5 149.2 136.7 151.9 C135.9 154.7 134.6 157.4 133.1 159.7 C131.7 162.1 129.9 164.5 127.8 166.1 C125.7 167.7 123.0 168.9 120.6 169.2 C118.1 169.6 114.2 168.3 112.9 168.1" pathLength="1" stroke-width="2" style="--d:4.10s;--t:0.81s"/>
+<path class="sk w" d="M82.8 187.8 C84.6 185.6 87.9 177.3 93.8 174.6 C99.7 171.8 109.9 171.3 118.0 171.3 C126.1 171.3 136.3 171.8 142.2 174.6 C148.1 177.3 151.4 185.6 153.2 187.8" pathLength="1" stroke-width="2" style="--d:5.01s;--t:0.49s"/>
+<path class="sk w" d="M109.2 143.8 C109.6 143.6 111.0 142.9 111.4 142.7" pathLength="1" stroke-width="3" style="--d:5.60s;--t:0.35s"/>
+<path class="sk w" d="M126.8 143.8 C127.2 143.6 128.6 142.9 129.0 142.7" pathLength="1" stroke-width="3" style="--d:5.60s;--t:0.35s"/>
+<path class="sk w" d="M111.4 154.8 C112.5 155.4 115.6 158.2 118.0 158.1 C120.4 158.0 124.4 155.0 125.7 154.4" pathLength="1" stroke-width="1.6" style="--d:5.60s;--t:0.35s"/>
+<path class="sk g" d="M98.0 124.0 C100.3 122.3 106.0 114.7 112.0 114.0 C118.0 113.3 130.3 119.0 134.0 120.0" pathLength="1" stroke-width="2" style="--d:6.05s;--t:0.35s"/>
+<path class="sk g" d="M178.0 118.0 C183.0 117.0 197.7 111.7 208.0 112.0 C218.3 112.3 230.0 119.7 240.0 120.0 C250.0 120.3 260.0 114.3 268.0 114.0 C276.0 113.7 284.7 117.3 288.0 118.0" pathLength="1" stroke-width="6" style="--d:6.50s;--t:0.66s"/>
+<path class="sk g" d="M178.0 146.0 C183.7 145.2 200.7 140.7 212.0 141.0 C223.3 141.3 236.0 147.7 246.0 148.0 C256.0 148.3 267.7 143.8 272.0 143.0" pathLength="1" stroke-width="6" style="--d:7.27s;--t:0.56s"/>
+<path class="sk g" d="M178.0 172.0 C182.7 171.5 197.0 168.7 206.0 169.0 C215.0 169.3 227.7 173.2 232.0 174.0" pathLength="1" stroke-width="4" style="--d:7.93s;--t:0.35s"/>
+<path class="sk c" d="M154.2 173.3 C152.8 175.9 149.7 185.0 146.1 189.2 C142.4 193.3 137.2 196.6 132.3 198.3 C127.4 200.0 121.8 199.9 116.6 199.3 C111.5 198.8 106.0 197.5 101.4 194.9 C96.8 192.2 92.3 187.9 88.8 183.3 C85.3 178.6 82.6 172.9 80.6 167.1 C78.5 161.3 76.4 154.6 76.5 148.5 C76.6 142.4 79.0 136.0 81.2 130.4 C83.4 124.7 86.1 118.9 89.8 114.7 C93.5 110.5 98.6 107.1 103.5 105.2 C108.5 103.3 114.1 103.0 119.4 103.3 C124.7 103.6 130.7 104.3 135.4 107.0 C140.2 109.8 144.3 115.1 148.0 119.9 C151.6 124.7 155.6 130.1 157.5 136.1 C159.3 142.0 159.4 149.1 159.2 155.5 C159.0 161.9 158.3 168.7 156.2 174.4 C154.0 180.1 148.0 187.1 146.4 189.6" pathLength="1" stroke-width="2" style="--d:8.38s;--t:1.50s"/>
+<path class="sk c" d="M112.0 204.0 C110.7 209.3 107.3 228.0 104.0 236.0 C100.7 244.0 94.0 249.3 92.0 252.0" pathLength="1" stroke-width="2.2" style="--d:9.98s;--t:0.35s"/>
+<path class="sk c" d="M92.0 252.0 L94.6 242.2 M92.0 252.0 L101.6 247.1 " pathLength="1" stroke-width="2.2" style="--d:10.28s;--t:.3s"/>
+<text class="hw c" x="24" y="272" font-size="19" style="--d:10.68s;--t:0.96s">face = trust?</text>
+<path class="sk w" d="M186.0 164.5 C184.1 162.4 176.4 156.2 174.5 151.8 C172.7 147.5 173.7 142.9 174.7 138.6 C175.8 134.2 176.5 129.2 180.9 125.6 C185.3 122.1 193.8 119.4 201.2 117.2 C208.7 115.0 217.0 113.2 225.7 112.2 C234.4 111.3 244.4 110.7 253.4 111.6 C262.3 112.5 271.5 115.1 279.2 117.7 C287.0 120.4 294.5 123.8 299.9 127.5 C305.2 131.2 309.1 135.8 311.2 140.2 C313.4 144.5 313.9 149.2 313.0 153.6 C312.0 158.0 309.9 162.8 305.4 166.5 C300.9 170.1 293.3 173.1 285.9 175.6 C278.5 178.0 269.9 180.4 261.0 181.2 C252.1 182.0 241.8 181.5 232.6 180.5 C223.4 179.5 213.9 177.6 205.7 175.1 C197.4 172.6 188.5 169.4 182.9 165.6 C177.2 161.7 173.5 154.3 171.7 152.1" pathLength="1" stroke-width="2" style="--d:11.79s;--t:1.50s"/>
+<path class="sk w" d="M243.0 181.0 C241.2 188.2 235.2 212.5 232.0 224.0 C228.8 235.5 225.3 245.7 224.0 250.0" pathLength="1" stroke-width="2.2" style="--d:13.39s;--t:0.42s"/>
+<path class="sk w" d="M224.0 250.0 L222.8 239.1 M224.0 250.0 L231.5 243.8 " pathLength="1" stroke-width="2.2" style="--d:13.75s;--t:.3s"/>
+<text class="hw w" x="180" y="272" font-size="19" style="--d:14.16s;--t:1.07s">text too small?</text>
+<text class="hw g" x="334" y="52" font-size="17" style="--d:15.39s;--t:1.07s">competitor feed</text>
+<path class="sk g" d="M334.0 59.5 C339.8 59.8 357.3 61.4 369.0 61.4 C380.7 61.4 393.2 59.5 404.0 59.5 C414.8 59.4 429.0 60.7 434.0 61.0" pathLength="1" stroke-width="1.8" style="--d:16.61s;--t:0.59s"/>
+<path class="sk g" d="M347.6 70.9 C352.8 71.2 368.7 71.9 379.2 72.5 C389.8 73.0 400.3 74.0 410.9 74.2 C421.4 74.3 437.3 73.4 442.6 73.3 M441.5 70.8 C441.5 74.5 441.7 85.6 441.5 93.0 C441.3 100.4 440.5 111.5 440.3 115.2 M440.6 113.8 C435.4 113.5 420.0 112.7 409.6 112.4 C399.3 112.2 389.0 112.4 378.6 112.4 C368.3 112.4 352.8 112.5 347.6 112.5 M348.7 113.6 C348.6 109.7 347.9 97.9 348.5 90.0 C349.0 82.2 351.2 70.5 351.7 66.6 " pathLength="1" stroke-width="1.7" style="--d:17.30s;--t:1.50s"/>
+<path class="sk g" d="M366.2 100.9 C365.7 100.7 364.4 100.3 363.6 99.8 C362.9 99.3 362.1 98.7 361.5 97.9 C361.0 97.1 360.5 96.1 360.2 95.2 C360.0 94.2 359.8 93.0 359.9 92.0 C360.1 91.0 360.5 90.0 360.9 89.1 C361.4 88.2 361.9 87.3 362.6 86.6 C363.3 85.9 364.2 85.3 365.0 85.0 C365.9 84.6 367.0 84.5 367.9 84.7 C368.8 84.8 369.7 85.2 370.6 85.8 C371.4 86.3 372.2 87.0 372.7 87.9 C373.3 88.7 373.8 89.7 374.0 90.8 C374.2 91.8 374.2 92.9 374.1 94.0 C374.0 95.0 373.7 96.1 373.2 97.0 C372.8 97.9 372.1 98.7 371.4 99.4 C370.7 100.1 369.9 100.9 369.0 101.2 C368.1 101.6 367.1 101.5 366.1 101.4 C365.2 101.3 363.8 100.7 363.3 100.5" pathLength="1" stroke-width="1.5" style="--d:18.90s;--t:0.35s"/>
+<path class="sk g" d="M382.0 87.0 C386.0 86.8 398.0 85.8 406.0 85.8 C414.0 85.8 426.0 86.8 430.0 87.0" pathLength="1" stroke-width="2.4" style="--d:18.90s;--t:0.35s"/>
+<path class="sk g" d="M382.0 100.0 C384.8 100.0 393.0 100.3 398.5 100.3 C404.0 100.3 412.2 100.0 415.0 100.0" pathLength="1" stroke-width="2.4" style="--d:18.90s;--t:0.35s"/>
+<path class="sk g" d="M346.2 133.6 C351.6 133.5 367.7 132.8 378.5 132.6 C389.3 132.4 400.0 132.5 410.8 132.4 C421.5 132.3 437.7 132.1 443.0 132.1 M438.5 128.7 C438.4 132.7 437.7 144.9 438.1 153.0 C438.5 161.2 440.4 173.2 440.9 177.3 M443.0 175.3 C437.8 175.3 421.9 175.6 411.3 175.6 C400.7 175.6 390.1 175.5 379.5 175.3 C368.9 175.2 353.1 174.7 347.8 174.6 M350.8 175.0 C351.0 171.3 352.4 160.1 352.2 152.7 C351.9 145.3 349.8 134.2 349.3 130.5 " pathLength="1" stroke-width="1.7" style="--d:19.35s;--t:1.50s"/>
+<path class="sk g" d="M366.0 145.1 C366.5 145.1 367.9 144.9 368.8 145.1 C369.7 145.4 370.5 145.9 371.3 146.5 C372.0 147.2 372.6 148.0 373.1 148.9 C373.6 149.8 374.0 150.8 374.1 151.9 C374.2 152.9 374.0 154.0 373.7 155.0 C373.5 156.0 373.3 157.2 372.8 158.0 C372.2 158.8 371.3 159.4 370.5 159.9 C369.8 160.4 368.9 161.0 368.0 161.2 C367.1 161.3 366.1 161.2 365.2 161.0 C364.3 160.7 363.5 160.1 362.7 159.5 C362.0 158.9 361.2 158.1 360.7 157.2 C360.2 156.3 359.9 155.2 359.8 154.2 C359.7 153.1 359.7 151.9 359.9 150.9 C360.1 149.9 360.5 148.7 361.0 147.9 C361.6 147.0 362.5 146.4 363.3 145.9 C364.2 145.4 365.1 145.0 366.0 144.9 C366.9 144.7 368.4 144.9 368.8 144.9" pathLength="1" stroke-width="1.5" style="--d:20.95s;--t:0.35s"/>
+<path class="sk g" d="M382.0 147.0 C386.0 147.0 398.0 147.1 406.0 147.1 C414.0 147.1 426.0 147.0 430.0 147.0" pathLength="1" stroke-width="2.4" style="--d:20.95s;--t:0.35s"/>
+<path class="sk g" d="M382.0 160.0 C384.8 160.0 393.0 159.9 398.5 159.9 C404.0 159.9 412.2 160.0 415.0 160.0" pathLength="1" stroke-width="2.4" style="--d:20.95s;--t:0.35s"/>
+<path class="sk b" d="M361.8 129.2 C365.4 128.2 375.6 124.2 383.1 123.2 C390.6 122.2 399.1 122.7 406.7 123.3 C414.4 123.9 422.6 124.8 428.9 126.8 C435.3 128.8 440.5 132.1 444.8 135.4 C449.0 138.6 452.7 142.3 454.5 146.1 C456.4 150.0 457.1 154.4 455.8 158.5 C454.5 162.5 451.3 166.9 447.0 170.5 C442.6 174.0 436.4 177.5 429.7 179.9 C423.1 182.3 414.7 183.8 406.9 184.8 C399.1 185.7 390.5 186.4 382.9 185.9 C375.2 185.3 367.3 183.6 360.8 181.4 C354.4 179.3 348.7 176.3 344.2 173.0 C339.7 169.8 335.7 166.0 333.8 162.1 C331.9 158.1 331.3 153.5 332.6 149.4 C334.0 145.2 337.4 140.8 342.0 137.2 C346.5 133.6 352.9 130.3 359.7 127.7 C366.4 125.1 378.7 122.6 382.4 121.6" pathLength="1" stroke-width="2.2" style="--d:21.40s;--t:1.50s"/>
+<path class="sk b" d="M396.0 187.0 C396.7 191.5 400.3 206.5 400.0 214.0 C399.7 221.5 395.0 229.0 394.0 232.0" pathLength="1" stroke-width="2.2" style="--d:23.00s;--t:0.35s"/>
+<path class="sk b" d="M394.0 232.0 L391.5 222.1 M394.0 232.0 L400.8 224.9 " pathLength="1" stroke-width="2.2" style="--d:23.30s;--t:.3s"/>
+<text class="hw b" x="360" y="262" font-size="30" style="--d:23.70s;--t:0.47s">gap?</text>
+<path class="sk b" d="M419.1 238.6 C418.6 238.1 416.9 236.6 415.8 235.5 C414.7 234.5 413.0 233.0 412.5 232.5" pathLength="1" stroke-width="2" style="--d:24.32s;--t:0.35s"/>
+<path class="sk b" d="M422.8 236.3 C422.6 235.6 422.1 233.4 421.7 231.9 C421.3 230.5 420.5 228.4 420.3 227.7" pathLength="1" stroke-width="2" style="--d:24.32s;--t:0.35s"/>
+<path class="sk b" d="M427.1 236.3 C427.4 235.6 428.0 233.4 428.4 232.0 C428.8 230.5 429.4 228.3 429.5 227.6" pathLength="1" stroke-width="2" style="--d:24.32s;--t:0.35s"/></g></svg>
         </div>
       </div>
       <div class="step-node">
         <div class="step-node-inner"><span class="step-num">01</span></div>
       </div>
       <div class="step-text step-reveal-right">
-        <span class="step-label">Step 01</span>
         <h3 class="step-title">Discovery</h3>
         <p class="step-desc">I study your channel, your niche, and your top competitors. Understanding what's already working in the feed, and where the gaps are, defines every creative decision that follows.</p>
         <div class="step-tags">
@@ -1439,74 +1560,63 @@ footer .footer-copy {
     <div class="process-step step-even" data-step="1">
       <div class="step-visual step-reveal-right">
         <div class="step-visual-frame">
-          <svg viewBox="0 0 480 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
-            <defs>
-              <radialGradient id="hookGlow" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stop-color="rgba(96,165,250,0.3)"/>
-                <stop offset="100%" stop-color="transparent"/>
-              </radialGradient>
-              <filter id="glow2"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-            </defs>
-            <!-- Elements scattered -->
-            <!-- Element 1 - dimmed face -->
-            <rect x="40" y="60" width="90" height="70" rx="8" fill="rgba(96,165,250,0.03)" stroke="rgba(96,165,250,0.1)" stroke-width="1"/>
-            <circle cx="85" cy="85" r="18" fill="rgba(96,165,250,0.06)" stroke="rgba(96,165,250,0.12)" stroke-width="1"/>
-            <rect x="62" y="108" width="46" height="12" rx="3" fill="rgba(96,165,250,0.06)"/>
-            <!-- Element 2 - dimmed text block -->
-            <rect x="160" y="40" width="110" height="70" rx="8" fill="rgba(96,165,250,0.03)" stroke="rgba(96,165,250,0.1)" stroke-width="1"/>
-            <rect x="172" y="56" width="86" height="8" rx="3" fill="rgba(96,165,250,0.1)"/>
-            <rect x="172" y="70" width="64" height="8" rx="3" fill="rgba(96,165,250,0.07)"/>
-            <rect x="172" y="84" width="76" height="8" rx="3" fill="rgba(96,165,250,0.06)"/>
-            <rect x="172" y="98" width="50" height="8" rx="3" fill="rgba(96,165,250,0.05)"/>
-            <!-- Element 3 - TARGET (bright) -->
-            <g filter="url(#glow2)">
-              <rect x="315" y="110" width="130" height="90" rx="10" fill="rgba(96,165,250,0.06)" stroke="rgba(96,165,250,0.5)" stroke-width="1.5"/>
-              <!-- Bold headline in frame -->
-              <rect x="326" y="122" width="108" height="14" rx="4" fill="rgba(96,165,250,0.35)"/>
-              <rect x="326" y="142" width="80" height="10" rx="3" fill="rgba(96,165,250,0.2)"/>
-              <rect x="326" y="158" width="95" height="10" rx="3" fill="rgba(96,165,250,0.15)"/>
-              <rect x="326" y="176" width="60" height="8" rx="3" fill="rgba(96,165,250,0.1)"/>
-            </g>
-            <!-- Element 4 - dimmed background -->
-            <rect x="40" y="230" width="140" height="80" rx="8" fill="rgba(96,165,250,0.02)" stroke="rgba(96,165,250,0.07)" stroke-width="1"/>
-            <!-- Target reticle -->
-            <g class="svg-float" style="transform-origin:380px 155px">
-              <circle cx="380" cy="155" r="70" fill="none" stroke="rgba(96,165,250,0.12)" stroke-width="1"/>
-              <circle cx="380" cy="155" r="50" fill="none" stroke="rgba(96,165,250,0.2)" stroke-width="1.5"/>
-              <circle cx="380" cy="155" r="30" fill="none" stroke="rgba(96,165,250,0.35)" stroke-width="1.5"/>
-              <circle cx="380" cy="155" r="10" fill="rgba(96,165,250,0.25)" stroke="rgba(96,165,250,0.8)" stroke-width="1.5" filter="url(#glow2)"/>
-              <!-- Crosshairs -->
-              <line x1="380" y1="80"  x2="380" y2="120" stroke="rgba(96,165,250,0.5)" stroke-width="1.5"/>
-              <line x1="380" y1="190" x2="380" y2="230" stroke="rgba(96,165,250,0.5)" stroke-width="1.5"/>
-              <line x1="305" y1="155" x2="345" y2="155" stroke="rgba(96,165,250,0.5)" stroke-width="1.5"/>
-              <line x1="415" y1="155" x2="455" y2="155" stroke="rgba(96,165,250,0.5)" stroke-width="1.5"/>
-              <!-- Rotating outer ring -->
-              <circle cx="380" cy="155" r="68" fill="none" stroke="rgba(96,165,250,0.15)" stroke-width="1" stroke-dasharray="8 6" class="svg-spin"/>
-            </g>
-            <!-- Lock lines from reticle to element -->
-            <line x1="315" y1="130" x2="430" y2="130" stroke="rgba(96,165,250,0.15)" stroke-width="1" stroke-dasharray="4 4" class="svg-path-draw"/>
-            <line x1="315" y1="200" x2="430" y2="200" stroke="rgba(96,165,250,0.15)" stroke-width="1" stroke-dasharray="4 4" class="svg-path-draw"/>
-            <!-- Lock badge -->
-            <g class="svg-float-rev" style="transform-origin:200px 155px">
-              <rect x="140" y="142" width="90" height="26" rx="6" fill="rgba(0,0,0,0.8)" stroke="rgba(96,165,250,0.35)" stroke-width="1"/>
-              <circle cx="158" cy="155" r="5" fill="rgba(96,165,250,0.6)">
-                <animate attributeName="opacity" values="1;0.3;1" dur="1.4s" repeatCount="indefinite"/>
-              </circle>
-              <text x="196" y="159" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-size="9" fill="rgba(96,165,250,0.7)" letter-spacing="1">HOOK LOCKED</text>
-            </g>
-            <!-- Pulse from target -->
-            <circle cx="380" cy="155" r="10" fill="none" stroke="rgba(96,165,250,0.4)" stroke-width="1">
-              <animate attributeName="r" values="30;80" dur="1.8s" repeatCount="indefinite"/>
-              <animate attributeName="opacity" values="0.6;0" dur="1.8s" repeatCount="indefinite"/>
-            </circle>
-          </svg>
+          <svg viewBox="0 0 480 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Many rough hook ideas crossed out until one circled hook remains"><defs><filter id="rough2" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="3"><animate attributeName="seed" values="3;7;12;5" dur="1.2s" calcMode="discrete" repeatCount="indefinite"/></feTurbulence><feDisplacementMap in="SourceGraphic" scale="2.6"/></filter></defs><g filter="url(#rough2)"><text class="hw g" x="24" y="46" font-size="21" style="--d:0.35s;--t:0.85s">50 ideas...</text>
+<path class="sk g" d="M24.0 53.1 C29.0 53.5 44.1 55.0 54.1 55.1 C64.1 55.2 74.9 53.8 84.2 53.7 C93.5 53.7 105.7 54.8 110.0 55.0" pathLength="1" stroke-width="1.8" style="--d:1.35s;--t:0.51s"/>
+<path class="sk g" d="M22.5 78.7 C28.3 78.2 46.0 76.4 57.8 76.2 C69.6 75.9 87.3 77.1 93.2 77.3 M90.2 77.2 C90.3 80.9 90.4 91.7 90.5 99.0 C90.7 106.2 90.9 117.1 91.0 120.7 M92.9 118.4 C86.8 118.1 68.5 116.3 56.4 116.6 C44.2 116.8 26.0 119.4 19.9 119.9 M22.8 120.5 C22.5 116.8 21.0 106.0 20.9 98.7 C20.9 91.5 22.3 80.6 22.5 77.0 " pathLength="1" stroke-width="1.7" style="--d:1.96s;--t:1.28s"/>
+<path class="sk g" d="M34.0 100.6 C34.1 100.0 34.0 98.2 34.3 97.1 C34.5 96.0 34.9 94.8 35.5 93.9 C36.0 92.9 36.8 92.1 37.7 91.4 C38.5 90.7 39.6 90.2 40.6 89.9 C41.6 89.7 42.7 89.8 43.7 90.1 C44.8 90.3 45.8 90.8 46.7 91.4 C47.6 92.1 48.4 93.0 49.0 94.0 C49.5 95.0 49.8 96.2 50.0 97.4 C50.2 98.6 50.3 99.8 50.1 101.0 C50.0 102.2 49.5 103.5 48.9 104.4 C48.3 105.4 47.3 106.0 46.4 106.7 C45.5 107.3 44.5 108.1 43.5 108.4 C42.5 108.6 41.2 108.5 40.2 108.2 C39.2 107.9 38.2 107.3 37.3 106.6 C36.4 105.9 35.6 105.0 35.0 104.1 C34.4 103.1 33.9 101.9 33.7 100.7 C33.5 99.5 33.6 97.5 33.6 96.9" pathLength="1" stroke-width="1.5" style="--d:3.34s;--t:0.35s"/>
+<path class="sk g" d="M56.0 93.0 C58.2 93.0 64.7 92.9 69.0 92.9 C73.3 92.9 79.8 93.0 82.0 93.0" pathLength="1" stroke-width="2.4" style="--d:3.34s;--t:0.35s"/>
+<path class="sk g" d="M56.0 105.0 C57.7 105.1 62.7 105.9 66.0 105.9 C69.3 105.9 74.3 105.1 76.0 105.0" pathLength="1" stroke-width="2.4" style="--d:3.34s;--t:0.35s"/>
+<path class="sk g" d="M106.8 67.9 C112.5 68.3 129.8 70.6 141.3 70.5 C152.8 70.3 170.0 67.6 175.7 67.0 M172.5 65.4 C172.5 69.5 172.5 81.6 172.5 89.7 C172.6 97.7 172.7 109.8 172.7 113.9 M175.3 111.0 C169.4 111.4 151.9 113.0 140.2 113.0 C128.5 112.9 111.0 111.1 105.2 110.7 M106.4 112.3 C106.4 108.4 106.0 96.6 106.2 88.7 C106.3 80.8 107.3 69.1 107.5 65.1 " pathLength="1" stroke-width="1.7" style="--d:3.79s;--t:1.28s"/>
+<path class="sk g" d="M114.0 98.0 C117.3 96.7 128.0 93.0 134.0 90.0 C140.0 87.0 147.3 81.7 150.0 80.0" pathLength="1" stroke-width="2" style="--d:5.18s;--t:0.35s"/>
+<path class="sk g" d="M150.0 80.0 C149.5 80.2 148.1 80.8 147.1 81.0 C146.1 81.2 144.5 81.0 144.0 81.0" pathLength="1" stroke-width="2" style="--d:5.18s;--t:0.35s"/>
+<path class="sk g" d="M150.0 80.0 C150.1 80.6 150.3 82.3 150.3 83.5 C150.3 84.7 150.1 86.4 150.0 87.0" pathLength="1" stroke-width="2" style="--d:5.18s;--t:0.35s"/>
+<path class="sk g" d="M184.6 83.0 C190.5 83.1 208.0 83.8 219.7 83.4 C231.3 83.0 248.8 81.3 254.6 80.8 M252.8 80.2 C253.0 84.1 253.6 95.7 253.8 103.4 C254.0 111.1 254.0 122.7 254.1 126.6 M256.0 124.7 C250.2 124.4 233.1 123.0 221.6 122.9 C210.1 122.9 192.9 124.3 187.2 124.6 M189.1 125.5 C189.3 121.9 190.2 110.8 190.0 103.5 C189.7 96.1 187.8 85.2 187.4 81.5 " pathLength="1" stroke-width="1.7" style="--d:5.63s;--t:1.27s"/>
+<text class="hw g" x="208" y="112" font-size="26" style="--d:7.00s;--t:0.30s">$</text>
+<path class="sk g" d="M27.3 153.2 C33.1 153.4 50.7 155.1 62.5 154.9 C74.2 154.7 91.7 152.5 97.6 152.1 M97.5 150.9 C97.4 154.6 96.9 165.9 96.7 173.4 C96.4 180.9 96.2 192.2 96.1 195.9 M98.3 193.0 C92.6 193.1 75.5 193.3 64.1 193.5 C52.7 193.6 35.6 193.9 29.9 194.0 M30.2 196.9 C30.0 193.0 29.0 181.2 28.8 173.4 C28.6 165.5 29.0 153.7 29.0 149.8 " pathLength="1" stroke-width="1.7" style="--d:7.45s;--t:1.27s"/>
+<text class="hw g" x="52" y="183" font-size="26" style="--d:8.83s;--t:0.30s">?</text>
+<path class="sk g" d="M108.0 145.7 C114.0 146.0 131.8 146.9 143.7 147.1 C155.6 147.4 173.5 147.3 179.5 147.3 M179.0 146.7 C178.9 150.2 178.4 160.5 178.2 167.5 C178.0 174.4 178.0 184.8 177.9 188.2 M179.0 187.4 C173.1 187.7 155.6 189.3 143.9 189.4 C132.2 189.6 114.6 188.6 108.8 188.4 M111.0 188.7 C110.8 185.0 109.7 173.8 109.7 166.4 C109.6 158.9 110.6 147.7 110.8 144.0 " pathLength="1" stroke-width="1.7" style="--d:9.28s;--t:1.28s"/>
+<path class="sk g" d="M122.2 165.3 C122.4 164.8 122.8 163.0 123.3 162.1 C123.9 161.1 124.7 160.2 125.5 159.5 C126.3 158.9 127.4 158.3 128.4 158.1 C129.4 157.9 130.5 158.0 131.5 158.2 C132.5 158.4 133.5 158.9 134.4 159.5 C135.3 160.1 136.2 160.9 136.8 161.8 C137.4 162.8 137.8 164.0 138.1 165.1 C138.3 166.3 138.2 167.6 138.1 168.7 C137.9 169.9 137.6 171.2 137.0 172.2 C136.4 173.2 135.5 174.0 134.7 174.7 C133.8 175.4 132.7 176.1 131.7 176.3 C130.7 176.5 129.5 176.3 128.5 176.1 C127.4 175.8 126.3 175.5 125.4 174.9 C124.5 174.3 123.6 173.4 123.0 172.4 C122.4 171.4 121.8 170.1 121.6 168.9 C121.4 167.8 121.6 166.4 121.8 165.2 C122.1 164.1 122.8 162.4 123.0 161.8" pathLength="1" stroke-width="1.5" style="--d:10.66s;--t:0.35s"/>
+<path class="sk g" d="M144.0 161.0 C146.2 161.0 152.7 161.3 157.0 161.3 C161.3 161.3 167.8 161.0 170.0 161.0" pathLength="1" stroke-width="2.4" style="--d:10.66s;--t:0.35s"/>
+<path class="sk g" d="M144.0 173.0 C145.7 173.2 150.7 174.1 154.0 174.1 C157.3 174.1 162.3 173.2 164.0 173.0" pathLength="1" stroke-width="2.4" style="--d:10.66s;--t:0.35s"/>
+<path class="sk g" d="M192.5 157.2 C198.3 157.2 215.7 157.3 227.3 157.3 C238.9 157.3 256.4 157.2 262.2 157.2 M260.8 156.6 C260.2 160.5 258.0 172.2 257.6 180.0 C257.2 187.8 258.4 199.6 258.6 203.5 M259.1 201.1 C253.5 200.9 236.7 199.8 225.5 199.8 C214.3 199.8 197.5 200.7 191.9 200.9 M193.8 203.0 C193.4 199.1 191.5 187.5 191.3 179.8 C191.1 172.0 192.6 160.4 192.8 156.5 " pathLength="1" stroke-width="1.7" style="--d:11.11s;--t:1.30s"/>
+<path class="sk g" d="M202.0 188.0 C205.3 186.7 216.0 183.0 222.0 180.0 C228.0 177.0 235.3 171.7 238.0 170.0" pathLength="1" stroke-width="2" style="--d:12.51s;--t:0.35s"/>
+<path class="sk g" d="M238.0 170.0 C237.5 170.1 236.0 170.4 235.0 170.6 C234.0 170.8 232.5 170.9 232.0 171.0" pathLength="1" stroke-width="2" style="--d:12.51s;--t:0.35s"/>
+<path class="sk g" d="M238.0 170.0 C238.0 170.6 237.9 172.3 237.9 173.5 C237.9 174.7 238.0 176.4 238.0 177.0" pathLength="1" stroke-width="2" style="--d:12.51s;--t:0.35s"/>
+<path class="sk g" d="M20.0 82.0 C24.3 83.6 37.5 87.9 45.9 91.5 C54.3 95.1 62.5 99.1 70.5 103.5 C78.6 107.9 90.1 115.6 94.0 118.0" pathLength="1" stroke-width="2" style="--d:12.96s;--t:0.49s"/>
+<path class="sk g" d="M92.0 80.0 C88.1 82.0 76.0 87.5 68.4 91.8 C60.8 96.2 53.5 101.1 46.4 106.3 C39.4 111.5 29.4 120.2 26.0 123.0" pathLength="1" stroke-width="2" style="--d:13.47s;--t:0.47s"/>
+<path class="sk g" d="M102.0 72.0 C106.4 73.5 119.8 77.2 128.1 81.0 C136.5 84.8 144.0 90.1 152.0 94.6 C160.0 99.1 172.0 105.8 176.0 108.0" pathLength="1" stroke-width="2" style="--d:14.03s;--t:0.49s"/>
+<path class="sk g" d="M174.0 70.0 C170.3 72.3 159.1 79.2 151.8 84.1 C144.6 88.9 137.6 94.3 130.3 99.1 C123.0 104.0 111.7 110.7 108.0 113.0" pathLength="1" stroke-width="2" style="--d:14.54s;--t:0.46s"/>
+<path class="sk g" d="M26.0 156.0 C30.1 158.0 42.5 163.9 50.7 167.8 C59.0 171.8 67.3 175.7 75.5 179.7 C83.7 183.7 95.9 189.9 100.0 192.0" pathLength="1" stroke-width="2" style="--d:15.10s;--t:0.48s"/>
+<path class="sk g" d="M98.0 154.0 C94.4 156.4 83.6 164.0 76.2 168.7 C68.8 173.3 60.8 177.1 53.5 181.8 C46.1 186.6 35.6 194.5 32.0 197.0" pathLength="1" stroke-width="2" style="--d:15.60s;--t:0.46s"/>
+<path class="sk g" d="M190.0 162.0 C194.0 164.2 205.9 171.0 214.0 175.3 C222.1 179.6 230.1 184.0 238.5 187.8 C246.8 191.6 259.7 196.3 264.0 198.0" pathLength="1" stroke-width="2" style="--d:16.17s;--t:0.48s"/>
+<path class="sk g" d="M262.0 160.0 C258.2 162.2 246.7 168.7 239.3 173.3 C231.9 178.0 224.8 183.1 217.6 188.0 C210.3 193.0 199.6 200.5 196.0 203.0" pathLength="1" stroke-width="2" style="--d:16.67s;--t:0.46s"/>
+<text class="hw g" x="30" y="222" font-size="17" transform="rotate(-4 30 222)" style="--d:17.24s;--t:0.74s">been done</text>
+<text class="hw g" x="158" y="226" font-size="17" transform="rotate(3 158 226)" style="--d:18.13s;--t:0.58s">boring</text>
+<path class="sk b" d="M174.9 195.0 C171.6 195.8 161.9 198.5 155.0 199.6 C148.2 200.6 140.7 201.9 133.9 201.4 C127.1 201.0 119.9 199.0 114.2 196.7 C108.4 194.3 103.2 191.1 99.4 187.5 C95.5 184.0 92.3 179.8 91.0 175.6 C89.8 171.4 90.3 166.5 92.0 162.3 C93.7 158.0 97.1 153.8 101.1 150.1 C105.2 146.4 110.4 142.7 116.3 140.2 C122.2 137.7 129.5 135.9 136.5 134.8 C143.5 133.7 151.4 133.0 158.5 133.6 C165.5 134.2 172.9 136.2 178.6 138.6 C184.3 141.1 188.8 144.8 192.7 148.4 C196.7 152.0 200.9 156.0 202.4 160.2 C203.9 164.5 203.2 169.5 201.6 173.9 C200.0 178.3 196.9 182.9 192.8 186.7 C188.7 190.5 183.0 194.2 176.8 196.8 C170.6 199.3 159.2 201.0 155.7 201.8" pathLength="1" stroke-width="2.6" style="--d:18.86s;--t:1.50s"/>
+<path class="sk b" d="M202.0 170.0 C209.0 172.3 230.7 182.7 244.0 184.0 C257.3 185.3 271.7 181.0 282.0 178.0 C292.3 175.0 302.0 168.0 306.0 166.0" pathLength="1" stroke-width="3.4" style="--d:20.46s;--t:0.64s"/>
+<path class="sk b" d="M306.0 166.0 L297.8 175.9 M306.0 166.0 L294.0 165.9 " pathLength="1" stroke-width="3.4" style="--d:21.01s;--t:.3s"/>
+<text class="hw b" x="196" y="262" font-size="21" style="--d:21.46s;--t:0.74s">this one.</text>
+<path class="sk b" d="M196.0 270.4 C200.4 270.6 213.7 271.4 222.6 271.1 C231.5 270.8 241.0 268.7 249.2 268.7 C257.4 268.7 268.2 270.6 272.0 271.0" pathLength="1" stroke-width="2" style="--d:22.35s;--t:0.45s"/>
+<text class="hw w" x="316" y="102" font-size="22" style="--d:22.90s;--t:0.69s">THE HOOK</text>
+<path class="sk b" d="M316.0 109.9 C321.6 110.1 338.4 111.2 349.6 111.0 C360.8 110.8 372.8 108.7 383.2 108.7 C393.6 108.7 407.2 110.6 412.0 111.0" pathLength="1" stroke-width="2.4" style="--d:23.74s;--t:0.57s"/>
+<path class="sk w" d="M310.3 120.4 C315.4 120.9 330.7 122.7 340.8 123.5 C351.0 124.4 361.2 125.1 371.4 125.5 C381.5 125.9 391.7 125.9 401.9 125.8 C412.1 125.6 422.3 125.4 432.4 124.7 C442.6 124.0 457.9 122.0 463.0 121.4 M461.1 121.3 C461.0 127.0 460.6 143.8 460.6 155.0 C460.5 166.3 460.5 177.5 460.8 188.8 C461.2 200.0 462.3 216.8 462.6 222.4 M462.7 219.5 C456.4 219.8 437.5 220.8 425.0 221.1 C412.4 221.4 399.8 221.5 387.2 221.4 C374.6 221.2 362.0 220.4 349.4 220.2 C336.8 220.0 317.9 220.2 311.6 220.2 M312.5 222.4 C313.0 216.6 314.9 199.2 315.5 187.6 C316.1 176.0 316.7 164.4 316.2 152.8 C315.6 141.2 313.1 123.8 312.4 118.0 " pathLength="1" stroke-width="2.6" style="--d:24.41s;--t:1.50s"/>
+<text class="hw w" x="324" y="184" font-size="34" style="--d:26.01s;--t:0.36s">$0</text>
+<path class="sk b" d="M366.0 172.0 C369.0 172.7 378.7 176.3 384.0 176.0 C389.3 175.7 395.7 171.0 398.0 170.0" pathLength="1" stroke-width="3.4" style="--d:26.52s;--t:0.35s"/>
+<path class="sk b" d="M390.0 162.0 C390.8 162.7 393.0 165.1 394.7 166.4 C396.3 167.8 399.1 169.4 400.0 170.0" pathLength="1" stroke-width="3.4" style="--d:26.52s;--t:0.35s"/>
+<path class="sk b" d="M390.0 180.0 C390.8 179.1 393.2 176.5 394.8 174.8 C396.5 173.2 399.1 170.8 400.0 170.0" pathLength="1" stroke-width="3.4" style="--d:26.52s;--t:0.35s"/>
+<text class="hw b" x="406" y="186" font-size="34" style="--d:26.97s;--t:0.42s">$1M</text>
+<path class="sk b" d="M322.0 200.5 C329.6 200.6 352.3 201.2 367.5 201.1 C382.7 201.0 398.9 199.9 413.0 199.9 C427.1 199.8 445.5 200.8 452.0 201.0" pathLength="1" stroke-width="2.4" style="--d:27.53s;--t:0.76s"/>
+<path class="sk b" d="M330.0 206.3 C336.4 206.8 355.7 209.1 368.5 208.9 C381.3 208.8 395.1 205.5 407.0 205.3 C418.9 205.2 434.5 207.6 440.0 208.0" pathLength="1" stroke-width="1.6" style="--d:28.39s;--t:0.65s"/>
+<path class="sk c" d="M436.0 108.8 C435.2 108.3 432.6 106.7 430.9 105.6 C429.2 104.6 426.6 103.1 425.7 102.6" pathLength="1" stroke-width="2.2" style="--d:29.14s;--t:0.35s"/>
+<path class="sk c" d="M440.5 104.2 C440.0 103.3 438.5 100.7 437.4 99.0 C436.4 97.3 434.7 94.8 434.1 94.0" pathLength="1" stroke-width="2.2" style="--d:29.14s;--t:0.35s"/>
+<path class="sk c" d="M446.7 102.1 C446.6 101.1 446.3 98.1 446.1 96.1 C445.9 94.1 445.6 91.1 445.5 90.1" pathLength="1" stroke-width="2.2" style="--d:29.14s;--t:0.35s"/>
+<path class="sk c" d="M453.1 103.0 C453.4 102.0 454.5 99.2 455.2 97.3 C455.9 95.5 457.1 92.7 457.4 91.8" pathLength="1" stroke-width="2.2" style="--d:29.14s;--t:0.35s"/></g></svg>
         </div>
       </div>
       <div class="step-node">
         <div class="step-node-inner"><span class="step-num">02</span></div>
       </div>
       <div class="step-text step-reveal-left">
-        <span class="step-label">Step 02</span>
         <h3 class="step-title">Hook Extraction</h3>
         <p class="step-desc">From your video content, I isolate the single most powerful visual hook: the emotion, the tension, or the curiosity gap that will make viewers click. One clear message. Zero noise.</p>
         <div class="step-tags">
@@ -1522,67 +1632,44 @@ footer .footer-copy {
     <div class="process-step step-odd" data-step="2">
       <div class="step-visual step-reveal-left">
         <div class="step-visual-frame">
-          <svg viewBox="0 0 480 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
-            <defs>
-              <filter id="glow3"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-            </defs>
-            <!-- Central idea node -->
-            <circle cx="240" cy="180" r="38" fill="rgba(96,165,250,0.08)" stroke="rgba(96,165,250,0.5)" stroke-width="1.5" filter="url(#glow3)" class="svg-float"/>
-            <circle cx="240" cy="180" r="38" fill="none" stroke="rgba(96,165,250,0.2)" stroke-width="1" stroke-dasharray="5 4" class="svg-spin-slow"/>
-            <text x="240" y="176" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-size="9" fill="rgba(96,165,250,0.8)" letter-spacing="1">CORE</text>
-            <text x="240" y="190" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-size="9" fill="rgba(96,165,250,0.8)" letter-spacing="1">IDEA</text>
-            <!-- Branch lines (animated draw) -->
-            <line x1="240" y1="142" x2="240" y2="68"  stroke="rgba(96,165,250,0.3)" stroke-width="1.5" class="svg-path-draw" stroke-dasharray="80" stroke-dashoffset="80"/>
-            <line x1="205" y1="156" x2="120" y2="96"  stroke="rgba(96,165,250,0.3)" stroke-width="1.5" class="svg-path-draw" stroke-dasharray="100" stroke-dashoffset="100"/>
-            <line x1="275" y1="156" x2="355" y2="96"  stroke="rgba(96,165,250,0.3)" stroke-width="1.5" class="svg-path-draw" stroke-dasharray="100" stroke-dashoffset="100"/>
-            <line x1="202" y1="180" x2="95"  y2="200" stroke="rgba(96,165,250,0.25)" stroke-width="1.5" class="svg-path-draw" stroke-dasharray="115" stroke-dashoffset="115"/>
-            <line x1="278" y1="180" x2="385" y2="200" stroke="rgba(96,165,250,0.25)" stroke-width="1.5" class="svg-path-draw" stroke-dasharray="115" stroke-dashoffset="115"/>
-            <line x1="215" y1="215" x2="155" y2="290" stroke="rgba(96,165,250,0.2)" stroke-width="1.5" class="svg-path-draw" stroke-dasharray="90"  stroke-dashoffset="90"/>
-            <line x1="265" y1="215" x2="330" y2="290" stroke="rgba(96,165,250,0.2)" stroke-width="1.5" class="svg-path-draw" stroke-dasharray="90"  stroke-dashoffset="90"/>
-            <!-- Concept nodes -->
-            <!-- Top -->
-            <g class="svg-float-rev" style="transform-origin:240px 55px">
-              <rect x="192" y="38" width="96" height="30" rx="8" fill="rgba(0,0,0,0.75)" stroke="rgba(96,165,250,0.4)" stroke-width="1"/>
-              <text x="240" y="55" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="rgba(96,165,250,0.75)" letter-spacing="0.8">Concept A</text>
-            </g>
-            <!-- Top-left -->
-            <g class="svg-float" style="transform-origin:120px 83px">
-              <rect x="72" y="68" width="96" height="30" rx="8" fill="rgba(0,0,0,0.75)" stroke="rgba(96,165,250,0.3)" stroke-width="1"/>
-              <text x="120" y="85" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="rgba(96,165,250,0.65)" letter-spacing="0.8">Concept B</text>
-            </g>
-            <!-- Top-right -->
-            <g class="svg-float-rev" style="transform-origin:355px 83px">
-              <rect x="307" y="68" width="96" height="30" rx="8" fill="rgba(0,0,0,0.75)" stroke="rgba(96,165,250,0.3)" stroke-width="1"/>
-              <text x="355" y="85" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="rgba(96,165,250,0.65)" letter-spacing="0.8">Concept C</text>
-            </g>
-            <!-- Left -->
-            <g class="svg-float-rev" style="transform-origin:62px 200px">
-              <rect x="20" y="185" width="84" height="30" rx="8" fill="rgba(0,0,0,0.75)" stroke="rgba(96,165,250,0.22)" stroke-width="1"/>
-              <text x="62" y="202" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="rgba(96,165,250,0.5)" letter-spacing="0.8">Angle D</text>
-            </g>
-            <!-- Right -->
-            <g class="svg-float" style="transform-origin:418px 200px">
-              <rect x="376" y="185" width="84" height="30" rx="8" fill="rgba(0,0,0,0.75)" stroke="rgba(96,165,250,0.22)" stroke-width="1"/>
-              <text x="418" y="202" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="rgba(96,165,250,0.5)" letter-spacing="0.8">Angle E</text>
-            </g>
-            <!-- Bottom-left -->
-            <g class="svg-float" style="transform-origin:155px 295px">
-              <rect x="110" y="280" width="90" height="28" rx="8" fill="rgba(0,0,0,0.75)" stroke="rgba(96,165,250,0.18)" stroke-width="1"/>
-              <text x="155" y="297" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="rgba(96,165,250,0.4)" letter-spacing="0.8">Draft F</text>
-            </g>
-            <!-- Bottom-right -->
-            <g class="svg-float-rev" style="transform-origin:330px 295px">
-              <rect x="285" y="280" width="90" height="28" rx="8" fill="rgba(0,0,0,0.75)" stroke="rgba(96,165,250,0.18)" stroke-width="1"/>
-              <text x="330" y="297" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="rgba(96,165,250,0.4)" letter-spacing="0.8">Draft G</text>
-            </g>
-          </svg>
+          <svg viewBox="0 0 480 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Mind map sketch branching out from a central concept into thumbnail ideas"><defs><filter id="rough3" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="3"><animate attributeName="seed" values="3;7;12;5" dur="1.2s" calcMode="discrete" repeatCount="indefinite"/></feTurbulence><feDisplacementMap in="SourceGraphic" scale="2.6"/></filter></defs><g filter="url(#rough3)"><path class="sk w" d="M227.5 212.4 C224.1 211.4 213.2 209.4 207.4 206.7 C201.7 204.1 196.8 200.3 192.8 196.6 C188.9 192.8 184.9 188.4 183.7 184.0 C182.4 179.6 183.4 174.6 185.3 170.2 C187.1 165.9 190.6 161.6 194.7 157.9 C198.8 154.3 204.0 150.6 210.0 148.2 C216.0 145.8 223.5 144.3 230.6 143.5 C237.7 142.8 245.3 142.8 252.5 143.6 C259.7 144.4 267.7 145.7 273.7 148.3 C279.7 150.8 284.5 155.0 288.6 158.9 C292.7 162.8 296.7 167.2 298.2 171.8 C299.6 176.3 299.3 181.7 297.3 186.1 C295.4 190.6 290.8 194.7 286.5 198.6 C282.3 202.5 277.9 206.9 271.9 209.6 C265.8 212.4 257.5 214.3 250.1 214.9 C242.6 215.5 234.7 214.1 227.2 213.1 C219.8 212.1 208.9 209.4 205.3 208.7" pathLength="1" stroke-width="2.6" style="--d:0.35s;--t:1.50s"/>
+<path class="sk g" d="M183.3 192.4 C182.1 189.8 176.5 182.0 176.4 176.9 C176.3 171.8 179.6 166.5 182.7 161.8 C185.8 157.1 189.6 152.4 194.9 148.6 C200.2 144.9 207.0 141.3 214.3 139.3 C221.7 137.4 230.7 136.6 238.8 136.9 C246.9 137.1 255.3 138.7 263.0 140.8 C270.7 142.8 278.9 145.4 284.9 149.1 C290.9 152.9 295.9 158.1 299.1 163.0 C302.3 168.0 304.1 173.8 304.0 179.1 C303.9 184.3 301.3 189.6 298.4 194.5 C295.5 199.3 291.9 204.5 286.5 208.2 C281.0 211.9 273.2 214.9 265.7 216.7 C258.2 218.5 249.4 219.3 241.2 219.1 C233.1 218.9 224.6 217.4 216.9 215.4 C209.2 213.4 200.9 210.7 195.0 206.9 C189.1 203.2 184.8 197.8 181.5 192.8 C178.1 187.8 176.0 179.6 174.9 176.9" pathLength="1" stroke-width="1.6" style="--d:1.95s;--t:1.50s"/>
+<text class="hw w" x="200" y="187" font-size="24" style="--d:3.55s;--t:0.64s">CONCEPT</text>
+<path class="sk b" d="M198.0 194.3 C202.7 194.6 216.7 196.2 226.0 195.9 C235.3 195.6 245.3 192.7 254.0 192.5 C262.7 192.4 274.0 194.6 278.0 195.0" pathLength="1" stroke-width="2" style="--d:4.33s;--t:0.47s"/>
+<path class="sk w" d="M204.0 156.0 C198.7 151.0 182.3 135.7 172.0 126.0 C161.7 116.3 150.0 104.7 142.0 98.0 C134.0 91.3 127.0 88.0 124.0 86.0" pathLength="1" stroke-width="2.2" style="--d:4.91s;--t:0.63s"/>
+<path class="sk w" d="M29.8 53.7 C35.1 54.1 51.0 55.4 61.6 55.7 C72.2 55.9 82.8 55.6 93.4 55.4 C104.0 55.1 119.9 54.3 125.2 54.1 M120.9 53.0 C120.9 58.2 120.7 73.6 120.8 83.9 C121.0 94.2 121.5 109.6 121.6 114.7 M124.1 111.5 C118.7 111.7 102.5 113.0 91.7 112.9 C81.0 112.8 70.2 111.5 59.4 110.9 C48.7 110.3 32.5 109.4 27.1 109.1 M30.8 112.8 C30.3 107.6 27.9 91.7 27.8 81.2 C27.7 70.6 29.8 54.8 30.2 49.5 " pathLength="1" stroke-width="2" style="--d:5.63s;--t:1.50s"/>
+<path class="sk g" d="M58.8 90.9 C58.2 90.7 56.3 90.3 55.3 89.6 C54.3 88.9 53.4 87.7 52.7 86.6 C51.9 85.5 51.2 84.2 50.9 82.9 C50.6 81.5 50.6 80.0 50.8 78.6 C51.0 77.2 51.4 75.8 51.9 74.5 C52.5 73.3 53.2 71.9 54.1 71.0 C55.1 70.1 56.3 69.5 57.5 69.1 C58.7 68.7 60.0 68.6 61.3 68.7 C62.5 68.9 63.7 69.5 64.8 70.3 C65.8 71.0 66.9 72.0 67.6 73.1 C68.4 74.2 68.9 75.7 69.2 77.1 C69.5 78.5 69.7 80.0 69.5 81.5 C69.4 82.9 69.1 84.5 68.5 85.8 C67.9 87.1 67.0 88.4 66.0 89.3 C65.0 90.1 63.7 90.6 62.5 90.9 C61.3 91.2 60.0 91.4 58.7 91.2 C57.5 91.1 55.6 90.4 55.0 90.2" pathLength="1" stroke-width="1.6" style="--d:7.23s;--t:0.41s"/>
+<path class="sk g" d="M42.4 100.9 C43.3 99.8 45.0 95.7 47.9 94.3 C50.8 92.9 56.0 92.7 60.0 92.7 C64.0 92.7 69.2 92.9 72.1 94.3 C75.0 95.7 76.7 99.8 77.6 100.9" pathLength="1" stroke-width="1.6" style="--d:7.74s;--t:0.35s"/>
+<path class="sk g" d="M55.6 78.9 C55.8 78.8 56.5 78.4 56.7 78.3" pathLength="1" stroke-width="2.6" style="--d:8.19s;--t:0.35s"/>
+<path class="sk g" d="M64.4 78.9 C64.6 78.8 65.3 78.4 65.5 78.3" pathLength="1" stroke-width="2.6" style="--d:8.19s;--t:0.35s"/>
+<path class="sk g" d="M56.7 84.4 C57.2 84.7 58.8 86.1 60.0 86.0 C61.2 86.0 63.2 84.5 63.9 84.2" pathLength="1" stroke-width="1.2000000000000002" style="--d:8.19s;--t:0.35s"/>
+<path class="sk g" d="M82.0 72.0 C84.2 72.1 90.7 72.6 95.0 72.6 C99.3 72.6 105.8 72.1 108.0 72.0" pathLength="1" stroke-width="3" style="--d:8.64s;--t:0.35s"/>
+<path class="sk g" d="M82.0 88.0 C83.7 87.9 88.7 87.5 92.0 87.5 C95.3 87.5 100.3 87.9 102.0 88.0" pathLength="1" stroke-width="3" style="--d:8.64s;--t:0.35s"/>
+<text class="hw g" x="36" y="130" font-size="16" style="--d:9.09s;--t:0.69s">big face</text>
+<path class="sk w" d="M272.0 152.0 C278.3 147.0 299.0 131.3 310.0 122.0 C321.0 112.7 331.3 102.3 338.0 96.0 C344.7 89.7 348.0 86.0 350.0 84.0" pathLength="1" stroke-width="2.2" style="--d:9.93s;--t:0.61s"/>
+<path class="sk w" d="M345.5 49.0 C351.4 48.7 369.1 47.5 380.9 47.4 C392.7 47.3 404.5 48.2 416.3 48.4 C428.1 48.6 445.7 48.5 451.6 48.5 M449.6 48.2 C449.7 52.8 450.0 66.7 450.4 76.0 C450.7 85.3 451.4 99.2 451.6 103.8 M454.3 103.4 C448.4 103.3 430.8 102.9 419.1 102.8 C407.4 102.8 395.6 102.7 383.9 103.1 C372.2 103.4 354.6 104.5 348.7 104.8 M350.2 107.4 C350.0 102.5 349.4 87.8 349.3 78.0 C349.1 68.2 349.2 53.5 349.2 48.6 " pathLength="1" stroke-width="2" style="--d:10.64s;--t:1.50s"/>
+<text class="hw b" x="370" y="90" font-size="30" style="--d:12.24s;--t:0.42s">$$$</text>
+<text class="hw g" x="354" y="126" font-size="16" style="--d:12.80s;--t:0.85s">money angle</text>
+<path class="sk w" d="M296.0 180.0 C303.0 181.0 325.3 184.7 338.0 186.0 C350.7 187.3 362.0 187.3 372.0 188.0 C382.0 188.7 393.7 189.7 398.0 190.0" pathLength="1" stroke-width="2.2" style="--d:13.81s;--t:0.60s"/>
+<path class="sk c" d="M417.7 167.9 C419.6 167.6 425.3 166.3 429.1 166.4 C432.9 166.5 437.0 167.1 440.5 168.4 C444.1 169.7 447.8 171.5 450.5 174.0 C453.1 176.4 455.1 179.8 456.3 182.9 C457.5 186.1 457.9 189.6 457.9 193.0 C457.8 196.4 457.5 200.1 456.1 203.2 C454.6 206.3 451.8 209.2 448.9 211.6 C446.0 213.9 442.6 216.2 438.9 217.5 C435.2 218.8 430.8 219.4 426.8 219.3 C422.8 219.2 418.4 218.4 414.8 216.8 C411.2 215.3 408.0 212.8 405.3 210.2 C402.6 207.7 399.7 204.7 398.4 201.5 C397.0 198.3 396.9 194.4 397.1 191.0 C397.3 187.5 398.2 183.9 399.8 180.8 C401.4 177.6 403.9 174.6 406.8 172.1 C409.6 169.6 413.1 167.2 416.8 165.9 C420.6 164.5 427.2 164.4 429.2 164.1" pathLength="1" stroke-width="2.2" style="--d:14.51s;--t:1.13s"/>
+<text class="hw c" x="414" y="202" font-size="26" style="--d:15.74s;--t:0.36s">?!</text>
+<text class="hw g" x="396" y="236" font-size="16" style="--d:16.25s;--t:0.64s">emotion</text>
+<path class="sk w" d="M268.0 208.0 C272.7 213.0 288.0 229.7 296.0 238.0 C304.0 246.3 310.0 252.0 316.0 258.0 C322.0 264.0 329.3 271.3 332.0 274.0" pathLength="1" stroke-width="2.2" style="--d:17.04s;--t:0.54s"/>
+<path class="sk w" d="M328.0 261.6 C333.7 261.9 350.7 263.4 362.1 263.7 C373.4 264.0 384.8 263.4 396.1 263.1 C407.5 262.7 424.5 261.8 430.2 261.6 M427.6 258.5 C427.9 263.8 429.3 279.6 429.3 290.2 C429.4 300.8 427.9 316.6 427.7 321.9 M429.7 317.6 C424.1 317.5 407.2 316.7 395.9 316.7 C384.7 316.6 373.4 317.1 362.2 317.4 C350.9 317.6 334.0 318.1 328.4 318.2 M331.0 321.4 C331.1 316.4 331.7 301.4 331.8 291.3 C331.8 281.3 331.3 266.3 331.2 261.2 " pathLength="1" stroke-width="2" style="--d:17.68s;--t:1.50s"/>
+<path class="sk g" d="M380.0 264.0 C380.3 268.3 381.9 281.3 381.9 290.0 C381.9 298.7 380.3 311.7 380.0 316.0" pathLength="1" stroke-width="1.8" style="--d:19.28s;--t:0.35s"/>
+<path class="sk b" d="M346.0 292.0 C348.3 291.3 355.7 288.3 360.0 288.0 C364.3 287.7 370.0 289.7 372.0 290.0" pathLength="1" stroke-width="2" style="--d:19.28s;--t:0.35s"/>
+<path class="sk b" d="M372.0 290.0 L360.4 294.9 M372.0 290.0 L362.3 282.4 " pathLength="1" stroke-width="2" style="--d:19.58s;--t:.3s"/>
+<path class="sk g" d="M392.0 296.0 C394.3 296.0 401.3 295.9 406.0 295.9 C410.7 295.9 417.7 296.0 420.0 296.0" pathLength="1" stroke-width="3" style="--d:19.98s;--t:0.35s"/>
+<text class="hw g" x="338" y="338" font-size="16" style="--d:20.43s;--t:1.02s">before / after</text>
+<path class="sk w" d="M214.0 208.0 C208.7 213.3 192.7 231.3 182.0 240.0 C171.3 248.7 158.3 255.3 150.0 260.0 C141.7 264.7 135.0 266.7 132.0 268.0" pathLength="1" stroke-width="2.2" style="--d:21.60s;--t:0.60s"/>
+<path class="sk w" d="M87.6 290.6 C83.8 290.6 72.1 291.3 64.8 291.0 C57.4 290.6 49.4 289.8 43.3 288.4 C37.1 286.9 31.7 284.5 27.7 282.1 C23.6 279.7 20.7 276.9 18.9 274.0 C17.1 271.1 15.6 267.8 16.9 264.9 C18.1 261.9 22.1 258.8 26.4 256.2 C30.8 253.6 36.7 251.2 43.0 249.3 C49.3 247.5 56.8 246.0 64.3 245.1 C71.7 244.3 80.1 243.9 87.6 244.2 C95.2 244.6 102.9 245.7 109.5 247.2 C116.0 248.7 122.6 250.7 126.8 253.2 C131.0 255.6 133.2 258.8 134.7 261.8 C136.3 264.8 137.4 268.1 136.1 271.2 C134.8 274.2 131.1 277.4 126.8 280.1 C122.5 282.8 116.8 285.5 110.4 287.5 C104.0 289.4 95.9 290.9 88.2 291.7 C80.4 292.6 68.1 292.3 64.0 292.5" pathLength="1" stroke-width="2" style="--d:22.30s;--t:1.50s"/>
+<text class="hw w" x="30" y="275" font-size="20" style="--d:23.90s;--t:0.91s">red vs blue?</text></g></svg>
         </div>
       </div>
       <div class="step-node">
         <div class="step-node-inner"><span class="step-num">03</span></div>
       </div>
       <div class="step-text step-reveal-right">
-        <span class="step-label">Step 03</span>
         <h3 class="step-title">Concept Creation</h3>
         <p class="step-desc">I sketch multiple directions, different compositions, color stories, and emotional tones. You see options, not just one guess. The best concept moves forward; the rest sharpen the brief.</p>
         <div class="step-tags">
@@ -1598,83 +1685,57 @@ footer .footer-copy {
     <div class="process-step step-even" data-step="3">
       <div class="step-visual step-reveal-right">
         <div class="step-visual-frame">
-          <svg viewBox="0 0 480 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
-            <defs>
-              <filter id="glow4"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-              <clipPath id="frameClip"><rect x="100" y="70" width="280" height="157" rx="10"/></clipPath>
-            </defs>
-            <!-- Final thumbnail frame -->
-            <rect x="100" y="70" width="280" height="157" rx="10" fill="rgba(96,165,250,0.03)" stroke="rgba(96,165,250,0.35)" stroke-width="1.5" filter="url(#glow4)"/>
-            <!-- Assembled layers (appear one by one) -->
-            <!-- Layer: BG color wash -->
-            <rect x="100" y="70" width="280" height="157" rx="10" fill="rgba(37,99,235,0.08)" clip-path="url(#frameClip)">
-              <animate attributeName="opacity" values="0;1" dur="0.5s" begin="0.2s" fill="freeze"/>
-            </rect>
-            <!-- Layer: Subject silhouette -->
-            <g clip-path="url(#frameClip)">
-              <ellipse cx="195" cy="185" rx="45" ry="65" fill="rgba(96,165,250,0.1)">
-                <animate attributeName="opacity" values="0;1" dur="0.5s" begin="0.7s" fill="freeze"/>
-              </ellipse>
-              <circle cx="195" cy="120" r="28" fill="rgba(96,165,250,0.13)">
-                <animate attributeName="opacity" values="0;1" dur="0.5s" begin="0.7s" fill="freeze"/>
-              </circle>
-            </g>
-            <!-- Layer: Bold headline text bar -->
-            <g clip-path="url(#frameClip)">
-              <rect x="240" y="100" width="120" height="16" rx="4" fill="rgba(96,165,250,0.45)">
-                <animate attributeName="opacity" values="0;1" dur="0.5s" begin="1.1s" fill="freeze"/>
-                <animate attributeName="width" values="0;120" dur="0.5s" begin="1.1s" fill="freeze"/>
-              </rect>
-              <rect x="240" y="122" width="88" height="11" rx="3" fill="rgba(96,165,250,0.3)">
-                <animate attributeName="opacity" values="0;1" dur="0.5s" begin="1.3s" fill="freeze"/>
-                <animate attributeName="width" values="0;88" dur="0.5s" begin="1.3s" fill="freeze"/>
-              </rect>
-              <rect x="240" y="140" width="100" height="11" rx="3" fill="rgba(96,165,250,0.2)">
-                <animate attributeName="opacity" values="0;1" dur="0.5s" begin="1.5s" fill="freeze"/>
-                <animate attributeName="width" values="0;100" dur="0.5s" begin="1.5s" fill="freeze"/>
-              </rect>
-            </g>
-            <!-- Layer: Glow accent -->
-            <g clip-path="url(#frameClip)">
-              <ellipse cx="180" cy="148" rx="60" ry="40" fill="rgba(37,99,235,0.15)">
-                <animate attributeName="opacity" values="0;1" dur="0.6s" begin="1.8s" fill="freeze"/>
-              </ellipse>
-            </g>
-            <!-- Assembly tool indicators -->
-            <g class="svg-float-rev" style="transform-origin:80px 98px">
-              <rect x="28" y="86" width="60" height="24" rx="5" fill="rgba(0,0,0,0.8)" stroke="rgba(96,165,250,0.3)" stroke-width="1"/>
-              <text x="58" y="101" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-size="8" fill="rgba(96,165,250,0.6)" letter-spacing="0.8">LAYER 01</text>
-            </g>
-            <g class="svg-float" style="transform-origin:80px 148px">
-              <rect x="28" y="136" width="60" height="24" rx="5" fill="rgba(0,0,0,0.8)" stroke="rgba(96,165,250,0.3)" stroke-width="1"/>
-              <text x="58" y="151" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-size="8" fill="rgba(96,165,250,0.6)" letter-spacing="0.8">LAYER 02</text>
-            </g>
-            <g class="svg-float-rev" style="transform-origin:80px 198px">
-              <rect x="28" y="186" width="60" height="24" rx="5" fill="rgba(0,0,0,0.8)" stroke="rgba(96,165,250,0.3)" stroke-width="1"/>
-              <text x="58" y="201" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-size="8" fill="rgba(96,165,250,0.6)" letter-spacing="0.8">LAYER 03</text>
-            </g>
-            <!-- Connect dashes from labels to frame -->
-            <line x1="88" y1="98" x2="100" y2="108" stroke="rgba(96,165,250,0.2)" stroke-width="1" stroke-dasharray="3 3"/>
-            <line x1="88" y1="148" x2="100" y2="148" stroke="rgba(96,165,250,0.2)" stroke-width="1" stroke-dasharray="3 3"/>
-            <line x1="88" y1="198" x2="100" y2="190" stroke="rgba(96,165,250,0.2)" stroke-width="1" stroke-dasharray="3 3"/>
-            <!-- Iteration counter -->
-            <g class="svg-float" style="transform-origin:340px 275px">
-              <rect x="270" y="262" width="140" height="28" rx="7" fill="rgba(0,0,0,0.8)" stroke="rgba(96,165,250,0.25)" stroke-width="1"/>
-              <text x="340" y="279" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-size="9" fill="rgba(96,165,250,0.55)" letter-spacing="1">REV 03: REFINING</text>
-            </g>
-            <!-- Revision arrows -->
-            <path d="M 395 240 Q 415 225 415 200 Q 415 175 395 160" fill="none" stroke="rgba(96,165,250,0.2)" stroke-width="1.5" stroke-dasharray="5 4">
-              <animate attributeName="stroke-dashoffset" values="0;-18" dur="1.2s" repeatCount="indefinite"/>
-            </path>
-            <polygon points="393,158 400,168 386,168" fill="rgba(96,165,250,0.3)" transform="rotate(-15,393,158)"/>
-          </svg>
+          <svg viewBox="0 0 480 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="A rough thumbnail sketch with revision notes becoming a clean final thumbnail"><defs><filter id="rough4" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="3"><animate attributeName="seed" values="3;7;12;5" dur="1.2s" calcMode="discrete" repeatCount="indefinite"/></feTurbulence><feDisplacementMap in="SourceGraphic" scale="2.6"/></filter></defs><g filter="url(#rough4)"><text class="hw g" x="22" y="62" font-size="17" style="--d:0.35s;--t:1.07s">bigger + bolder</text>
+<path class="sk g" d="M96.0 70.0 C99.3 73.3 112.7 86.7 116.0 90.0" pathLength="1" stroke-width="2" style="--d:1.57s;--t:0.35s"/>
+<path class="sk g" d="M116.0 90.0 L104.5 86.0 M116.0 90.0 L113.3 79.2 " pathLength="1" stroke-width="2" style="--d:1.87s;--t:.3s"/>
+<path class="sk g" d="M19.9 91.6 C25.4 92.0 41.8 93.2 52.8 94.2 C63.8 95.2 74.8 97.0 85.7 97.7 C96.7 98.4 107.7 98.2 118.7 98.4 C129.7 98.6 140.6 99.3 151.6 99.1 C162.6 98.9 173.6 98.2 184.6 97.2 C195.6 96.2 212.1 93.9 217.6 93.3 M216.1 92.5 C216.4 98.4 217.4 115.9 217.8 127.6 C218.2 139.3 218.0 151.0 218.4 162.6 C218.9 174.3 220.2 191.8 220.6 197.7 M220.7 197.4 C215.1 197.8 198.4 199.5 187.2 200.3 C176.0 201.0 164.9 201.7 153.7 201.8 C142.5 201.9 131.4 201.2 120.2 201.0 C109.0 200.8 97.9 200.8 86.7 200.6 C75.6 200.3 64.4 200.4 53.2 199.7 C42.1 199.0 25.3 197.0 19.8 196.5 M20.3 197.2 C19.9 191.3 18.5 173.4 18.0 161.5 C17.5 149.6 16.7 137.7 17.3 125.8 C17.9 114.0 20.9 96.2 21.6 90.2 " pathLength="1" stroke-width="1.6" style="--d:2.27s;--t:1.50s"/>
+<path class="sk w" d="M18.4 93.4 C24.0 92.9 40.8 90.8 52.0 90.3 C63.2 89.8 74.4 90.7 85.6 90.5 C96.9 90.4 108.1 89.7 119.3 89.3 C130.5 89.0 141.7 88.4 152.9 88.5 C164.1 88.5 175.3 89.2 186.6 89.6 C197.8 90.1 214.6 90.7 220.2 90.9 M217.9 88.9 C217.2 95.1 214.1 113.9 213.7 126.4 C213.2 138.9 214.2 151.3 215.2 163.8 C216.2 176.2 219.0 194.9 219.7 201.1 M219.7 199.8 C214.2 199.8 197.4 199.6 186.3 199.7 C175.1 199.8 164.0 200.1 152.8 200.2 C141.7 200.3 130.5 200.3 119.4 200.4 C108.2 200.5 97.1 200.9 85.9 200.9 C74.8 200.8 63.6 200.5 52.5 200.0 C41.3 199.6 24.6 198.5 19.0 198.2 M21.3 199.5 C21.9 193.5 24.2 175.7 24.9 163.7 C25.6 151.8 25.9 139.9 25.5 128.0 C25.0 116.0 22.8 98.1 22.2 92.2 " pathLength="1" stroke-width="2" style="--d:3.87s;--t:1.50s"/>
+<path class="sk w" d="M86.8 137.1 C86.7 138.4 86.8 142.4 86.1 144.8 C85.3 147.2 83.9 149.4 82.4 151.3 C81.0 153.3 79.3 155.4 77.4 156.5 C75.5 157.6 73.0 157.6 70.8 157.7 C68.6 157.9 66.2 158.1 64.0 157.4 C61.9 156.7 59.8 155.1 58.1 153.3 C56.5 151.6 54.9 149.2 54.0 146.8 C53.2 144.4 53.0 141.6 52.9 138.9 C52.9 136.3 53.1 133.6 53.7 131.1 C54.4 128.6 55.4 125.9 56.9 124.0 C58.4 122.1 60.6 120.8 62.7 119.6 C64.7 118.5 67.0 117.5 69.2 117.3 C71.4 117.1 73.8 117.6 76.0 118.5 C78.2 119.3 80.5 120.5 82.2 122.2 C83.9 124.0 85.2 126.6 86.2 129.1 C87.2 131.5 88.0 134.3 88.1 137.0 C88.2 139.7 86.9 143.7 86.7 145.1" pathLength="1" stroke-width="2" style="--d:5.47s;--t:0.75s"/>
+<path class="sk w" d="M38.0 176.0 C39.7 174.0 42.7 166.5 48.0 164.0 C53.3 161.5 62.7 161.0 70.0 161.0 C77.3 161.0 86.7 161.5 92.0 164.0 C97.3 166.5 100.3 174.0 102.0 176.0" pathLength="1" stroke-width="2" style="--d:6.32s;--t:0.44s"/>
+<path class="sk w" d="M62.0 136.0 C62.3 135.8 63.7 135.2 64.0 135.0" pathLength="1" stroke-width="3" style="--d:6.87s;--t:0.35s"/>
+<path class="sk w" d="M78.0 136.0 C78.3 135.8 79.7 135.2 80.0 135.0" pathLength="1" stroke-width="3" style="--d:6.87s;--t:0.35s"/>
+<path class="sk w" d="M64.0 146.0 C65.0 146.5 67.8 149.1 70.0 149.0 C72.2 148.9 75.8 146.2 77.0 145.6" pathLength="1" stroke-width="1.6" style="--d:6.87s;--t:0.35s"/>
+<path class="sk g" d="M112.0 116.0 C118.3 115.2 134.7 110.8 150.0 111.0 C165.3 111.2 195.0 116.0 204.0 117.0" pathLength="1" stroke-width="6" style="--d:7.32s;--t:0.55s"/>
+<path class="sk g" d="M112.0 142.0 C118.3 141.3 137.7 137.8 150.0 138.0 C162.3 138.2 180.0 142.2 186.0 143.0" pathLength="1" stroke-width="6" style="--d:7.96s;--t:0.44s"/>
+<path class="sk g" d="M112.0 168.0 C115.2 168.1 124.7 168.5 131.0 168.5 C137.3 168.5 146.8 168.1 150.0 168.0" pathLength="1" stroke-width="4" style="--d:8.50s;--t:0.35s"/>
+<path class="sk b" d="M97.1 122.3 C98.0 124.7 101.7 131.6 102.3 136.6 C102.9 141.6 101.8 147.2 100.7 152.2 C99.6 157.2 98.1 162.4 95.7 166.6 C93.3 170.7 89.9 174.6 86.3 177.1 C82.7 179.6 78.4 180.8 74.2 181.6 C70.1 182.4 65.5 183.3 61.5 182.0 C57.5 180.8 53.6 177.5 50.3 174.2 C47.1 170.9 43.9 166.9 41.9 162.4 C39.9 157.9 38.6 152.5 38.1 147.4 C37.5 142.2 37.5 136.6 38.4 131.5 C39.3 126.5 41.3 121.2 43.7 116.9 C46.2 112.6 49.5 108.4 53.2 105.7 C56.8 103.1 61.4 101.8 65.6 101.0 C69.8 100.3 74.6 99.9 78.6 101.3 C82.7 102.7 86.6 106.1 89.9 109.3 C93.3 112.6 96.7 116.5 98.9 121.0 C101.1 125.5 102.6 133.8 103.3 136.4" pathLength="1" stroke-width="2.2" style="--d:8.95s;--t:1.45s"/>
+<path class="sk b" d="M60.0 182.0 C58.7 188.7 54.3 211.3 52.0 222.0 C49.7 232.7 47.0 242.0 46.0 246.0" pathLength="1" stroke-width="2.2" style="--d:10.50s;--t:0.39s"/>
+<path class="sk b" d="M46.0 246.0 L43.9 233.4 M46.0 246.0 L51.9 239.6 " pathLength="1" stroke-width="2.2" style="--d:10.83s;--t:.3s"/>
+<text class="hw b" x="22" y="266" font-size="26" style="--d:11.24s;--t:0.42s">FIX</text>
+<path class="sk w" d="M159.5 158.2 C155.8 157.8 143.9 157.4 137.1 155.9 C130.2 154.5 124.1 151.9 118.3 149.4 C112.4 146.9 105.7 144.3 102.1 141.0 C98.5 137.8 96.7 133.5 96.6 129.9 C96.4 126.3 98.7 122.5 101.2 119.2 C103.7 115.8 106.7 112.2 111.6 109.6 C116.4 107.0 123.5 105.1 130.3 103.7 C137.2 102.4 144.9 101.5 152.4 101.4 C160.0 101.3 168.4 101.9 175.5 103.3 C182.6 104.7 189.6 107.2 195.3 109.8 C200.9 112.4 206.1 115.7 209.5 119.1 C212.9 122.4 215.1 126.4 215.7 130.1 C216.4 133.8 216.0 137.9 213.5 141.4 C211.0 144.8 206.0 148.0 200.8 150.5 C195.5 153.1 189.0 155.3 182.2 156.8 C175.3 158.3 167.4 159.8 159.7 159.8 C152.1 159.8 140.2 157.5 136.2 157.1" pathLength="1" stroke-width="2" style="--d:11.80s;--t:1.50s"/>
+<path class="sk w" d="M150.0 158.0 C149.7 165.7 150.0 189.3 148.0 204.0 C146.0 218.7 139.7 239.0 138.0 246.0" pathLength="1" stroke-width="2.2" style="--d:13.40s;--t:0.52s"/>
+<path class="sk w" d="M138.0 246.0 L134.9 233.5 M138.0 246.0 L145.4 237.6 " pathLength="1" stroke-width="2.2" style="--d:13.85s;--t:.3s"/>
+<text class="hw w" x="96" y="268" font-size="24" style="--d:14.28s;--t:0.69s">STRONGER</text>
+<path class="sk c" d="M108.0 108.0 C108.2 113.2 109.4 128.7 109.4 139.0 C109.4 149.3 108.2 164.8 108.0 170.0" pathLength="1" stroke-width="1.6" style="--d:15.12s;--t:0.37s"/>
+<path class="sk g" d="M217.7 91.3 C218.2 90.8 219.5 89.3 220.3 88.3 C221.2 87.2 222.3 85.6 222.7 85.0" pathLength="1" stroke-width="1.8" style="--d:15.12s;--t:0.35s"/>
+<path class="sk g" d="M218.8 92.4 C219.3 91.9 220.8 90.7 221.9 89.8 C222.9 89.0 224.6 87.9 225.1 87.5" pathLength="1" stroke-width="1.8" style="--d:15.12s;--t:0.35s"/>
+<path class="sk g" d="M219.5 93.7 C220.1 93.4 222.0 92.7 223.3 92.2 C224.5 91.7 226.3 90.8 226.9 90.5" pathLength="1" stroke-width="1.8" style="--d:15.12s;--t:0.35s"/>
+<text class="hw c" x="60" y="320" font-size="22" style="--d:15.47s;--t:0.58s">REFINE</text>
+<path class="sk c" d="M56.0 327.2 C60.3 327.6 73.3 329.6 81.9 329.5 C90.5 329.3 99.8 326.4 107.8 326.3 C115.8 326.2 126.3 328.6 130.0 329.0" pathLength="1" stroke-width="2.2" style="--d:16.20s;--t:0.44s"/>
+<path class="sk c" d="M60.0 334.2 C63.6 334.7 74.5 337.0 81.7 336.8 C88.9 336.6 96.7 333.3 103.4 333.1 C110.1 333.0 118.9 335.5 122.0 336.0" pathLength="1" stroke-width="1.5" style="--d:16.73s;--t:0.37s"/>
+<path class="sk b" d="M226.0 146.0 C229.0 144.7 238.0 138.0 244.0 138.0 C250.0 138.0 259.0 144.7 262.0 146.0" pathLength="1" stroke-width="3.2" style="--d:17.20s;--t:0.35s"/>
+<path class="sk b" d="M262.0 146.0 L249.4 146.9 M262.0 146.0 L255.5 136.3 " pathLength="1" stroke-width="3.2" style="--d:17.50s;--t:.3s"/>
+<text class="hw b" x="232" y="126" font-size="20" style="--d:17.90s;--t:0.36s">v2</text>
+<path class="sk w" d="M266.6 91.8 C272.1 91.7 288.7 91.2 299.7 91.0 C310.7 90.8 321.8 90.6 332.8 90.5 C343.9 90.4 354.9 90.4 366.0 90.4 C377.0 90.3 388.1 90.2 399.1 90.2 C410.1 90.3 421.2 90.6 432.2 90.8 C443.3 91.0 459.9 91.4 465.4 91.5 M463.9 90.5 C463.8 96.6 463.3 114.9 463.2 127.0 C463.1 139.2 463.3 151.4 463.4 163.6 C463.5 175.7 463.8 194.0 463.9 200.1 M465.4 198.2 C459.9 198.2 443.3 198.2 432.2 198.2 C421.2 198.2 410.1 198.1 399.1 198.1 C388.0 198.1 376.9 198.3 365.9 198.3 C354.8 198.3 343.7 198.1 332.7 198.0 C321.6 198.0 310.6 197.9 299.5 198.0 C288.4 198.0 271.8 198.2 266.3 198.3 M268.5 199.3 C268.5 193.3 268.7 175.1 268.8 162.9 C268.9 150.8 269.1 138.6 269.0 126.5 C268.8 114.4 268.1 96.2 267.9 90.1 " pathLength="1" stroke-width="2.8" style="--d:18.41s;--t:1.50s"/>
+<path class="sk w" d="M303.1 122.5 C304.1 121.7 307.0 119.0 309.2 117.9 C311.3 116.9 313.8 116.2 316.2 116.1 C318.6 116.1 321.2 116.5 323.4 117.5 C325.7 118.5 328.0 120.2 329.7 122.3 C331.3 124.3 332.5 127.1 333.5 129.8 C334.4 132.4 335.5 135.4 335.5 138.3 C335.4 141.1 334.5 144.1 333.5 146.8 C332.4 149.4 331.1 152.1 329.4 154.1 C327.6 156.1 325.3 157.4 323.0 158.6 C320.8 159.8 318.2 161.2 315.8 161.2 C313.4 161.2 310.9 159.7 308.5 158.6 C306.2 157.4 303.6 156.3 301.9 154.3 C300.1 152.3 298.8 149.3 297.9 146.5 C297.0 143.8 296.4 140.7 296.4 137.7 C296.4 134.8 296.9 131.6 297.9 128.9 C298.9 126.2 300.7 123.8 302.4 121.7 C304.2 119.5 307.5 117.0 308.5 116.1" pathLength="1" stroke-width="2.2" style="--d:20.01s;--t:0.82s"/>
+<path class="sk w" d="M280.8 179.8 C282.6 177.6 285.9 169.3 291.8 166.6 C297.7 163.8 307.9 163.3 316.0 163.3 C324.1 163.3 334.3 163.8 340.2 166.6 C346.1 169.3 349.4 177.6 351.2 179.8" pathLength="1" stroke-width="2.2" style="--d:20.93s;--t:0.49s"/>
+<path class="sk w" d="M307.2 135.8 C307.6 135.6 309.0 134.9 309.4 134.7" pathLength="1" stroke-width="3.2" style="--d:21.52s;--t:0.35s"/>
+<path class="sk w" d="M324.8 135.8 C325.2 135.6 326.6 134.9 327.0 134.7" pathLength="1" stroke-width="3.2" style="--d:21.52s;--t:0.35s"/>
+<path class="sk w" d="M309.4 146.8 C310.5 147.4 313.6 150.2 316.0 150.1 C318.4 150.0 322.4 147.0 323.7 146.4" pathLength="1" stroke-width="1.8000000000000003" style="--d:21.52s;--t:0.35s"/>
+<path class="sk b" d="M352.0 120.0 C357.0 120.2 372.0 120.8 382.0 121.0 C392.0 121.1 402.0 121.0 412.0 120.9 C422.0 120.7 437.0 120.1 442.0 120.0" pathLength="1" stroke-width="8" style="--d:21.97s;--t:0.53s"/>
+<path class="sk w" d="M352.0 146.0 C357.8 145.9 375.3 145.6 387.0 145.6 C398.7 145.6 416.2 145.9 422.0 146.0" pathLength="1" stroke-width="8" style="--d:22.60s;--t:0.41s"/>
+<path class="sk g" d="M352.0 170.0 C355.7 170.0 366.7 170.0 374.0 170.0 C381.3 170.0 392.3 170.0 396.0 170.0" pathLength="1" stroke-width="5" style="--d:23.11s;--t:0.35s"/>
+<path class="sk c" d="M444.5 81.3 C443.7 81.0 441.3 80.2 439.7 79.7 C438.2 79.1 435.8 78.3 435.0 78.0" pathLength="1" stroke-width="2" style="--d:23.56s;--t:0.35s"/>
+<path class="sk c" d="M447.6 77.3 C447.2 76.6 445.7 74.6 444.8 73.2 C443.9 71.8 442.6 69.6 442.1 68.9" pathLength="1" stroke-width="2" style="--d:23.56s;--t:0.35s"/>
+<path class="sk c" d="M452.6 76.0 C452.6 75.2 452.6 72.7 452.7 71.0 C452.8 69.4 453.2 66.9 453.3 66.0" pathLength="1" stroke-width="2" style="--d:23.56s;--t:0.35s"/>
+<path class="sk c" d="M330.0 250.0 C332.0 252.0 336.0 264.3 342.0 262.0 C348.0 259.7 362.0 240.3 366.0 236.0" pathLength="1" stroke-width="3.4" style="--d:23.91s;--t:0.35s"/>
+<text class="hw w" x="376" y="258" font-size="22" style="--d:23.91s;--t:0.58s">clean.</text></g></svg>
         </div>
       </div>
       <div class="step-node">
         <div class="step-node-inner"><span class="step-num">04</span></div>
       </div>
       <div class="step-text step-reveal-left">
-        <span class="step-label">Step 04</span>
         <h3 class="step-title">Design &amp; Refinement</h3>
         <p class="step-desc">The chosen concept comes to life, layer by layer. Typography, color grading, expressions, contrast. Each revision tightens the visual logic until every pixel is doing its job.</p>
         <div class="step-tags">
@@ -1690,76 +1751,41 @@ footer .footer-copy {
     <div class="process-step step-odd" data-step="4">
       <div class="step-visual step-reveal-left">
         <div class="step-visual-frame">
-          <svg viewBox="0 0 480 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
-            <defs>
-              <filter id="glow5"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-              <radialGradient id="delivGlow" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stop-color="rgba(96,165,250,0.2)"/>
-                <stop offset="100%" stop-color="transparent"/>
-              </radialGradient>
-            </defs>
-            <!-- Glow beneath card -->
-            <ellipse cx="240" cy="220" rx="110" ry="20" fill="url(#delivGlow)" filter="url(#glow5)"/>
-            <!-- Thumbnail card floating -->
-            <g class="svg-float" style="transform-origin:240px 155px">
-              <!-- Card shadow -->
-              <rect x="108" y="86" width="264" height="148" rx="14" fill="rgba(37,99,235,0.12)" filter="url(#glow5)"/>
-              <!-- Card body -->
-              <rect x="110" y="74" width="260" height="146" rx="12" fill="rgba(6,12,30,0.9)" stroke="rgba(96,165,250,0.45)" stroke-width="1.5"/>
-              <!-- BG gradient -->
-              <rect x="110" y="74" width="260" height="146" rx="12" fill="rgba(37,99,235,0.08)"/>
-              <!-- Subject area -->
-              <ellipse cx="210" cy="175" rx="42" ry="58" fill="rgba(96,165,250,0.09)"/>
-              <circle cx="210" cy="117" r="26" fill="rgba(96,165,250,0.12)"/>
-              <!-- Bold text -->
-              <rect x="258" y="100" width="90" height="13" rx="4" fill="rgba(96,165,250,0.5)"/>
-              <rect x="258" y="119" width="68" height="9" rx="3" fill="rgba(96,165,250,0.3)"/>
-              <rect x="258" y="134" width="80" height="9" rx="3" fill="rgba(96,165,250,0.2)"/>
-              <!-- Glow highlight on card -->
-              <ellipse cx="185" cy="140" rx="55" ry="35" fill="rgba(37,99,235,0.12)"/>
-              <!-- Corner dots -->
-              <circle cx="118" cy="82"  r="3" fill="rgba(96,165,250,0.4)"/>
-              <circle cx="362" cy="82"  r="3" fill="rgba(96,165,250,0.4)"/>
-              <circle cx="118" cy="212" r="3" fill="rgba(96,165,250,0.4)"/>
-              <circle cx="362" cy="212" r="3" fill="rgba(96,165,250,0.4)"/>
-            </g>
-            <!-- Success checkmark circle -->
-            <circle cx="370" cy="78" r="26" fill="rgba(0,0,0,0.85)" stroke="rgba(96,165,250,0.5)" stroke-width="1.5" filter="url(#glow5)"/>
-            <circle cx="370" cy="78" r="26" fill="none" stroke="rgba(96,165,250,0.3)" stroke-width="1">
-              <animate attributeName="r" values="26;42" dur="1.6s" repeatCount="indefinite"/>
-              <animate attributeName="opacity" values="0.5;0" dur="1.6s" repeatCount="indefinite"/>
-            </circle>
-            <polyline points="358,78 366,86 382,70" fill="none" stroke="rgba(96,165,250,0.9)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="svg-checkmark"/>
-            <!-- Status badges -->
-            <g class="svg-float" style="transform-origin:110px 288px">
-              <rect x="48" y="275" width="124" height="28" rx="7" fill="rgba(0,0,0,0.85)" stroke="rgba(96,165,250,0.3)" stroke-width="1"/>
-              <circle cx="66" cy="289" r="4" fill="rgba(34,211,238,0.8)">
-                <animate attributeName="opacity" values="1;0.3;1" dur="1.2s" repeatCount="indefinite"/>
-              </circle>
-              <text x="140" y="293" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="rgba(96,165,250,0.7)" letter-spacing="1">FILE READY</text>
-            </g>
-            <g class="svg-float-rev" style="transform-origin:335px 290px">
-              <rect x="277" y="277" width="116" height="28" rx="7" fill="rgba(0,0,0,0.85)" stroke="rgba(96,165,250,0.3)" stroke-width="1"/>
-              <text x="335" y="295" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-size="8.5" fill="rgba(96,165,250,0.55)" letter-spacing="1">SOURCE INC.</text>
-            </g>
-            <!-- Motion trail lines below card -->
-            <line x1="150" y1="225" x2="150" y2="250" stroke="rgba(96,165,250,0.12)" stroke-width="1">
-              <animate attributeName="opacity" values="0.3;0;0.3" dur="1.8s" repeatCount="indefinite"/>
-            </line>
-            <line x1="240" y1="225" x2="240" y2="260" stroke="rgba(96,165,250,0.18)" stroke-width="1">
-              <animate attributeName="opacity" values="0.4;0;0.4" dur="1.8s" begin="0.2s" repeatCount="indefinite"/>
-            </line>
-            <line x1="330" y1="225" x2="330" y2="250" stroke="rgba(96,165,250,0.12)" stroke-width="1">
-              <animate attributeName="opacity" values="0.3;0;0.3" dur="1.8s" begin="0.4s" repeatCount="indefinite"/>
-            </line>
-          </svg>
+          <svg viewBox="0 0 480 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Finished thumbnail stamped approved and exported as a final file"><defs><filter id="rough5" x="-3%" y="-3%" width="106%" height="106%"><feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" seed="3"><animate attributeName="seed" values="3;7;12;5" dur="1.2s" calcMode="discrete" repeatCount="indefinite"/></feTurbulence><feDisplacementMap in="SourceGraphic" scale="2.6"/></filter></defs><g filter="url(#rough5)"><text class="hw g" x="300" y="50" font-size="21" transform="rotate(4 300 50)" style="--d:0.35s;--t:0.69s">ship it!</text>
+<path class="sk w" d="M33.5 71.4 C39.4 71.4 57.0 71.6 68.7 71.8 C80.4 72.1 92.2 72.5 103.9 72.8 C115.6 73.2 127.3 73.6 139.1 73.7 C150.8 73.8 162.5 73.6 174.3 73.6 C186.0 73.6 197.7 73.7 209.4 73.7 C221.2 73.7 232.9 73.6 244.6 73.5 C256.4 73.4 274.0 73.0 279.8 72.9 M277.0 72.2 C277.1 77.9 277.5 95.2 277.7 106.7 C277.9 118.2 278.2 129.7 278.2 141.2 C278.1 152.6 277.6 164.1 277.3 175.6 C277.0 187.1 276.5 204.4 276.3 210.1 M276.5 207.6 C270.7 207.7 253.3 207.9 241.7 208.2 C230.1 208.5 218.5 209.0 206.9 209.4 C195.4 209.7 183.8 209.9 172.2 210.0 C160.6 210.1 149.0 210.2 137.4 210.2 C125.8 210.1 114.2 209.9 102.7 209.7 C91.1 209.5 79.5 209.3 67.9 209.1 C56.3 208.9 38.9 208.6 33.1 208.5 M36.4 211.5 C36.4 205.5 36.5 187.5 36.5 175.6 C36.4 163.6 36.1 151.6 36.0 139.6 C35.8 127.6 35.8 115.7 35.7 103.7 C35.5 91.7 35.1 73.7 35.0 67.8 " pathLength="1" stroke-width="2.8" style="--d:1.19s;--t:1.50s"/>
+<path class="sk w" d="M72.9 147.0 C72.4 145.5 70.4 141.4 69.8 138.3 C69.2 135.3 69.0 131.8 69.5 128.8 C70.1 125.8 71.5 122.7 73.0 120.2 C74.6 117.7 76.6 115.2 78.8 113.6 C81.0 111.9 83.7 110.8 86.3 110.1 C88.9 109.4 91.9 109.0 94.5 109.6 C97.0 110.3 99.6 112.1 101.8 114.0 C103.9 115.9 105.7 118.4 107.2 121.0 C108.7 123.5 110.2 126.5 110.9 129.5 C111.5 132.6 111.5 136.2 111.0 139.3 C110.4 142.4 109.1 145.7 107.6 148.3 C106.0 150.9 103.8 153.3 101.5 155.0 C99.2 156.8 96.5 158.3 93.9 158.9 C91.2 159.4 88.2 158.9 85.6 158.3 C82.9 157.6 80.0 156.6 77.8 154.8 C75.6 152.9 73.8 150.1 72.4 147.4 C70.9 144.7 69.8 139.9 69.2 138.5" pathLength="1" stroke-width="2.2" style="--d:2.79s;--t:0.90s"/>
+<path class="sk w" d="M51.6 179.6 C53.6 177.2 57.2 168.2 63.6 165.2 C70.0 162.2 81.2 161.6 90.0 161.6 C98.8 161.6 110.0 162.2 116.4 165.2 C122.8 168.2 126.4 177.2 128.4 179.6" pathLength="1" stroke-width="2.2" style="--d:3.79s;--t:0.53s"/>
+<path class="sk w" d="M80.4 131.6 C80.8 131.4 82.4 130.6 82.8 130.4" pathLength="1" stroke-width="3.2" style="--d:4.42s;--t:0.35s"/>
+<path class="sk w" d="M99.6 131.6 C100.0 131.4 101.6 130.6 102.0 130.4" pathLength="1" stroke-width="3.2" style="--d:4.42s;--t:0.35s"/>
+<path class="sk w" d="M82.8 143.6 C84.0 144.2 87.4 147.3 90.0 147.2 C92.6 147.1 97.0 143.8 98.4 143.1" pathLength="1" stroke-width="1.8000000000000003" style="--d:4.42s;--t:0.35s"/>
+<path class="sk b" d="M140.0 112.0 C144.8 111.9 159.2 111.6 168.7 111.4 C178.3 111.2 187.9 111.0 197.5 110.7 C207.1 110.5 216.7 110.2 226.2 110.1 C235.8 109.9 250.2 110.0 255.0 110.0" pathLength="1" stroke-width="8" style="--d:4.87s;--t:0.68s"/>
+<path class="sk w" d="M140.0 142.0 C145.1 142.0 160.5 142.0 170.7 141.8 C180.9 141.6 191.1 141.3 201.3 140.9 C211.6 140.6 226.9 140.2 232.0 140.0" pathLength="1" stroke-width="8" style="--d:4.87s;--t:0.54s"/>
+<path class="sk g" d="M140.0 168.0 C145.2 167.9 160.7 167.6 171.0 167.6 C181.3 167.6 196.8 167.9 202.0 168.0" pathLength="1" stroke-width="5" style="--d:4.87s;--t:0.36s"/>
+<path class="sk c" d="M268.7 233.3 C266.7 233.3 260.4 234.2 256.5 233.4 C252.7 232.5 248.6 230.5 245.5 228.1 C242.5 225.8 239.9 222.5 238.1 219.2 C236.2 216.0 234.5 212.2 234.2 208.6 C233.8 205.0 234.9 201.1 236.1 197.5 C237.3 194.0 238.8 190.2 241.4 187.4 C244.0 184.7 247.9 182.7 251.5 181.0 C255.1 179.3 259.1 177.5 263.1 177.1 C267.1 176.6 271.6 177.4 275.5 178.4 C279.5 179.5 283.8 181.0 286.9 183.4 C289.9 185.8 291.9 189.5 293.9 192.8 C295.8 196.2 298.1 199.7 298.5 203.4 C298.9 207.0 297.5 211.0 296.2 214.5 C295.0 218.1 293.4 221.8 290.9 224.8 C288.4 227.8 285.1 230.9 281.4 232.5 C277.7 234.2 273.0 234.4 268.8 234.6 C264.7 234.8 258.5 233.9 256.4 233.8" pathLength="1" stroke-width="2.6" style="--d:5.33s;--t:1.19s"/>
+<path class="sk c" d="M250.0 206.0 C251.7 208.3 254.3 222.7 260.0 220.0 C265.7 217.3 280.0 195.0 284.0 190.0" pathLength="1" stroke-width="4.6" style="--d:6.63s;--t:0.35s"/>
+<path class="sk c" d="M229.8 188.9 C228.8 188.4 225.5 187.1 223.4 186.1 C221.3 185.1 218.2 183.4 217.2 182.9" pathLength="1" stroke-width="2" style="--d:7.08s;--t:0.35s"/>
+<path class="sk c" d="M238.6 176.8 C237.8 176.0 235.5 173.4 233.9 171.7 C232.3 170.0 229.8 167.5 229.0 166.6" pathLength="1" stroke-width="2" style="--d:7.08s;--t:0.35s"/>
+<path class="sk c" d="M251.2 168.8 C250.8 167.8 249.5 164.5 248.6 162.3 C247.8 160.2 246.5 156.9 246.0 155.8" pathLength="1" stroke-width="2" style="--d:7.08s;--t:0.35s"/>
+<path class="sk c" d="M265.8 166.0 C265.8 164.8 265.8 161.3 265.8 159.0 C265.8 156.7 265.8 153.2 265.8 152.0" pathLength="1" stroke-width="2" style="--d:7.08s;--t:0.35s"/>
+<path class="sk c" d="M280.5 168.7 C280.8 167.6 281.8 164.2 282.6 162.0 C283.5 159.9 285.1 156.7 285.6 155.7" pathLength="1" stroke-width="2" style="--d:7.08s;--t:0.35s"/>
+<g transform="rotate(-6 118 247)">
+<text class="hw w" x="58" y="256" font-size="27" style="--d:7.43s;--t:0.69s">APPROVED</text>
+<path class="sk b" d="M45.6 229.3 C51.7 229.2 70.1 228.8 82.3 228.4 C94.5 228.1 106.8 227.3 119.0 227.4 C131.2 227.5 143.4 228.2 155.6 228.9 C167.9 229.6 186.2 231.0 192.3 231.5 M188.0 230.7 C188.0 233.8 187.8 243.2 188.0 249.5 C188.3 255.7 189.4 265.0 189.7 268.1 M192.1 263.9 C186.0 263.6 167.7 262.6 155.6 262.0 C143.4 261.5 131.3 261.0 119.1 260.8 C107.0 260.6 94.8 260.2 82.6 260.7 C70.5 261.1 52.2 262.9 46.1 263.3 M47.0 264.6 C47.4 261.3 49.2 251.5 49.6 244.9 C50.0 238.3 49.6 228.4 49.6 225.1 " pathLength="1" stroke-width="2.2" style="--d:8.27s;--t:1.50s"/>
+</g>
+<path class="sk w" d="M286.0 122.0 C293.7 120.3 317.0 109.7 332.0 112.0 C347.0 114.3 366.0 124.3 376.0 136.0 C386.0 147.7 389.0 166.0 392.0 182.0 C395.0 198.0 393.7 223.7 394.0 232.0" pathLength="1" stroke-width="2.6" style="--d:9.87s;--t:1.15s"/>
+<path class="sk w" d="M394.0 232.0 L389.6 223.3 M394.0 232.0 L397.7 222.0 " pathLength="1" stroke-width="2.6" style="--d:10.85s;--t:.3s"/>
+<path class="sk w" d="M352.0 218.0 C352.3 223.7 339.7 246.0 354.0 252.0 C368.3 258.0 423.7 259.7 438.0 254.0 C452.3 248.3 439.7 224.0 440.0 218.0" pathLength="1" stroke-width="2.6" style="--d:11.37s;--t:0.91s"/>
+<text class="hw b" x="346" y="288" font-size="20" style="--d:12.38s;--t:0.91s">FINAL_v3.png</text>
+<path class="sk b" d="M346.0 294.6 C351.8 295.1 369.3 297.6 381.0 297.4 C392.7 297.2 405.2 293.6 416.0 293.4 C426.8 293.2 441.0 295.6 446.0 296.0" pathLength="1" stroke-width="2" style="--d:13.44s;--t:0.59s"/>
+<text class="hw g" x="362" y="316" font-size="15" style="--d:14.13s;--t:0.69s">1280x720</text>
+<path class="sk g" d="M438.0 84.0 C438.1 85.3 438.5 89.3 438.5 92.0 C438.5 94.7 438.1 98.7 438.0 100.0" pathLength="1" stroke-width="1.8" style="--d:14.97s;--t:0.35s"/>
+<path class="sk g" d="M430.0 92.0 C431.3 92.1 435.3 92.4 438.0 92.4 C440.7 92.4 444.7 92.1 446.0 92.0" pathLength="1" stroke-width="1.8" style="--d:14.97s;--t:0.35s"/></g></svg>
         </div>
       </div>
       <div class="step-node">
         <div class="step-node-inner"><span class="step-num">05</span></div>
       </div>
       <div class="step-text step-reveal-right">
-        <span class="step-label">Step 05</span>
         <h3 class="step-title">Delivery</h3>
         <p class="step-desc">You receive production-ready files: high-res PNG, source file, and all the specs needed to publish. Clean, fast, zero friction. Ready to go live the moment it lands in your inbox.</p>
         <div class="step-tags">
@@ -1771,6 +1797,7 @@ footer .footer-copy {
       </div>
     </div>
 
+   </div><!-- /.process-stage -->
   </div>
 </section>
 
@@ -1797,7 +1824,7 @@ footer .footer-copy {
   <div class="contact-grid stagger">
     <div class="contact-card">
       <div class="contact-icon">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect x="2" y="4" width="20" height="16" rx="3" stroke="rgba(96,165,250,0.9)" stroke-width="1.5"/>
           <path d="M2 7.5L10.5 13a2.5 2.5 0 0 0 3 0L22 7.5" stroke="rgba(96,165,250,0.9)" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
@@ -1809,7 +1836,7 @@ footer .footer-copy {
     </div>
     <div class="contact-card">
       <div class="contact-icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="rgba(96,165,250,0.9)"/>
         </svg>
       </div>
@@ -1944,47 +1971,195 @@ const io = new IntersectionObserver(entries => {
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal,.reveal-right,.reveal-left,.stagger').forEach(el=>io.observe(el));
 
-/* -- Process section: scroll-driven step activation & spine fill -- */
+/* -- Process section: stacked card deck (desktop) / scroll-driven step activation (mobile) -- */
 (function(){
-  const steps = document.querySelectorAll('.process-step');
-  const spine  = document.getElementById('spineFill');
-  const stepsWrap = document.getElementById('processSteps');
+  const section = document.getElementById('process');
+  const track   = document.getElementById('processSteps');   // scroll track
+  const stage   = document.getElementById('processStage');   // pinned (sticky) stage
+  const spine   = document.getElementById('spineFill');
+  const steps   = Array.from(document.querySelectorAll('.process-step'));
+  if(!section || !track || !stage || !steps.length) return;
 
-  // Reveal step text/visual on scroll
+  const N      = steps.length;
+  const frames = steps.map(s => s.querySelector('.step-visual-frame'));
+  const svgs   = frames.map(f => f.querySelector('svg'));
+
+  const reduceMQ = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const deckMQ   = window.matchMedia('(min-width: 961px)');
+  if (reduceMQ.matches) document.querySelectorAll('.step-visual-frame animate').forEach(a => a.remove());
+
+  const clamp   = (v, a, b) => v < a ? a : v > b ? b : v;
+  const easeOut = t => 1 - Math.pow(1 - t, 3);
+
+  /* ══════════ Flow mode (mobile / reduced motion): the original behaviour ══════════ */
   const stepRevealObs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if(e.isIntersecting){
         e.target.classList.add('visible');
-        // activate parent step for SVG animations
         const parentStep = e.target.closest('.process-step');
         if(parentStep) parentStep.classList.add('step-active');
         stepRevealObs.unobserve(e.target);
       }
     });
   }, { threshold: 0.25 });
+  const observeAll = () =>
+    document.querySelectorAll('.step-reveal-left,.step-reveal-right').forEach(el => stepRevealObs.observe(el));
 
-  document.querySelectorAll('.step-reveal-left,.step-reveal-right').forEach(el => stepRevealObs.observe(el));
-
-  // Spine fill driven by scroll position within the steps wrapper
-  if(spine && stepsWrap){
-    window.addEventListener('scroll', () => {
-      const rect  = stepsWrap.getBoundingClientRect();
-      const total = stepsWrap.offsetHeight;
-      const seen  = Math.max(0, Math.min(total, window.innerHeight * 0.6 - rect.top));
-      spine.style.height = Math.min(100, (seen / total) * 100) + '%';
-    }, { passive: true });
+  function flowSpine(){
+    if(!spine) return;
+    const rect  = track.getBoundingClientRect();
+    const total = track.offsetHeight;
+    const seen  = Math.max(0, Math.min(total, window.innerHeight * 0.6 - rect.top));
+    spine.style.height = Math.min(100, (seen / total) * 100) + '%';
   }
-
-  // Subtle parallax on visual frames
-  window.addEventListener('scroll', () => {
-    const y = window.scrollY;
-    document.querySelectorAll('.step-visual-frame').forEach((frame, i) => {
+  function flowParallax(){
+    frames.forEach((frame, i) => {
       const dir = i % 2 === 0 ? 1 : -1;
       const rect = frame.getBoundingClientRect();
       const center = rect.top + rect.height / 2 - window.innerHeight / 2;
       frame.style.transform = `translateY(${center * 0.025 * dir}px)`;
     });
-  }, { passive: true });
+  }
+
+  /* ══════════ Deck mode (desktop): scroll-progress-driven stacked cards ══════════ */
+  const OFFSET      = 8;      // px each card rests below the previous one
+  const SLIDE_START = 0.22;   // hold (fraction of one step of scroll) before a card starts moving
+  const SLIDE_SPAN  = 0.60;   // fraction of a step of scroll the slide itself takes (smaller = faster)
+  const DEPTH_SCALE = 0.012;  // how much a card shrinks per card stacked on it
+  const DEPTH_DIM   = 0.14;   // how much it darkens per card stacked on it (max 0.5)
+  const DRAW_ON     = 0.30;   // slide progress at which a card's sketch starts drawing
+  const DRAW_OFF    = 0.02;   // ...and at which it resets (card is fully off-screen)
+  const TEXT_AT     = 0.50;   // slide progress at which a card becomes the "current" step
+
+  let deckOn = false, mode = null;
+  let trackTop = 0, D = 1, vh = 0, travel = 0;
+  let lastY = -1, entered = false, cur = -2, raf = 0, hookedLenis = false;
+  const drawn = new Array(N).fill(false);
+  const lastT = new Array(N).fill('');
+  const lastDim = new Array(N).fill(-1);
+  const e = new Array(N).fill(0), p = new Array(N).fill(0);
+
+  /* Layout reads happen here only (load / resize) — never per scroll frame. */
+  function measure(){
+    if(!deckOn) return;
+    vh = window.innerHeight;
+    D  = clamp(vh * 0.86, 520, 860);                 // scroll distance per card change
+    track.style.setProperty('--deck-n', N);
+    track.style.setProperty('--deck-step', D + 'px');
+    track.style.setProperty('--deck-tail', (D * 0.3) + 'px');
+    trackTop = track.getBoundingClientRect().top + window.scrollY;
+    // enough travel for a card to start fully below the visible stage
+    travel = stage.offsetHeight / 2 + frames[0].offsetHeight / 2 + 90;
+    lastY = -1;
+  }
+
+  function update(){
+    if(!deckOn) return;
+    const y = window.scrollY;
+    if(y === lastY) return;
+    lastY = y;
+
+    const s = y - trackTop;                           // px scrolled into the track
+    const P = clamp(s / D, 0, N - 1);                 // deck progress in "cards"
+
+    // Card 01 is the base of the deck: it is "in" once the stage is on screen (hysteresis)
+    if(!entered && s > -vh * 0.62) entered = true;
+    else if(entered && s < -vh * 0.95) entered = false;
+
+    e[0] = 1; p[0] = 1;
+    let sumE = 0;
+    for(let i = 1; i < N; i++){
+      p[i] = clamp((P - (i - 1) - SLIDE_START) / SLIDE_SPAN, 0, 1);
+      e[i] = easeOut(p[i]);
+      sumE += e[i];
+    }
+
+    // Position every card from scroll progress: transform only, no timers
+    let depth = 0;                                    // sum of easings of the cards above card i
+    for(let i = N - 1; i >= 0; i--){
+      const ty = (1 - e[i]) * travel + OFFSET * i;
+      const sc = 1 - DEPTH_SCALE * depth;
+      const t  = 'translate3d(0,' + ty.toFixed(2) + 'px,0) scale(' + sc.toFixed(4) + ')';
+      if(t !== lastT[i]){ frames[i].style.transform = t; lastT[i] = t; }
+      const dim = Math.min(0.5, DEPTH_DIM * depth);
+      if(Math.abs(dim - lastDim[i]) > 0.002){ frames[i].style.setProperty('--dim', dim.toFixed(3)); lastDim[i] = dim; }
+      depth += e[i];
+    }
+
+    // Which sketches are drawn (persist while buried, reset once the card is fully off-screen)
+    // and which step is current (text + node)
+    let now = -1;
+    for(let i = 0; i < N; i++){
+      let d;
+      if(i === 0) d = entered;
+      else if(p[i] > DRAW_ON) d = true;
+      else if(p[i] <= DRAW_OFF) d = false;
+      else d = drawn[i];
+      if(d !== drawn[i]){ drawn[i] = d; steps[i].classList.toggle('step-active', d); }
+      if(i === 0 ? entered : p[i] >= TEXT_AT) now = i;
+    }
+    if(now !== cur){
+      cur = now;
+      steps.forEach((el, i) => el.classList.toggle('step-current', i === cur));
+      // only the top card keeps its rough-edge wobble running
+      svgs.forEach((svg, i) => { try{ i === cur ? svg.unpauseAnimations() : svg.pauseAnimations(); }catch(_){} });
+    }
+
+    if(spine) spine.style.transform = 'scaleY(' + (sumE / (N - 1)).toFixed(4) + ')';
+  }
+
+  function schedule(){ if(!raf) raf = requestAnimationFrame(() => { raf = 0; update(); }); }
+
+  function enableDeck(){
+    deckOn = true;
+    stepRevealObs.disconnect();
+    steps.forEach(el => el.classList.remove('step-active', 'step-current'));
+    drawn.fill(false); lastT.fill(''); lastDim.fill(-1);
+    entered = false; cur = -2;
+    section.classList.add('is-deck');
+    measure();
+    update();
+  }
+  function disableDeck(){
+    deckOn = false;
+    section.classList.remove('is-deck');
+    ['--deck-n','--deck-step','--deck-tail'].forEach(k => track.style.removeProperty(k));
+    frames.forEach(f => { f.style.transform = ''; f.style.removeProperty('--dim'); });
+    if(spine) spine.style.transform = '';
+    steps.forEach(el => el.classList.remove('step-active', 'step-current'));
+    svgs.forEach(svg => { try{ svg.unpauseAnimations(); }catch(_){} });
+    observeAll();
+    flowSpine(); flowParallax();
+  }
+  function applyMode(){
+    const canClip = !!(window.CSS && CSS.supports && CSS.supports('overflow', 'clip'));
+    const want = (deckMQ.matches && !reduceMQ.matches && canClip) ? 'deck' : 'flow';
+    if(want === mode) return;
+    mode = want;
+    want === 'deck' ? enableDeck() : disableDeck();
+  }
+
+  window.addEventListener('scroll', () => { if(deckOn) schedule(); else flowSpine(); }, { passive: true });
+  window.addEventListener('scroll', () => { if(!deckOn) flowParallax(); }, { passive: true });
+
+  // With Lenis, update in the same frame that Lenis moves the page (keeps cards locked to scroll)
+  function hookLenis(){
+    if(hookedLenis || !window.lenis || !window.lenis.on) return;
+    hookedLenis = true;
+    window.lenis.on('scroll', () => { if(deckOn) update(); });
+  }
+  window.addEventListener('load', () => { hookLenis(); if(deckOn){ measure(); update(); } });
+
+  let rz = 0;
+  const remeasure = () => { cancelAnimationFrame(rz); rz = requestAnimationFrame(() => { measure(); update(); }); };
+  window.addEventListener('resize', remeasure, { passive: true });
+  if('ResizeObserver' in window) new ResizeObserver(remeasure).observe(document.body);
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(remeasure);
+
+  const onMQ = (mq, fn) => mq.addEventListener ? mq.addEventListener('change', fn) : mq.addListener(fn);
+  onMQ(deckMQ, applyMode); onMQ(reduceMQ, applyMode);
+
+  applyMode();
 })();
 
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
