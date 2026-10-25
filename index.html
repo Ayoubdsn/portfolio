@@ -91,20 +91,6 @@ body:has(button:hover) #cursor-ring {
 @media (hover: none) { #cursor-dot, #cursor-ring { display: none; } body { cursor: auto; } }
 
 /* ════════════════════════════════════════
-   SCROLL PROGRESS BAR
-════════════════════════════════════════ */
-#progress-bar {
-  position: fixed;
-  top: 0; left: 0;
-  height: 2px;
-  width: 0%;
-  background: linear-gradient(90deg, var(--blue-2), var(--blue-3), var(--purple));
-  z-index: 200;
-  transition: width 0.1s linear;
-  box-shadow: 0 0 10px rgba(96,165,250,0.6);
-}
-
-/* ════════════════════════════════════════
    GLOBAL GRID LINES (hero bg)
 ════════════════════════════════════════ */
 .grid-lines {
@@ -126,7 +112,10 @@ body:has(button:hover) #cursor-ring {
 ════════════════════════════════════════ */
 nav {
   position: fixed;
-  top: 0; left: 0; right: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: auto;
   z-index: 100;
   padding: 0 48px;
   height: 68px;
@@ -134,10 +123,89 @@ nav {
   align-items: center;
   justify-content: space-between;
   background: rgba(0,0,0,0.7);
-  backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid transparent;
+  border-bottom-color: rgba(255,255,255,0.055);
+  border-radius: 0;
+  box-shadow: 0 0 0 rgba(0,0,0,0);
   -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border-bottom: 1px solid rgba(96,165,250,0.07);
-  transition: background 0.3s;
+  backdrop-filter: blur(24px) saturate(180%);
+  transition:
+    top 0.5s cubic-bezier(0.16,1,0.3,1),
+    left 0.5s cubic-bezier(0.16,1,0.3,1),
+    right 0.5s cubic-bezier(0.16,1,0.3,1),
+    height 0.5s cubic-bezier(0.16,1,0.3,1),
+    padding 0.5s cubic-bezier(0.16,1,0.3,1),
+    border-radius 0.5s cubic-bezier(0.16,1,0.3,1),
+    background 0.4s ease,
+    border-color 0.4s ease,
+    box-shadow 0.4s ease,
+    backdrop-filter 0.5s ease,
+    -webkit-backdrop-filter 0.5s ease;
+}
+
+/* Keep the same smooth full-width-to-floating-pill transition as the reference. */
+nav.is-floating {
+  top: 14px;
+  left: max(16px, calc((100% - 1120px) / 2));
+  right: max(16px, calc((100% - 1120px) / 2));
+  height: 64px;
+  padding: 0 14px;
+  border: 1px solid rgba(225,232,242,0.12);
+  border-radius: 999px;
+  background: rgba(10,12,16,0.58);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.22);
+  -webkit-backdrop-filter: blur(16px) saturate(118%);
+  backdrop-filter: blur(16px) saturate(118%);
+}
+
+/* Invert the floating glass only while it overlaps the light Process section. */
+nav.is-floating.over-light {
+  background: rgba(248,250,253,0.82);
+  border-color: rgba(15,23,42,0.12);
+  box-shadow: 0 6px 20px rgba(15,23,42,0.10);
+  -webkit-backdrop-filter: blur(16px) saturate(112%);
+  backdrop-filter: blur(16px) saturate(112%);
+}
+nav.is-floating.over-light .nav-logo {
+  color: #111827;
+  background: rgba(15,23,42,0.035);
+  border-color: rgba(15,23,42,0.10);
+}
+nav.is-floating.over-light .nav-links a { color: rgba(15,23,42,0.66); }
+nav.is-floating.over-light .nav-links a:hover { color: #0b1220; }
+nav.is-floating.over-light .nav-links a::after { background: #2563eb; }
+nav.is-floating.over-light .nav-cta {
+  color: #2563eb;
+  border-color: rgba(37,99,235,0.24);
+}
+nav.is-floating.over-light .nav-cta::before { background: rgba(37,99,235,0.055); }
+nav.is-floating.over-light .nav-cta:hover { border-color: rgba(37,99,235,0.38); }
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  nav.is-floating { background: rgba(5,7,10,0.94); }
+  nav.is-floating.over-light { background: rgba(248,250,253,0.97); }
+}
+@media (prefers-reduced-motion: reduce) { nav { transition: none; } }
+.nav-logo {
+  color: #111827;
+  background: rgba(15,23,42,0.035);
+  border-color: rgba(15,23,42,0.10);
+}
+nav.is-floating.over-light .nav-links a { color: rgba(15,23,42,0.66); }
+nav.is-floating.over-light .nav-links a:hover { color: #0b1220; }
+nav.is-floating.over-light .nav-links a::after { background: #2563eb; }
+nav.is-floating.over-light .nav-cta {
+  color: #2563eb;
+  border-color: rgba(37,99,235,0.24);
+}
+nav.is-floating.over-light .nav-cta::before {
+  background: rgba(37,99,235,0.055);
+}
+nav.is-floating.over-light .nav-cta:hover { border-color: rgba(37,99,235,0.38); }
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  nav.is-floating { background: rgba(5,7,10,0.94); }
+  nav.is-floating.over-light { background: rgba(248,250,253,0.97); }
 }
 .nav-logo {
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
@@ -178,6 +246,10 @@ nav {
 }
 .nav-links a:hover { color: var(--text-primary); }
 .nav-links a:hover::after { width: 100%; }
+
+.nav-links a.is-active { color: var(--text-primary); }
+.nav-links a.is-active::after { width: 100%; }
+nav.is-floating.over-light .nav-links a.is-active { color:#0b1220; }
 
 .nav-cta {
   position: relative;
@@ -490,6 +562,24 @@ nav {
   margin:0;
 }
 
+/* Softly blend the dark About section into the light Process section. */
+.about-process-blur {
+  position: relative;
+  z-index: 20;
+  height: 76px;
+  margin-bottom: -76px;
+  background: linear-gradient(
+    to bottom,
+    rgba(247,249,252,0) 0%,
+    rgba(247,249,252,0.16) 28%,
+    rgba(247,249,252,0.58) 66%,
+    rgba(247,249,252,0.94) 100%
+  );
+  -webkit-backdrop-filter: blur(14px) saturate(108%);
+  backdrop-filter: blur(14px) saturate(108%);
+  pointer-events: none;
+}
+
 /* ── SCROLL ROWS ── */
 .grid { position:relative;z-index:5;width:100%;display:flex;flex-direction:column;gap:16px; }
 .row-wrapper { width:100%;overflow:hidden; }
@@ -666,20 +756,12 @@ nav {
   -webkit-backdrop-filter:blur(12px);
   transition:border-color 0.35s,box-shadow 0.35s,transform 0.35s;
   cursor:default;
-  position:relative;overflow:hidden;
+  position:relative;
   box-shadow:inset 0 1px 0 rgba(255,255,255,0.04);
 }
-.about-stat-card::after {
-  content:'';position:absolute;
-  top:0;left:-80%;width:60%;height:100%;
-  background:linear-gradient(90deg,transparent,rgba(96,165,250,0.06),transparent);
-  transform:skewX(-15deg);opacity:0;transition:opacity 0.3s;
-}
-.about-stat-card:hover::after { opacity:1;animation:cardShimmer 0.6s ease forwards; }
-@keyframes cardShimmer { 0%{left:-80%} 100%{left:140%} }
 .about-stat-card:hover {
   border-color:rgba(96,165,250,0.3);
-  box-shadow:0 12px 40px rgba(37,99,235,0.18),inset 0 1px 0 rgba(255,255,255,0.06);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.06);
   transform:translateY(-4px);
 }
 .about-stat-num {
@@ -809,19 +891,12 @@ nav {
   -webkit-backdrop-filter:blur(16px);
   box-shadow:inset 0 1px 0 rgba(255,255,255,0.04);
   transition:border-color 0.35s,box-shadow 0.35s,transform 0.35s;
-  position:relative;overflow:hidden;
+  position:relative;
   display:flex;flex-direction:column;align-items:flex-start;gap:9px;
 }
-.contact-card::before {
-  content:'';position:absolute;
-  top:0;left:-80%;width:55%;height:100%;
-  background:linear-gradient(90deg,transparent,rgba(96,165,250,0.05),transparent);
-  transform:skewX(-15deg);opacity:0;transition:opacity 0.3s;
-}
-.contact-card:hover::before { opacity:1;animation:cardShimmer 0.6s ease forwards; }
 .contact-card:hover {
   border-color:rgba(96,165,250,0.3);
-  box-shadow:0 16px 56px rgba(37,99,235,0.2),inset 0 1px 0 rgba(255,255,255,0.06);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.06);
   transform:translateY(-5px);
 }
 .contact-icon {
@@ -865,6 +940,27 @@ nav {
 /* ════════════════════════════════════════
    PROCESS SECTION
 ════════════════════════════════════════ */
+/* ── Light theme tokens, scoped to the Process section only (:root stays dark) ── */
+.process {
+  --bg: #F7F9FC;
+  --surface: #FFFFFF;
+  --surface-2: #F1F5FB;
+  --blue-ink: #2563eb;
+  --cyan-ink: #0891b2;
+  --purple: #22d3ee;
+  --gold: #38bdf8;
+  --text-primary: #0B1220;
+  --text-muted: #64748B;
+  --card-border: rgba(71,98,150,0.14);
+  --card-border-hover: rgba(59,130,246,0.4);
+  --glass: rgba(255,255,255,0.72);
+  --shadow-soft: 0 1px 2px rgba(15,23,42,0.04), 0 10px 30px rgba(30,58,110,0.07);
+  color-scheme: light;
+  background: #F7F9FC;
+  color: var(--text-primary);
+}
+.process .about-eyebrow { color: var(--blue-ink); }
+
 .process {
   position: relative;
   width: 100%;
@@ -873,9 +969,9 @@ nav {
   isolation: isolate;
 }
 .process-orb { position:absolute;border-radius:50%;filter:blur(130px);pointer-events:none;z-index:0; }
-.p-orb1 { width:700px;height:700px;background:radial-gradient(circle,rgba(37,99,235,0.12) 0%,transparent 70%);top:-120px;left:50%;transform:translateX(-50%); }
-.p-orb2 { width:400px;height:400px;background:radial-gradient(circle,rgba(167,139,250,0.09) 0%,transparent 70%);bottom:200px;left:3%; }
-.p-orb3 { width:350px;height:350px;background:radial-gradient(circle,rgba(56,189,248,0.07) 0%,transparent 70%);bottom:100px;right:4%; }
+.p-orb1 { width:700px;height:700px;background:radial-gradient(circle,rgba(59,130,246,0.09) 0%,transparent 70%);top:-120px;left:50%;transform:translateX(-50%); }
+.p-orb2 { width:400px;height:400px;background:radial-gradient(circle,rgba(56,189,248,0.07) 0%,transparent 70%);bottom:200px;left:3%; }
+.p-orb3 { width:350px;height:350px;background:radial-gradient(circle,rgba(34,211,238,0.06) 0%,transparent 70%);bottom:100px;right:4%; }
 
 .process-header {
   position:relative;z-index:10;
@@ -901,7 +997,7 @@ nav {
   position:absolute;
   left:50%;top:0;bottom:0;
   width:1px;
-  background:linear-gradient(to bottom,transparent,rgba(96,165,250,0.15) 10%,rgba(96,165,250,0.15) 90%,transparent);
+  background:linear-gradient(to bottom,transparent,rgba(59,130,246,0.2) 10%,rgba(59,130,246,0.2) 90%,transparent);
   transform:translateX(-50%);
   pointer-events:none;
 }
@@ -910,7 +1006,7 @@ nav {
   background:linear-gradient(to bottom,var(--blue-1),var(--blue-3));
   height:0%;
   transition:height 0.1s linear;
-  box-shadow:0 0 12px rgba(96,165,250,0.6);
+  box-shadow:0 0 10px rgba(59,130,246,0.4);
 }
 
 .process-step {
@@ -931,29 +1027,30 @@ nav {
 }
 .step-node-inner {
   width:62px;height:62px;border-radius:50%;
-  background:#000;
-  border:1px solid rgba(96,165,250,0.2);
+  background:#FFFFFF;
+  border:1px solid rgba(59,130,246,0.25);
+  box-shadow:0 4px 14px rgba(30,58,110,0.08);
   display:flex;align-items:center;justify-content:center;
   position:relative;
   transition:border-color 0.4s,box-shadow 0.4s;
 }
 .step-node-inner::before {
   content:'';position:absolute;inset:-8px;border-radius:50%;
-  border:1px solid rgba(96,165,250,0.06);
+  border:1px solid rgba(59,130,246,0.1);
   transition:border-color 0.4s;
 }
 .process-step.step-active .step-node-inner {
-  border-color:rgba(96,165,250,0.6);
-  box-shadow:0 0 0 6px rgba(96,165,250,0.06),0 0 30px rgba(37,99,235,0.4);
+  border-color:rgba(59,130,246,0.7);
+  box-shadow:0 0 0 6px rgba(59,130,246,0.08),0 6px 24px rgba(37,99,235,0.25);
 }
 .step-num {
   font-family:-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
   font-size:14.5px;font-weight:500;
-  color:rgba(96,165,250,0.4);
+  color:rgba(37,99,235,0.55);
   letter-spacing:0.05em;
   transition:color 0.4s;
 }
-.process-step.step-active .step-num { color:var(--blue-1); }
+.process-step.step-active .step-num { color:var(--blue-ink); }
 
 /* Visual side */
 .step-visual {
@@ -965,15 +1062,15 @@ nav {
   width:100%;aspect-ratio:4/3;
   border-radius:28px;
   border:1px solid var(--card-border);
-  background:rgba(0,0,0,0.6);
+  background:rgba(255,255,255,0.82);
   backdrop-filter:blur(16px);
   overflow:hidden;
   transition:border-color 0.5s,box-shadow 0.5s;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,0.04);
+  box-shadow:var(--shadow-soft),inset 0 1px 0 rgba(255,255,255,0.9);
 }
 .process-step.step-active .step-visual-frame {
-  border-color:rgba(96,165,250,0.28);
-  box-shadow:0 20px 80px rgba(37,99,235,0.2),inset 0 1px 0 rgba(255,255,255,0.06);
+  border-color:rgba(59,130,246,0.32);
+  box-shadow:0 20px 60px rgba(37,99,235,0.14),0 2px 8px rgba(15,23,42,0.05),inset 0 1px 0 rgba(255,255,255,0.9);
 }
 .step-visual-frame svg { position:absolute;inset:0;width:100%;height:100%; }
 
@@ -991,11 +1088,11 @@ nav {
 .step-tags { display:flex;flex-wrap:wrap;gap:7px; }
 .step-tag {
   padding:6px 15px;border-radius:100px;
-  border:1px solid rgba(96,165,250,0.15);
-  background:rgba(96,165,250,0.04);
+  border:1px solid rgba(59,130,246,0.2);
+  background:rgba(59,130,246,0.06);
   font-family:-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
   font-size:11.5px;letter-spacing:0.1em;text-transform:uppercase;
-  color:rgba(96,165,250,0.5);
+  color:var(--blue-ink);opacity:0.85;
 }
 
 /* Even steps: visual right, text left */
@@ -1040,10 +1137,10 @@ nav {
 /* -- Hand-drawn process illustrations -- (speed: durations x.78 sk / x.65 hw, stagger delays x.25) -- */
 .sk{fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1 2;stroke-dashoffset:1.02;transition:stroke-dashoffset calc(var(--t,.62s)*.78) cubic-bezier(.45,.05,.35,1) calc(var(--d,0s)*.25)}
 .step-active .sk{stroke-dashoffset:0}
-.sk.w{stroke:rgba(238,240,246,.88)}.sk.g{stroke:rgba(150,156,170,.7)}.sk.b{stroke:#60a5fa}.sk.c{stroke:#22d3ee}
-.hw{font-family:'Caveat','Segoe Print','Bradley Hand','Marker Felt','Comic Sans MS',cursive;font-weight:600;fill:rgba(238,240,246,.88);opacity:0;clip-path:inset(0 100% 0 0);transition:clip-path calc(var(--t,.68s)*.65) cubic-bezier(.4,0,.3,1) calc(var(--d,0s)*.25),opacity .01s linear calc(var(--d,0s)*.25)}
+.sk.w{stroke:rgba(11,18,32,.84)}.sk.g{stroke:rgba(100,116,139,.72)}.sk.b{stroke:#2f6df0}.sk.c{stroke:#0891b2}
+.hw{font-family:'Caveat','Segoe Print','Bradley Hand','Marker Felt','Comic Sans MS',cursive;font-weight:600;fill:rgba(11,18,32,.86);opacity:0;clip-path:inset(0 100% 0 0);transition:clip-path calc(var(--t,.68s)*.65) cubic-bezier(.4,0,.3,1) calc(var(--d,0s)*.25),opacity .01s linear calc(var(--d,0s)*.25)}
 .step-active .hw{opacity:1;clip-path:inset(0 -2% 0 0)}
-.hw.g{fill:rgba(150,156,170,.85)}.hw.b{fill:#60a5fa}.hw.c{fill:#22d3ee}
+.hw.g{fill:rgba(100,116,139,.9)}.hw.b{fill:#2f6df0}.hw.c{fill:#0891b2}
 @media(prefers-reduced-motion:reduce){.sk{transition:none;stroke-dashoffset:0}.hw{transition:none;opacity:1;clip-path:none}}
 
 
@@ -1099,11 +1196,11 @@ nav {
   }
   .process.is-deck .process-stage::before {
     width:400px;height:400px;left:-110px;bottom:6%;
-    background:radial-gradient(circle,rgba(167,139,250,0.09) 0%,transparent 70%);
+    background:radial-gradient(circle,rgba(56,189,248,0.07) 0%,transparent 70%);
   }
   .process.is-deck .process-stage::after {
     width:350px;height:350px;right:-110px;bottom:2%;
-    background:radial-gradient(circle,rgba(56,189,248,0.07) 0%,transparent 70%);
+    background:radial-gradient(circle,rgba(34,211,238,0.06) 0%,transparent 70%);
   }
 
   /* Steps dissolve into the stage grid: every visual lands in the SAME cell */
@@ -1125,19 +1222,19 @@ nav {
   /* The card: position is written by JS from scroll progress (transform only, no transition on it).
      Opaque so buried cards never show through; the blur is pointless once opaque and costly x5. */
   .process.is-deck .process-step .step-visual-frame {
-    background:#030407;
+    background:#FFFFFF;
     -webkit-backdrop-filter:none;backdrop-filter:none;
     will-change:transform;
-    box-shadow:0 -8px 26px rgba(0,0,0,0.55),inset 0 1px 0 rgba(255,255,255,0.04);
+    box-shadow:0 -8px 26px rgba(30,58,110,0.1),0 2px 8px rgba(15,23,42,0.04),inset 0 1px 0 rgba(255,255,255,0.9);
   }
   /* depth cue: cards sink into shadow as later cards land on them (--dim set by JS) */
   .process.is-deck .process-step .step-visual-frame::after {
-    content:'';position:absolute;inset:0;background:#000;
+    content:'';position:absolute;inset:0;background:#E6ECF6;
     opacity:var(--dim,0);pointer-events:none;z-index:2;
   }
   .process.is-deck .process-step.step-current .step-visual-frame {
-    border-color:rgba(96,165,250,0.28);
-    box-shadow:0 20px 80px rgba(37,99,235,0.2),0 -8px 26px rgba(0,0,0,0.55),inset 0 1px 0 rgba(255,255,255,0.06);
+    border-color:rgba(59,130,246,0.32);
+    box-shadow:0 20px 60px rgba(37,99,235,0.15),0 -8px 26px rgba(30,58,110,0.1),inset 0 1px 0 rgba(255,255,255,0.9);
   }
   .process.is-deck .process-step.step-active:not(.step-current) .step-visual-frame {
     border-color:var(--card-border);
@@ -1251,6 +1348,7 @@ footer .footer-copy {
 }
 @media (max-width:640px) {
   nav { padding:0 20px; }
+  nav.is-floating { left:12px; right:12px; top:10px; height:58px; padding:0 16px; }
   .nav-links { display:none; }
   .about { padding:68px 22px; }
   .about-inner { gap:40px; }
@@ -1263,6 +1361,86 @@ footer .footer-copy {
   .fade-left,.fade-right { width:70px; }
   .card { width:220px; }
 }
+
+/* ════════════════════════════════════════
+   SPOTLIGHT CARDS — cursor-following border light (replaces old card glow)
+   --x/--y are the cursor position in px relative to each card's own box,
+   so alignment is correct at any scroll position (no background-attachment:fixed).
+════════════════════════════════════════ */
+.about-stat-card[data-spotlight] { --sp-r: 18px; }
+.contact-card[data-spotlight]    { --sp-r: 28px; }
+@media (hover: hover) and (pointer: fine) {
+  [data-spotlight]::before, [data-spotlight]::after {
+    content: ""; position: absolute; inset: -1px; border-radius: var(--sp-r);
+    pointer-events: none; z-index: 1; opacity: 0; transition: opacity 0.35s ease;
+    --sp-hue: calc(215 - var(--xp, 0.5) * 20);               /* blue → cyan only */
+    --sp-at: calc(var(--x, -999) * 1px) calc(var(--y, -999) * 1px);
+  }
+  [data-spotlight]::before {                                 /* 1px border light, masked to the ring */
+    border: 1px solid transparent;
+    background: radial-gradient(140px 140px at var(--sp-at),
+      hsl(var(--sp-hue) 100% 68% / 0.9), hsl(var(--sp-hue) 100% 60% / 0) 100%) border-box;
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0) border-box;
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) padding-box exclude, linear-gradient(#fff 0 0) border-box;
+  }
+  [data-spotlight]::after {                                  /* very faint surface wash, clipped to the card */
+    background: radial-gradient(180px 180px at var(--sp-at),
+      hsl(var(--sp-hue) 100% 65% / 0.07), transparent 100%);
+  }
+  [data-spotlight].is-lit::before, [data-spotlight].is-lit::after { opacity: 1; }
+}
+@media (hover: none), (pointer: coarse) { [data-spotlight]::before, [data-spotlight]::after { display: none; } }
+@media (prefers-reduced-motion: reduce) { [data-spotlight]::before, [data-spotlight]::after { transition: none; } }
+/* ════════════════════════════════════════
+   PROCESS AS AN ISOLATED WHITE CARD
+   Site background (dark) shows around a centered, rounded white card.
+════════════════════════════════════════ */
+.about-process-blur { display:none; }          /* no more light fade into the section */
+.process {
+  --bg: #FFFFFF;
+  background: #FFFFFF;
+  width: auto;
+  margin: 60px 40px;                            /* dark gutter around the card */
+  border-radius: 32px;
+  overflow: clip;                               /* clips content to the rounded corners (keeps sticky working) */
+}
+@media (max-width:960px){
+  .process { margin: 32px 20px; border-radius: 28px; }
+}
+@media (max-width:640px){
+  .process { margin: 20px 12px; border-radius: 22px; }
+}
+
+/* ════════════════════════════════════════
+   TIGHTER SPACING — less empty space between sections
+   (edit the numbers below to taste)
+════════════════════════════════════════ */
+.hero { padding-top:112px; padding-bottom:72px; }
+.showcase { padding:72px 0 80px; }
+.showcase-header { margin-bottom:44px; }
+.about   { padding-top:80px; padding-bottom:80px; }
+.contact { padding-top:80px; padding-bottom:80px; }
+.contact-header { margin-bottom:44px; }
+.contact-grid, .contact-cards { margin-bottom:44px; }
+.process { margin-top:40px; margin-bottom:40px; padding:88px 0 96px; }
+.process-header { margin-bottom:56px; }
+.process-step { margin-bottom:80px; }
+.process-step:last-child { margin-bottom:0; }
+@media (max-width:960px){
+  .about   { padding-top:60px; padding-bottom:60px; }
+  .contact { padding-top:60px; padding-bottom:60px; }
+  .process { margin-top:24px; margin-bottom:24px; padding:60px 22px 68px; }
+  .process-header { margin-bottom:44px; }
+  .process-step { margin-bottom:48px; }
+}
+@media (max-width:640px){
+  .hero { padding-top:100px; padding-bottom:56px; }
+  .showcase { padding:56px 0 60px; }
+  .about, .contact { padding-top:52px; padding-bottom:52px; }
+  .process { margin-top:16px; margin-bottom:16px; padding:52px 22px 56px; }
+}
+
 </style>
 </head>
 <body>
@@ -1270,9 +1448,6 @@ footer .footer-copy {
 <!-- Custom cursor -->
 <div id="cursor-dot"></div>
 <div id="cursor-ring"></div>
-
-<!-- Scroll progress bar -->
-<div id="progress-bar"></div>
 
 <!-- NAV -->
 <nav>
@@ -1388,19 +1563,19 @@ footer .footer-copy {
         <strong>"What will make someone stop scrolling?"</strong></p>
       </div>
       <div class="about-stats stagger">
-        <div class="about-stat-card">
+        <div class="about-stat-card" data-spotlight>
           <span class="about-stat-num">4+</span>
           <span class="about-stat-label">Years Experience</span>
         </div>
-        <div class="about-stat-card">
+        <div class="about-stat-card" data-spotlight>
           <span class="about-stat-num">50+</span>
           <span class="about-stat-label">Creators Helped</span>
         </div>
-        <div class="about-stat-card">
+        <div class="about-stat-card" data-spotlight>
           <span class="about-stat-num">300+</span>
           <span class="about-stat-label">Thumbnails Delivered</span>
         </div>
-        <div class="about-stat-card">
+        <div class="about-stat-card" data-spotlight>
           <span class="about-stat-num">∞</span>
           <span class="about-stat-label">Creator Teams Worked With</span>
         </div>
@@ -1428,7 +1603,7 @@ footer .footer-copy {
 </section>
 
 <!-- PROCESS -->
-<div class="section-divider"></div>
+<div class="section-divider about-process-blur" aria-hidden="true"></div>
 <section class="process" id="process">
   <div class="process-orb p-orb1"></div>
   <div class="process-orb p-orb2"></div>
@@ -1774,7 +1949,7 @@ footer .footer-copy {
   </div>
 
   <div class="contact-grid stagger">
-    <div class="contact-card">
+    <div class="contact-card" data-spotlight>
       <div class="contact-icon">
         <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect x="2" y="4" width="20" height="16" rx="3" stroke="rgba(96,165,250,0.9)" stroke-width="1.5"/>
@@ -1786,7 +1961,7 @@ footer .footer-copy {
       <p class="contact-description">For collaborations, client work and project inquiries.</p>
       <a href="mailto:ayoub@dssnx.com" class="btn-primary">Send Email</a>
     </div>
-    <div class="contact-card">
+    <div class="contact-card" data-spotlight>
       <div class="contact-icon">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="rgba(96,165,250,0.9)"/>
@@ -1811,6 +1986,30 @@ footer .footer-copy {
 </footer>
 
 <script>
+/* ── Navbar floating state ───────────────────────── */
+(() => {
+  const nav = document.querySelector('nav');
+  if (!nav) return;
+  const processSection = document.getElementById('process');
+  const updateFloatingNav = () => {
+    const floating = window.scrollY > 48;
+    nav.classList.toggle('is-floating', floating);
+
+    // Only invert the glass while the floating pill overlaps the light Process section.
+    if (processSection && floating) {
+      const navRect = nav.getBoundingClientRect();
+      const sectionRect = processSection.getBoundingClientRect();
+      const overlapsProcess = navRect.bottom > sectionRect.top && navRect.top < sectionRect.bottom;
+      nav.classList.toggle('over-light', overlapsProcess);
+    } else {
+      nav.classList.remove('over-light');
+    }
+  };
+  updateFloatingNav();
+  window.addEventListener('scroll', updateFloatingNav, { passive: true });
+  window.addEventListener('resize', updateFloatingNav, { passive: true });
+})();
+
 /* ── Custom cursor ────────────────────────────────── */
 const dot  = document.getElementById('cursor-dot');
 const ring = document.getElementById('cursor-ring');
@@ -1822,12 +2021,26 @@ document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; dot.st
   requestAnimationFrame(animCursor);
 })();
 
-/* ── Scroll progress ─────────────────────────────── */
-const bar = document.getElementById('progress-bar');
-window.addEventListener('scroll', () => {
-  const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
-  bar.style.width = pct + '%';
-});
+/* ── Nav: underline the word whose section we've reached ── */
+(() => {
+  const ids   = ['showcase','about','process','contact'];
+  const links = ids.map(id => document.querySelector('.nav-links a[href="#'+id+'"]'));
+  const secs  = ids.map(id => document.getElementById(id));
+  let current = -2;
+  const update = () => {
+    const line = window.innerHeight * 0.35;          // reached = section top passed this line
+    let idx = -1;
+    secs.forEach((el, i) => { if (el && el.getBoundingClientRect().top <= line) idx = i; });
+    const atEnd = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+    if (atEnd && secs[3]) idx = 3;
+    if (idx === current) return;
+    current = idx;
+    links.forEach((a, i) => a && a.classList.toggle('is-active', i === idx));
+  };
+  update();
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update, { passive: true });
+})();
 
 /* ── Floating particles ──────────────────────────── */
 const pContainer = document.getElementById('particles');
@@ -2174,6 +2387,40 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
     const target = Math.max(LERP_MIN, LERP_MAX - 0.020 * (y / limit) - 0.012 * p * p);
     cur += (target - cur) * 0.08;      // ease the change so it is never felt as a step
     lenis.options.lerp = cur;
+  });
+})();
+</script>
+<script>
+/* Spotlight cards: delegated pointer tracking on the card containers only.
+   Coordinates are card-relative and re-measured on scroll while a card is lit. */
+(function () {
+  document.querySelectorAll('.about-stats, .contact-grid').forEach(zone => {
+    let active = null, ev = null, raf = 0;
+    const paint = () => {
+      raf = 0;
+      if (!active || !ev) return;
+      const r = active.getBoundingClientRect();
+      const x = ev.clientX - r.left, y = ev.clientY - r.top;
+      active.style.setProperty('--x', x.toFixed(1));
+      active.style.setProperty('--y', y.toFixed(1));
+      active.style.setProperty('--xp', Math.min(1, Math.max(0, x / r.width)).toFixed(3));
+    };
+    const queue = () => { if (!raf) raf = requestAnimationFrame(paint); };
+    const clear = () => {
+      if (!active) return;
+      active.classList.remove('is-lit'); active = null;
+      window.removeEventListener('scroll', queue);
+    };
+    zone.addEventListener('pointermove', e => {
+      if (e.pointerType === 'touch') return;
+      const card = e.target.closest('[data-spotlight]');
+      if (card !== active) {
+        const was = !!active; clear(); active = card;
+        if (card) { card.classList.add('is-lit'); window.addEventListener('scroll', queue, { passive: true }); }
+      }
+      ev = e; if (active) queue();
+    }, { passive: true });
+    zone.addEventListener('pointerleave', clear);
   });
 })();
 </script>
